@@ -1,5 +1,5 @@
 const allProducts = [
-    // ========== الصف الأول ==========
+    // ========== الصف الأول (6 منتجات) ==========
     {
         id: 1,
         title: "Ninja CREAMi Ice Cream Maker & Dessert Machine",
@@ -72,7 +72,8 @@ const allProducts = [
         brandLink: "#",
         amazonLink: "#"
     },
-    // ========== الصف الثاني ==========
+
+    // ========== الصف الثاني (6 منتجات) ==========
     {
         id: 7,
         title: "TOCOL For iPhone 17 Pro for Tempered Glass 6.3 In",
