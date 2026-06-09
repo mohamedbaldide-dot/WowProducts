@@ -1,5 +1,5 @@
 const allProducts = [
-    // الصف الأول
+    // ========== الصف الأول ==========
     {
         id: 1,
         title: "Ninja CREAMi Ice Cream Maker & Dessert Machine",
@@ -10,7 +10,7 @@ const allProducts = [
         colourPatterns: "+1 colours/patterns",
         brand: "Ninja",
         brandLink: "#",
-        amazonLink: "#"
+        amazonLink: "https://amzn.to/43WZkBP"
     },
     {
         id: 2,
@@ -22,7 +22,7 @@ const allProducts = [
         colourPatterns: "",
         brand: "PHILIPS",
         brandLink: "#",
-        amazonLink: "#"
+        amazonLink: "https://amzn.to/4xg1ZE6"
     },
     {
         id: 3,
@@ -34,7 +34,7 @@ const allProducts = [
         colourPatterns: "",
         brand: "De'Longhi",
         brandLink: "#",
-        amazonLink: "#"
+        amazonLink: "https://amzn.to/4onEUeY"
     },
     {
         id: 4,
@@ -46,7 +46,7 @@ const allProducts = [
         colourPatterns: "+18",
         brand: "TOCOL",
         brandLink: "#",
-        amazonLink: "#"
+        amazonLink: "https://amzn.to/4ol2tF4"
     },
     {
         id: 5,
@@ -58,7 +58,7 @@ const allProducts = [
         colourPatterns: "+2 colours/patterns",
         brand: "dé",
         brandLink: "#",
-        amazonLink: "#"
+        amazonLink: "https://amzn.to/43ZA3qE"
     },
     {
         id: 6,
@@ -70,9 +70,9 @@ const allProducts = [
         colourPatterns: "",
         brand: "Russell Hobbs",
         brandLink: "#",
-        amazonLink: "#"
+        amazonLink: "https://amzn.to/3SvZnlB"
     },
-    // الصف الثاني
+    // ========== الصف الثاني ==========
     {
         id: 7,
         title: "TOCOL For iPhone 17 Pro for Tempered Glass 6.3 In",
@@ -83,7 +83,7 @@ const allProducts = [
         colourPatterns: "+1 colours/patterns",
         brand: "TOCOL",
         brandLink: "#",
-        amazonLink: "#"
+        amazonLink: "https://amzn.to/3PUfkkW"
     },
     {
         id: 8,
@@ -95,7 +95,7 @@ const allProducts = [
         colourPatterns: "+1 colours/patterns",
         brand: "Oral-B",
         brandLink: "#",
-        amazonLink: "#"
+        amazonLink: "https://amzn.to/4apA2zZ"
     },
     {
         id: 9,
@@ -107,7 +107,7 @@ const allProducts = [
         colourPatterns: "+15",
         brand: "Fit-Flip",
         brandLink: "#",
-        amazonLink: "#"
+        amazonLink: "https://amzn.to/4onG1va"
     },
     {
         id: 10,
@@ -119,7 +119,7 @@ const allProducts = [
         colourPatterns: "",
         brand: "dreame",
         brandLink: "#",
-        amazonLink: "#"
+        amazonLink: "https://amzn.to/4e7MbMt"
     },
     {
         id: 11,
@@ -131,7 +131,7 @@ const allProducts = [
         colourPatterns: "",
         brand: "PHILIPS",
         brandLink: "#",
-        amazonLink: "#"
+        amazonLink: "https://amzn.to/4uYztVX"
     },
     {
         id: 12,
@@ -143,6 +143,6 @@ const allProducts = [
         colourPatterns: "",
         brand: "AVENT",
         brandLink: "#",
-        amazonLink: "#"
+        amazonLink: "https://amzn.to/4upP93E"
     }
 ];
