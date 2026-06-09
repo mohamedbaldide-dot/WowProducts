@@ -1,5 +1,4 @@
 const allProducts = [
-    // الصف الأول
     {
         id: 1,
         title: "Ninja CREAMi Ice Cream Maker & Dessert Machine",
@@ -72,7 +71,6 @@ const allProducts = [
         brandLink: "#",
         amazonLink: "#"
     },
-    // الصف الثاني
     {
         id: 7,
         title: "TOCOL For iPhone 17 Pro for Tempered Glass 6.3 In",
