@@ -10,7 +10,7 @@ const allProducts = [
         colourPatterns: "+1 colours/patterns",
         brand: "Ninja",
         brandLink: "",
-        amazonLink: "https://amzn.to/43WZkBP"
+        amazonLink: "https://www.amazon.de/Ninja-Containers-Programmes-Milkshakes-NC302EU/dp/B0G26N7D9N?pf_rd_r=5AW5HCZ9M6F138CEZ02Q&pf_rd_p=22bfd244-2857-4615-8708-5ff38d6455b3&sbo=RZvfv%2F%2FHxDF%2BO5021pAnSA%3D%3D&th=1&linkCode=ll2&tag=wowproducts0f-21&linkId=f663c51fc4855c9de963b36aa3421cf9&ref_=as_li_ss_tl"
     },
     {
         id: 2,
