@@ -1,5 +1,4 @@
 const allProducts = [
-    // الصف الأول
     {
         id: 1,
         title: "Ninja CREAMi Ice Cream Maker & Dessert Machine",
@@ -54,7 +53,6 @@ const allProducts = [
         oldPrice: "USD 150.34",
         link: "#"
     },
-    // الصف الثاني
     {
         id: 7,
         title: "TOCOL iPhone 17 Pro Tempered Glass",
