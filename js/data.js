@@ -22,7 +22,7 @@ const allProducts = [
         colourPatterns: "",
         brand: "PHILIPS",
         brandLink: "",
-        amazonLink: "https://amzn.to/4xg1ZE6"
+        amazonLink: "https://www.amazon.de/Philips-OneBlade-Original-QP440-50/dp/B0CVXSK4D3?pf_rd_r=5AW5HCZ9M6F138CEZ02Q&pf_rd_p=22bfd244-2857-4615-8708-5ff38d6455b3&sbo=RZvfv%2F%2FHxDF%2BO5021pAnSA%3D%3D&linkCode=ll2&tag=wowproducts0f-21&linkId=9de647478faaa08d40d167b4dae382fd&ref_=as_li_ss_tl"
     },
     {
         id: 3,
@@ -34,7 +34,7 @@ const allProducts = [
         colourPatterns: "",
         brand: "De'Longhi",
         brandLink: "",
-        amazonLink: "https://amzn.to/4onEUeY"
+        amazonLink: "https://www.amazon.de/DeLonghi-Magnifica-automatic-cappuccino-selection/dp/B00400OMU0?pf_rd_r=5AW5HCZ9M6F138CEZ02Q&pf_rd_p=22bfd244-2857-4615-8708-5ff38d6455b3&sbo=RZvfv%2F%2FHxDF%2BO5021pAnSA%3D%3D&th=1&linkCode=ll2&tag=wowproducts0f-21&linkId=b665f1a9e416f9609bf0d80c9fea44fc&ref_=as_li_ss_tl"
     },
     {
         id: 4,
@@ -46,7 +46,7 @@ const allProducts = [
         colourPatterns: "+18",
         brand: "TOCOL",
         brandLink: "",
-        amazonLink: "https://amzn.to/4ol2tF4"
+        amazonLink: "https://www.amazon.de/TOCOL-iPhone-12-Scratch-Resistant-Translucent-black/dp/B0D3HLMWW5?pf_rd_r=5AW5HCZ9M6F138CEZ02Q&pf_rd_p=22bfd244-2857-4615-8708-5ff38d6455b3&sbo=RZvfv%2F%2FHxDF%2BO5021pAnSA%3D%3D&th=1&linkCode=ll2&tag=wowproducts0f-21&linkId=0c30d3ed6992b487fb9440b7b8a80061&ref_=as_li_ss_tl"
     },
     {
         id: 5,
@@ -58,7 +58,7 @@ const allProducts = [
         colourPatterns: "+2 colours/patterns",
         brand: "dé",
         brandLink: "",
-        amazonLink: "https://amzn.to/43ZA3qE"
+        amazonLink: "https://www.amazon.de/Philips-3000-Portable-Steamer-Performance/dp/B0BLM4S8SZ?pf_rd_r=5AW5HCZ9M6F138CEZ02Q&pf_rd_p=22bfd244-2857-4615-8708-5ff38d6455b3&sbo=RZvfv%2F%2FHxDF%2BO5021pAnSA%3D%3D&th=1&linkCode=ll2&tag=wowproducts0f-21&linkId=55c72dee960e5d757d2d253901a8bf1d&ref_=as_li_ss_tl"
     },
     {
         id: 6,
@@ -70,7 +70,7 @@ const allProducts = [
         colourPatterns: "",
         brand: "Russell Hobbs",
         brandLink: "",
-        amazonLink: "https://amzn.to/3SvZnlB"
+        amazonLink: "https://www.amazon.de/Playstation-DualSense%C2%AE-Wireless-Controller-Galactic-Purple/dp/B09NLJCVGB?pf_rd_r=5AW5HCZ9M6F138CEZ02Q&pf_rd_p=22bfd244-2857-4615-8708-5ff38d6455b3&sbo=RZvfv%2F%2FHxDF%2BO5021pAnSA%3D%3D&th=1&linkCode=ll2&tag=wowproducts0f-21&linkId=bd839939c7d4435f219922e677855ce6&ref_=as_li_ss_tl"
     },
     // ========== الصف الثاني ==========
     {
@@ -83,7 +83,7 @@ const allProducts = [
         colourPatterns: "+1 colours/patterns",
         brand: "TOCOL",
         brandLink: "",
-        amazonLink: "https://amzn.to/3PUfkkW"
+        amazonLink: "https://www.amazon.de/d%C3%A9-Wallbox-Charging-Station-Adjustable-CEE-11kW/dp/B0BX1Z3JJQ?pf_rd_r=5AW5HCZ9M6F138CEZ02Q&pf_rd_p=22bfd244-2857-4615-8708-5ff38d6455b3&sbo=RZvfv%2F%2FHxDF%2BO5021pAnSA%3D%3D&th=1&linkCode=ll2&tag=wowproducts0f-21&linkId=9ec246a7ab74978047bfe145ce624329&ref_=as_li_ss_tl"
     },
     {
         id: 8,
@@ -95,7 +95,7 @@ const allProducts = [
         colourPatterns: "+1 colours/patterns",
         brand: "Oral-B",
         brandLink: "",
-        amazonLink: "https://amzn.to/4apA2zZ"
+        amazonLink: "https://www.amazon.de/Russell-Hobbs-27632-56-Programmes-TouchScreen/dp/B0DWSLJ7HQ?pf_rd_r=5AW5HCZ9M6F138CEZ02Q&pf_rd_p=22bfd244-2857-4615-8708-5ff38d6455b3&sbo=RZvfv%2F%2FHxDF%2BO5021pAnSA%3D%3D&th=1&linkCode=ll2&tag=wowproducts0f-21&linkId=608429c1d6af6f5705023c4fd62867f1&ref_=as_li_ss_tl"
     },
     {
         id: 9,
@@ -107,7 +107,7 @@ const allProducts = [
         colourPatterns: "+15",
         brand: "Fit-Flip",
         brandLink: "",
-        amazonLink: "https://amzn.to/4onG1va"
+        amazonLink: "https://www.amazon.de/TOCOL-iPhone-Pro-Scratch-Resistant-Anti-Fingerprint/dp/B0GDX71PSK?pf_rd_r=5AW5HCZ9M6F138CEZ02Q&pf_rd_p=22bfd244-2857-4615-8708-5ff38d6455b3&sbo=RZvfv%2F%2FHxDF%2BO5021pAnSA%3D%3D&th=1&linkCode=ll2&tag=wowproducts0f-21&linkId=0c7d1af73e732e5535936c7734c1800e&ref_=as_li_ss_tl"
     },
     {
         id: 10,
@@ -119,7 +119,7 @@ const allProducts = [
         colourPatterns: "",
         brand: "dreame",
         brandLink: "",
-        amazonLink: "https://amzn.to/4e7MbMt"
+        amazonLink: "https://www.amazon.de/Oral-B-Toothbrush-Attachment-Toothbrushes-Packaging/dp/B0B1DYZNY5?pf_rd_r=5AW5HCZ9M6F138CEZ02Q&pf_rd_p=22bfd244-2857-4615-8708-5ff38d6455b3&sbo=RZvfv%2F%2FHxDF%2BO5021pAnSA%3D%3D&th=1&linkCode=ll2&tag=wowproducts0f-21&linkId=862199071f715f905054c1193d1fac71&ref_=as_li_ss_tl"
     },
     {
         id: 11,
@@ -131,7 +131,7 @@ const allProducts = [
         colourPatterns: "",
         brand: "PHILIPS",
         brandLink: "",
-        amazonLink: "https://amzn.to/4uYztVX"
+        amazonLink: "https://www.amazon.de/Fit-Flip-Microfibre-Compact-Quick-Drying-Lightweight/dp/B0CP84RY5G?pf_rd_r=5AW5HCZ9M6F138CEZ02Q&pf_rd_p=22bfd244-2857-4615-8708-5ff38d6455b3&sbo=RZvfv%2F%2FHxDF%2BO5021pAnSA%3D%3D&th=1&linkCode=ll2&tag=wowproducts0f-21&linkId=035b02e2e7c617f7f2eb68aaffd5276a&ref_=as_li_ss_tl"
     },
     {
         id: 12,
@@ -143,6 +143,6 @@ const allProducts = [
         colourPatterns: "",
         brand: "AVENT",
         brandLink: "",
-        amazonLink: "https://amzn.to/4upP93E"
+        amazonLink: "https://www.amazon.de/dreame-FlexReach-Cleaner-Minutes-Cleaning/dp/B0DV5RRL9F?pf_rd_r=5AW5HCZ9M6F138CEZ02Q&pf_rd_p=22bfd244-2857-4615-8708-5ff38d6455b3&sbo=RZvfv%2F%2FHxDF%2BO5021pAnSA%3D%3D&th=1&linkCode=ll2&tag=wowproducts0f-21&linkId=efbfd15943e66af2c36ae5ba0db3e484&ref_=as_li_ss_tl"
     }
 ];
