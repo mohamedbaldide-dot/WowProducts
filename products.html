@@ -1,57 +1,65 @@
-<script src="js/data.js"></script>
-<script>
-    function loadProducts() {
-        const grid = document.getElementById('productsGrid');
-        if (!grid) return;
-        
-        if (typeof allProducts === 'undefined') {
-            grid.innerHTML = '<div style="text-align:center; padding:50px;">❌ Error: Products not loaded</div>';
-            return;
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WowProducts - Deals</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="products-page">
+    <div class="products-header">
+        <h1>⚡ Today's Best Deals ⚡</h1>
+        <button class="back-home-btn" onclick="location.href='index.html'">← Back</button>
+    </div>
+    
+    <div class="products-grid" id="productsGrid"></div>
+
+    <script src="js/data.js"></script>
+    <script>
+        function loadProducts() {
+            const grid = document.getElementById('productsGrid');
+            if (!grid) return;
+            
+            if (typeof allProducts === 'undefined') {
+                grid.innerHTML = '<div style="text-align:center; padding:50px;">❌ Error: Products not loaded</div>';
+                return;
+            }
+            
+            grid.innerHTML = '';
+            
+            allProducts.forEach(product => {
+                const card = document.createElement('div');
+                card.className = 'product-card';
+                card.innerHTML = `
+                    <div class="product-image-container">
+                        <img src="${product.image}" alt="${product.title}" class="product-image" 
+                             onerror="this.src='https://placehold.co/300x300?text=No+Image'">
+                        <div class="discount-badge">${product.discount}</div>
+                    </div>
+                    <div class="product-info">
+                        <div class="price-row">
+                            <span class="current-price">${product.price}</span>
+                            <span class="old-price">${product.oldPrice}</span>
+                        </div>
+                        <h3 class="product-title">${product.title}…</h3>
+                        <div class="colour-patterns">${product.colourPatterns}</div>
+                        <div class="brand-shop">
+                            <a href="${product.brandLink}" class="brand-link" target="_blank">Shop ${product.brand} deals</a>
+                        </div>
+                        <div class="rrp-row">
+                            <span class="rrp-label">RRP:</span>
+                            <span class="rrp-value">${product.oldPrice}</span>
+                        </div>
+                        <a href="${product.amazonLink}" class="amazon-btn" target="_blank" rel="noopener noreferrer">
+                            🛒 View on Amazon
+                        </a>
+                    </div>
+                `;
+                grid.appendChild(card);
+            });
         }
         
-        grid.innerHTML = '';
-        
-        allProducts.forEach(product => {
-            const card = document.createElement('div');
-            card.className = 'product-card';
-            
-            // بناء الـ HTML حسب وجود البيانات
-            let brandHtml = '';
-            if (product.brand && product.brand !== '' && product.brand !== 'undefined') {
-                brandHtml = `<div class="brand-shop"><a href="${product.brandLink}" class="brand-link" target="_blank">Shop ${product.brand} deals</a></div>`;
-            }
-            
-            let colourHtml = '';
-            if (product.colourPatterns && product.colourPatterns !== '') {
-                colourHtml = `<div class="colour-patterns">${product.colourPatterns}</div>`;
-            }
-            
-            card.innerHTML = `
-                <div class="product-image-container">
-                    <img src="${product.image}" alt="${product.title}" class="product-image" 
-                         onerror="this.src='https://placehold.co/300x300?text=No+Image'">
-                    <div class="discount-badge">${product.discount}</div>
-                </div>
-                <div class="product-info">
-                    <div class="price-row">
-                        <span class="current-price">${product.price}</span>
-                        <span class="old-price">${product.oldPrice}</span>
-                    </div>
-                    <div class="rrp-row">
-                        <span class="rrp-label">RRP:</span>
-                        <span class="rrp-value">${product.oldPrice}</span>
-                    </div>
-                    <h3 class="product-title">${product.title}…</h3>
-                    ${colourHtml}
-                    ${brandHtml}
-                    <a href="${product.amazonLink}" class="amazon-btn" target="_blank" rel="noopener noreferrer">
-                        🛒 View on Amazon
-                    </a>
-                </div>
-            `;
-            grid.appendChild(card);
-        });
-    }
-    
-    document.addEventListener('DOMContentLoaded', loadProducts);
-</script>
+        document.addEventListener('DOMContentLoaded', loadProducts);
+    </script>
+</body>
+</html>
