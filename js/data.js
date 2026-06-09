@@ -1,9 +1,8 @@
 const allProducts = [
-    // الصف الأول
     {
         id: 1,
         title: "Ninja CREAMi Ice Cream Maker & Dessert Machine",
-        image: "images/product1.webp",
+        image: "images/product1.jpg",
         discount: "29% off",
         price: "USD 203.61",
         oldPrice: "USD 288.45",
@@ -15,7 +14,7 @@ const allProducts = [
     {
         id: 2,
         title: "Philips OneBlade Original 360 Blades Fits All OneBla",
-        image: "images/product2.webp",
+        image: "images/product2.jpg",
         discount: "38% off",
         price: "USD 34.60",
         oldPrice: "USD 55.37",
@@ -27,7 +26,7 @@ const allProducts = [
     {
         id: 3,
         title: "De'Longhi Magnifica S ECAM 22.110.B fully automatic c",
-        image: "images/product3.webp",
+        image: "images/product3.jpg",
         discount: "33% off",
         price: "USD 310.39",
         oldPrice: "USD 460.39",
@@ -39,7 +38,7 @@ const allProducts = [
     {
         id: 4,
         title: "TOCOL Case for iPhone 12 Magsafe, Full Camera Prot",
-        image: "images/product4.webp",
+        image: "images/product4.jpg",
         discount: "15% off",
         price: "USD 9.80",
         oldPrice: "USD 11.53",
@@ -51,7 +50,7 @@ const allProducts = [
     {
         id: 5,
         title: "dé Mobile Wallbox/Charging Station 11 kW [3-Phase |",
-        image: "images/product5.webp",
+        image: "images/product5.jpg",
         discount: "15% off",
         price: "USD 166.69",
         oldPrice: "USD 196.10",
@@ -63,7 +62,7 @@ const allProducts = [
     {
         id: 6,
         title: "Russell Hobbs SatisFry 27632-56 Hot Air Fryer X",
-        image: "images/product6.webp",
+        image: "images/product6.jpg",
         discount: "57% off",
         price: "USD 64.60",
         oldPrice: "USD 150.34",
@@ -72,11 +71,10 @@ const allProducts = [
         brandLink: "#",
         amazonLink: "#"
     },
-    // الصف الثاني
     {
         id: 7,
         title: "TOCOL For iPhone 17 Pro for Tempered Glass 6.3 In",
-        image: "images/product7.webp",
+        image: "images/product7.jpg",
         discount: "15% off",
         price: "USD 9.80",
         oldPrice: "USD 11.53",
@@ -88,7 +86,7 @@ const allProducts = [
     {
         id: 8,
         title: "Oral-B iO Ultimate Cleaning Electric Toothbrush Heads",
-        image: "images/product8.webp",
+        image: "images/product8.jpg",
         discount: "46% off",
         price: "USD 43.84",
         oldPrice: "USD 80.76",
@@ -100,7 +98,7 @@ const allProducts = [
     {
         id: 9,
         title: "Fit-Flip Microfibre Towel, Compact, Ideal as a Sports",
-        image: "images/product9.webp",
+        image: "images/product9.jpg",
         discount: "15% off",
         price: "USD 19.60",
         oldPrice: "USD 23.07",
@@ -112,7 +110,7 @@ const allProducts = [
     {
         id: 10,
         title: "dreame H12 Pro FlexReach Wet and Dry Vacuum Clea",
-        image: "images/product10.webp",
+        image: "images/product10.jpg",
         discount: "26% off",
         price: "USD 229.62",
         oldPrice: "USD 310.39",
@@ -124,7 +122,7 @@ const allProducts = [
     {
         id: 11,
         title: "Philips Lumea IPL 9900 Series - IPL Devices Hair Rem",
-        image: "images/product11.webp",
+        image: "images/product11.jpg",
         discount: "40% off",
         price: "USD 436.15",
         oldPrice: "USD 726.92",
@@ -136,7 +134,7 @@ const allProducts = [
     {
         id: 12,
         title: "Philips AVENT Baby Monitor with Camera Advanced -",
-        image: "images/product12.webp",
+        image: "images/product12.jpg",
         discount: "23% off",
         price: "USD 132.68",
         oldPrice: "USD 173.07",
