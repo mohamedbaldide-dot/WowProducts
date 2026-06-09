@@ -2,171 +2,147 @@ const allProducts = [
     // الصف الأول
     {
         id: 1,
-        title: "Ninja CREAMi Ice Cream Maker",
+        title: "Ninja CREAMi Ice Cream Maker & Dessert Machine",
         image: "images/product1.jpg",
         discount: "29% off",
         price: "USD 203.61",
         oldPrice: "USD 288.45",
-        features: [
-            "2 containers included",
-            "7 programmes",
-            "Ice cream, gelato, sorbet"
-        ],
-        link: "#"
+        colourPatterns: "+1 colours/patterns",
+        brand: "Ninja",
+        brandLink: "#",
+        amazonLink: "#"
     },
     {
         id: 2,
-        title: "Philips OneBlade Original",
+        title: "Philips OneBlade Original 360 Blades Fits All OneBla",
         image: "images/product2.jpg",
         discount: "38% off",
         price: "USD 34.60",
         oldPrice: "USD 55.37",
-        features: [
-            "Fits all OneBlade models",
-            "4 pack blades",
-            "Original quality"
-        ],
-        link: "#"
+        colourPatterns: "",
+        brand: "PHILIPS",
+        brandLink: "#",
+        amazonLink: "#"
     },
     {
         id: 3,
-        title: "De'Longhi Magnifica S",
+        title: "De'Longhi Magnifica S ECAM 22.110.B fully automatic c",
         image: "images/product3.jpg",
         discount: "33% off",
         price: "USD 310.39",
         oldPrice: "USD 460.39",
-        features: [
-            "Fully automatic",
-            "Milk frother included",
-            "1.8L water tank"
-        ],
-        link: "#"
+        colourPatterns: "",
+        brand: "De'Longhi",
+        brandLink: "#",
+        amazonLink: "#"
     },
     {
         id: 4,
-        title: "TOCOL iPhone 12 Case",
+        title: "TOCOL Case for iPhone 12 Magsafe, Full Camera Prot",
         image: "images/product4.jpg",
         discount: "15% off",
         price: "USD 9.80",
         oldPrice: "USD 11.53",
-        features: [
-            "Magsafe compatible",
-            "Full camera protection",
-            "Shockproof"
-        ],
-        link: "#"
+        colourPatterns: "+18",
+        brand: "TOCOL",
+        brandLink: "#",
+        amazonLink: "#"
     },
     {
         id: 5,
-        title: "dé Mobile Wallbox",
+        title: "dé Mobile Wallbox/Charging Station 11 kW [3-Phase |",
         image: "images/product5.jpg",
         discount: "15% off",
         price: "USD 166.69",
         oldPrice: "USD 196.10",
-        features: [
-            "11 kW 3-phase",
-            "7m cable",
-            "Adjustable power 6-16A"
-        ],
-        link: "#"
+        colourPatterns: "+2 colours/patterns",
+        brand: "dé",
+        brandLink: "#",
+        amazonLink: "#"
     },
     {
         id: 6,
-        title: "Russell Hobbs SatisFry",
+        title: "Russell Hobbs SatisFry 27632-56 Hot Air Fryer X",
         image: "images/product6.jpg",
         discount: "57% off",
         price: "USD 64.60",
         oldPrice: "USD 150.34",
-        features: [
-            "XXL 8.3L capacity",
-            "Very quiet operation",
-            "9 programmes"
-        ],
-        link: "#"
+        colourPatterns: "",
+        brand: "Russell Hobbs",
+        brandLink: "#",
+        amazonLink: "#"
     },
     // الصف الثاني
     {
         id: 7,
-        title: "TOCOL iPhone 17 Pro Glass",
+        title: "TOCOL For iPhone 17 Pro for Tempered Glass 6.3 In",
         image: "images/product7.jpg",
         discount: "15% off",
         price: "USD 9.80",
         oldPrice: "USD 11.53",
-        features: [
-            "Tempered glass 9H",
-            "Full screen coverage",
-            "Anti-fingerprint"
-        ],
-        link: "#"
+        colourPatterns: "+1 colours/patterns",
+        brand: "TOCOL",
+        brandLink: "#",
+        amazonLink: "#"
     },
     {
         id: 8,
-        title: "Oral-B iO Toothbrush Heads",
+        title: "Oral-B iO Ultimate Cleaning Electric Toothbrush Heads",
         image: "images/product8.jpg",
         discount: "46% off",
         price: "USD 43.84",
         oldPrice: "USD 80.76",
-        features: [
-            "8 pack replacement heads",
-            "Ultimate cleaning",
-            "Compatible with iO series"
-        ],
-        link: "#"
+        colourPatterns: "+1 colours/patterns",
+        brand: "Oral-B",
+        brandLink: "#",
+        amazonLink: "#"
     },
     {
         id: 9,
-        title: "Fit-Flip Microfibre Towel",
+        title: "Fit-Flip Microfibre Towel, Compact, Ideal as a Sports",
         image: "images/product9.jpg",
         discount: "15% off",
         price: "USD 19.60",
         oldPrice: "USD 23.07",
-        features: [
-            "Quick-drying",
-            "Compact for travel",
-            "Lightweight"
-        ],
-        link: "#"
+        colourPatterns: "+15",
+        brand: "Fit-Flip",
+        brandLink: "#",
+        amazonLink: "#"
     },
     {
         id: 10,
-        title: "dreame H12 Pro Vacuum",
+        title: "dreame H12 Pro FlexReach Wet and Dry Vacuum Clea",
         image: "images/product10.jpg",
         discount: "26% off",
         price: "USD 229.62",
         oldPrice: "USD 310.39",
-        features: [
-            "Wet and dry cleaning",
-            "180° flat design",
-            "Dries in 5 minutes"
-        ],
-        link: "#"
+        colourPatterns: "",
+        brand: "dreame",
+        brandLink: "#",
+        amazonLink: "#"
     },
     {
         id: 11,
-        title: "Philips Lumea IPL",
+        title: "Philips Lumea IPL 9900 Series - IPL Devices Hair Rem",
         image: "images/product11.jpg",
         discount: "40% off",
         price: "USD 436.15",
         oldPrice: "USD 726.92",
-        features: [
-            "IPL hair removal",
-            "SenseIQ technology",
-            "4 attachments"
-        ],
-        link: "#"
+        colourPatterns: "",
+        brand: "PHILIPS",
+        brandLink: "#",
+        amazonLink: "#"
     },
     {
         id: 12,
-        title: "Philips AVENT Baby Monitor",
+        title: "Philips AVENT Baby Monitor with Camera Advanced -",
         image: "images/product12.jpg",
         discount: "23% off",
         price: "USD 132.68",
         oldPrice: "USD 173.07",
-        features: [
-            "2.8 inch display",
-            "Infrared night vision",
-            "DEKRA certified"
-        ],
-        link: "#"
+        colourPatterns: "",
+        brand: "AVENT",
+        brandLink: "#",
+        amazonLink: "#"
     }
 ];
