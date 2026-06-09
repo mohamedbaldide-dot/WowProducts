@@ -41,15 +41,16 @@
                             <span class="current-price">${product.price}</span>
                             <span class="old-price">${product.oldPrice}</span>
                         </div>
-                        <h3 class="product-title">${product.title}</h3>
-                        <ul class="product-features">
-                            ${product.features.map(f => `<li>${f}</li>`).join('')}
-                        </ul>
+                        <h3 class="product-title">${product.title}…</h3>
+                        <div class="colour-patterns">${product.colourPatterns}</div>
+                        <div class="brand-shop">
+                            <a href="${product.brandLink}" class="brand-link" target="_blank">Shop ${product.brand} deals</a>
+                        </div>
                         <div class="rrp-row">
                             <span class="rrp-label">RRP:</span>
                             <span class="rrp-value">${product.oldPrice}</span>
                         </div>
-                        <a href="${product.link}" class="amazon-btn" target="_blank" rel="noopener noreferrer">
+                        <a href="${product.amazonLink}" class="amazon-btn" target="_blank" rel="noopener noreferrer">
                             🛒 View on Amazon
                         </a>
                     </div>
