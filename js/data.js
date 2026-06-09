@@ -9,7 +9,7 @@ const allProducts = [
         oldPrice: "USD 288.45",
         colourPatterns: "+1 colours/patterns",
         brand: "Ninja",
-        brandLink: "#",
+        brandLink: "",
         amazonLink: "https://amzn.to/43WZkBP"
     },
     {
@@ -21,7 +21,7 @@ const allProducts = [
         oldPrice: "USD 55.37",
         colourPatterns: "",
         brand: "PHILIPS",
-        brandLink: "#",
+        brandLink: "",
         amazonLink: "https://amzn.to/4xg1ZE6"
     },
     {
@@ -33,7 +33,7 @@ const allProducts = [
         oldPrice: "USD 460.39",
         colourPatterns: "",
         brand: "De'Longhi",
-        brandLink: "#",
+        brandLink: "",
         amazonLink: "https://amzn.to/4onEUeY"
     },
     {
@@ -45,7 +45,7 @@ const allProducts = [
         oldPrice: "USD 11.53",
         colourPatterns: "+18",
         brand: "TOCOL",
-        brandLink: "#",
+        brandLink: "",
         amazonLink: "https://amzn.to/4ol2tF4"
     },
     {
@@ -57,7 +57,7 @@ const allProducts = [
         oldPrice: "USD 196.10",
         colourPatterns: "+2 colours/patterns",
         brand: "dé",
-        brandLink: "#",
+        brandLink: "",
         amazonLink: "https://amzn.to/43ZA3qE"
     },
     {
@@ -69,7 +69,7 @@ const allProducts = [
         oldPrice: "USD 150.34",
         colourPatterns: "",
         brand: "Russell Hobbs",
-        brandLink: "#",
+        brandLink: "",
         amazonLink: "https://amzn.to/3SvZnlB"
     },
     // ========== الصف الثاني ==========
@@ -82,7 +82,7 @@ const allProducts = [
         oldPrice: "USD 11.53",
         colourPatterns: "+1 colours/patterns",
         brand: "TOCOL",
-        brandLink: "#",
+        brandLink: "",
         amazonLink: "https://amzn.to/3PUfkkW"
     },
     {
@@ -94,7 +94,7 @@ const allProducts = [
         oldPrice: "USD 80.76",
         colourPatterns: "+1 colours/patterns",
         brand: "Oral-B",
-        brandLink: "#",
+        brandLink: "",
         amazonLink: "https://amzn.to/4apA2zZ"
     },
     {
@@ -106,7 +106,7 @@ const allProducts = [
         oldPrice: "USD 23.07",
         colourPatterns: "+15",
         brand: "Fit-Flip",
-        brandLink: "#",
+        brandLink: "",
         amazonLink: "https://amzn.to/4onG1va"
     },
     {
@@ -118,7 +118,7 @@ const allProducts = [
         oldPrice: "USD 310.39",
         colourPatterns: "",
         brand: "dreame",
-        brandLink: "#",
+        brandLink: "",
         amazonLink: "https://amzn.to/4e7MbMt"
     },
     {
@@ -130,7 +130,7 @@ const allProducts = [
         oldPrice: "USD 726.92",
         colourPatterns: "",
         brand: "PHILIPS",
-        brandLink: "#",
+        brandLink: "",
         amazonLink: "https://amzn.to/4uYztVX"
     },
     {
@@ -142,7 +142,7 @@ const allProducts = [
         oldPrice: "USD 173.07",
         colourPatterns: "",
         brand: "AVENT",
-        brandLink: "#",
+        brandLink: "",
         amazonLink: "https://amzn.to/4upP93E"
     }
 ];
