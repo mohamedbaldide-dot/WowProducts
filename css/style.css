@@ -615,3 +615,188 @@ body {
 .category-item:last-child:nth-child(odd) {
     grid-column: span 2;
 }
+/* ========================================
+   أنماط إضافية للهيدر واللغة والبحث
+   ======================================== */
+
+/* شريط البحث مثل أمازون */
+.search-container {
+    flex: 1;
+    max-width: 800px;
+    display: flex;
+    margin: 0 20px;
+    height: 44px;
+}
+
+.search-dropdown {
+    position: relative;
+}
+
+.dropdown-btn {
+    background: #f3f3f3;
+    color: #555;
+    border: none;
+    padding: 0 15px;
+    height: 44px;
+    border-radius: 8px 0 0 8px;
+    cursor: pointer;
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background: white;
+    min-width: 200px;
+    box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+    border-radius: 8px;
+    z-index: 1000;
+}
+
+.dropdown-content a {
+    color: #333;
+    padding: 10px 15px;
+    text-decoration: none;
+    display: block;
+    font-size: 14px;
+}
+
+.dropdown-content a:hover {
+    background: #f0f0f0;
+}
+
+.dropdown-content.show {
+    display: block;
+}
+
+.search-input {
+    flex: 1;
+    padding: 0 15px;
+    border: none;
+    font-size: 15px;
+    height: 44px;
+    outline: none;
+}
+
+.search-btn {
+    background: #febd69;
+    border: none;
+    padding: 0 25px;
+    height: 44px;
+    border-radius: 0 8px 8px 0;
+    cursor: pointer;
+    color: #333;
+    font-size: 18px;
+}
+
+.search-btn:hover {
+    background: #f3a847;
+}
+
+/* ===== اللغة ===== */
+.header-actions {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.language-selector {
+    position: relative;
+    cursor: pointer;
+}
+
+.lang-btn {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    background: transparent;
+    padding: 8px 12px;
+    border-radius: 8px;
+    transition: background 0.2s;
+}
+
+.lang-btn:hover {
+    background: rgba(255,255,255,0.1);
+}
+
+.flag-icon {
+    width: 20px;
+    height: 20px;
+    border-radius: 2px;
+}
+
+.lang-dropdown {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background: white;
+    min-width: 200px;
+    box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+    border-radius: 8px;
+    z-index: 1000;
+    overflow: hidden;
+}
+
+.lang-dropdown a {
+    display: block;
+    padding: 10px 15px;
+    color: #333;
+    text-decoration: none;
+    font-size: 14px;
+}
+
+.lang-dropdown a:hover {
+    background: #f0f0f0;
+}
+
+.lang-dropdown .lang-footer {
+    padding: 10px 15px;
+    border-top: 1px solid #eee;
+    font-size: 12px;
+    color: #666;
+    text-align: center;
+}
+
+.lang-dropdown.show {
+    display: block;
+}
+
+/* ===== صفحة فارغة ===== */
+.empty-section {
+    text-align: center;
+    padding: 60px 20px;
+    background: white;
+    border-radius: 12px;
+    grid-column: span 6;
+}
+
+.empty-section i {
+    font-size: 64px;
+    color: #ccc;
+    margin-bottom: 20px;
+}
+
+.empty-section h3 {
+    font-size: 24px;
+    color: #333;
+    margin-bottom: 10px;
+}
+
+.empty-section p {
+    color: #666;
+}
+
+/* ===== أزرار الأقسام في القائمة ===== */
+#dropdownContent a[data-section="cod"] {
+    color: #28a745;
+}
+
+#dropdownContent a[data-section="amazon"] {
+    color: #ff9900;
+}
