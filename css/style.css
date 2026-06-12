@@ -564,7 +564,7 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-bottom: 12px;
+    margin-bottom: 5px;
 }
 
 .category-item-single {
@@ -580,18 +580,9 @@ body {
 
 .category-item-single img {
     width: 100%;
-    aspect-ratio: 1.35 / 1;
+    aspect-ratio: 1 / 1.2;
     height: auto;
     object-fit: cover;
     border-radius: 0;
     display: block;
-}
-
-.category-item-single span {
-    display: block;
-    margin-top: 8px;
-    font-size: 13px;
-    text-align: center;
-    color: #007185;
-    font-weight: bold;
 }
