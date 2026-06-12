@@ -267,7 +267,7 @@ body {
 }
 
 /* ========================================
-   CATEGORY BOXES - بطاقات أعرض وأقصر مع صور كبيرة
+   CATEGORY BOXES - بطاقات أعرض وأقصر مع صور أكبر
    ======================================== */
 .categories {
     margin-top: -180px;
@@ -288,17 +288,19 @@ body {
     }
 }
 
+/* جعل الشبكة تأخذ عرض أكبر */
 .categories-grid {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    gap: 20px;
-    max-width: 1400px;
+    gap: 25px;
+    max-width: 1500px;
     margin: 0 auto;
 }
 
 @media (max-width: 992px) {
     .categories-grid {
         grid-template-columns: repeat(2, 1fr);
+        gap: 20px;
     }
 }
 
@@ -308,25 +310,26 @@ body {
     }
 }
 
-/* ===== البطاقة - أعرض وأقصر مع تقليل المسافات ===== */
+/* ===== البطاقة - أعرض وأقصر ===== */
 .category-box {
     background: white;
     border-radius: 8px;
-    padding: 12px;
+    padding: 15px 12px;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
 }
 
+/* ===== الخط الرئيسي أكبر ===== */
 .category-box h3 {
-    font-size: 15px;
-    margin-bottom: 10px;
+    font-size: 18px;
+    margin-bottom: 12px;
     color: #111;
 }
 
-/* ===== شبكة الصور - 2x2 ===== */
+/* ===== شبكة الصور ===== */
 .category-grid {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    gap: 8px;
+    gap: 10px;
     margin-bottom: 10px;
 }
 
@@ -335,31 +338,30 @@ body {
     text-align: center;
     cursor: pointer;
     transition: transform 0.2s;
-    background: #f8f8f8;
-    border-radius: 6px;
-    padding: 10px 5px;
+    background: #f5f5f5;
+    border-radius: 8px;
+    padding: 12px 8px;
 }
 
 .category-item:hover {
     transform: scale(1.02);
-    background: #f0f0f0;
+    background: #eaeaea;
 }
 
-/* ===== الصورة - كبيرة وتشغل المساحة ===== */
+/* ===== الصورة - أكبر بكثير ===== */
 .category-item img {
     width: 100%;
-    max-width: 100%;
-    height: auto;
-    aspect-ratio: 1 / 1;
+    max-width: 140px;
+    height: 140px;
     object-fit: contain;
     display: block;
     margin: 0 auto;
 }
 
 .category-item span {
-    font-size: 11px;
+    font-size: 12px;
     color: #555;
-    margin-top: 5px;
+    margin-top: 8px;
     display: block;
 }
 
@@ -368,9 +370,9 @@ body {
     display: inline-block;
     color: #007185;
     text-decoration: none;
-    font-size: 12px;
+    font-size: 13px;
     font-weight: bold;
-    margin-top: 8px;
+    margin-top: 10px;
 }
 
 .category-link:hover {
