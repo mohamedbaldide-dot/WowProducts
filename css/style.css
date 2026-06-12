@@ -26,25 +26,29 @@ body {
     position: sticky;
     top: 0;
     z-index: 100;
+    gap: 15px;
+}
+
+.logo {
+    flex: 0 0 auto;
 }
 
 .logo h1 {
     font-size: 22px;
     font-weight: bold;
-    margin-left: 15px;
+    margin: 0;
     white-space: nowrap;
 }
 
-/* ===== شريط البحث - مستطيل واحد بدون حواف دائرية ===== */
+/* ===== شريط البحث ===== */
 .search-container {
     flex: 1;
-    max-width: 650px;
+    max-width: 550px;
     display: flex;
-    margin: 0 8px;
-    height: 32px;
+    margin: 0;
+    height: 34px;
 }
 
-/* قائمة الكل - بدون زوايا دائرية */
 .search-dropdown {
     position: relative;
 }
@@ -53,44 +57,42 @@ body {
     background: #e6e6e6;
     color: #333;
     border: none;
-    padding: 0 8px;
-    height: 32px;
-    border-radius: 0;
+    padding: 0 12px;
+    height: 34px;
+    border-radius: 4px 0 0 4px;
     cursor: pointer;
-    font-size: 11px;
+    font-size: 12px;
     display: flex;
     align-items: center;
-    gap: 4px;
+    gap: 6px;
     white-space: nowrap;
     font-weight: 500;
 }
 
 .dropdown-btn i {
-    font-size: 8px;
+    font-size: 9px;
     color: #666;
 }
 
-/* حقل البحث - بدون زوايا دائرية */
 .search-input {
     flex: 1;
-    padding: 0 8px;
+    padding: 0 10px;
     border: none;
-    font-size: 12px;
-    height: 32px;
+    font-size: 13px;
+    height: 34px;
     outline: none;
     background: white;
 }
 
-/* زر البحث - بدون زوايا دائرية */
 .search-btn {
     background: #febd69;
     border: none;
-    padding: 0 12px;
-    height: 32px;
-    border-radius: 0;
+    padding: 0 16px;
+    height: 34px;
+    border-radius: 0 4px 4px 0;
     cursor: pointer;
     color: #333;
-    font-size: 13px;
+    font-size: 14px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -104,8 +106,8 @@ body {
 .header-actions {
     display: flex;
     align-items: center;
-    gap: 6px;
-    margin-right: 5px;
+    gap: 12px;
+    flex: 0 0 auto;
 }
 
 .language-selector {
@@ -116,12 +118,12 @@ body {
 .lang-btn {
     display: flex;
     align-items: center;
-    gap: 3px;
+    gap: 5px;
     background: transparent;
-    padding: 3px 5px;
-    border-radius: 2px;
+    padding: 5px 10px;
+    border-radius: 4px;
     transition: background 0.2s;
-    font-size: 11px;
+    font-size: 12px;
 }
 
 .lang-btn:hover {
@@ -129,9 +131,9 @@ body {
 }
 
 .flag-icon {
-    width: 12px;
-    height: 12px;
-    border-radius: 1px;
+    width: 16px;
+    height: 16px;
+    border-radius: 2px;
 }
 
 .lang-dropdown {
@@ -140,19 +142,19 @@ body {
     top: 100%;
     left: 0;
     background: white;
-    min-width: 160px;
+    min-width: 170px;
     box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-    border-radius: 4px;
+    border-radius: 6px;
     z-index: 1000;
     overflow: hidden;
 }
 
 .lang-dropdown a {
     display: block;
-    padding: 6px 10px;
+    padding: 8px 12px;
     color: #333;
     text-decoration: none;
-    font-size: 11px;
+    font-size: 12px;
 }
 
 .lang-dropdown a:hover {
@@ -160,9 +162,9 @@ body {
 }
 
 .lang-dropdown .lang-footer {
-    padding: 6px 10px;
+    padding: 8px 12px;
     border-top: 1px solid #eee;
-    font-size: 9px;
+    font-size: 10px;
     color: #666;
     text-align: center;
 }
@@ -172,7 +174,7 @@ body {
 }
 
 .header-actions i {
-    font-size: 16px;
+    font-size: 20px;
     cursor: pointer;
     transition: opacity 0.3s;
 }
@@ -182,11 +184,9 @@ body {
 }
 
 .header-actions .fa-shopping-cart {
-    font-size: 16px;
-    margin-left: 0;
+    font-size: 20px;
 }
 
-/* القائمة المنسدلة للأقسام */
 .dropdown-content {
     display: none;
     position: absolute;
@@ -195,17 +195,17 @@ body {
     background: white;
     min-width: 200px;
     box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-    border-radius: 4px;
+    border-radius: 6px;
     z-index: 1000;
     overflow: hidden;
 }
 
 .dropdown-content a {
     color: #333;
-    padding: 8px 12px;
+    padding: 10px 15px;
     text-decoration: none;
     display: block;
-    font-size: 12px;
+    font-size: 13px;
 }
 
 .dropdown-content a:hover {
@@ -342,43 +342,32 @@ body {
 }
 
 /* ========================================
-   FADE EFFECT
+   FADE EFFECT - تعديل لتجنب التداخل
    ======================================== */
 .fade-overlay {
     position: relative;
-    height: 80px;
-    background: linear-gradient(to bottom, rgba(234, 230, 227, 0.2), #eae6e3);
-    margin-top: -80px;
+    height: 60px;
+    background: linear-gradient(to bottom, rgba(234, 230, 227, 0.4), #eae6e3);
+    margin-top: -60px;
     z-index: 5;
 }
 
 /* ========================================
-   CATEGORY BOXES
+   CATEGORY BOXES - شبكة منتظمة (بدون تداخل)
    ======================================== */
 .categories {
-    margin-top: -180px;
-    padding: 0 15px 30px;
+    padding: 20px 15px 30px;
     position: relative;
-    z-index: 15;
+    z-index: 10;
     width: 100%;
+    background: #eae6e3;
 }
 
-@media (min-width: 768px) {
-    .categories {
-        margin-top: -220px;
-    }
-}
-
-@media (min-width: 1200px) {
-    .categories {
-        margin-top: -260px;
-    }
-}
-
+/* شبكة البطاقات - منتظمة تماماً */
 .categories-grid {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    gap: 15px;
+    gap: 20px;
     width: 100%;
     max-width: 100%;
     margin: 0 auto;
@@ -387,7 +376,7 @@ body {
 @media (max-width: 992px) {
     .categories-grid {
         grid-template-columns: repeat(2, 1fr);
-        gap: 15px;
+        gap: 20px;
     }
 }
 
@@ -397,12 +386,21 @@ body {
     }
 }
 
+/* السطر الثاني - مسافة من الأعلى */
+.second-row {
+    margin-top: 25px;
+}
+
+/* ===== البطاقة ===== */
 .category-box {
     background: white;
     border-radius: 8px;
     padding: 15px;
     min-height: auto;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    display: flex;
+    flex-direction: column;
+    height: 100%;
 }
 
 .category-box h3 {
@@ -416,6 +414,7 @@ body {
     grid-template-columns: repeat(2, 1fr);
     gap: 10px;
     margin-bottom: 12px;
+    flex: 1;
 }
 
 .category-item {
@@ -468,6 +467,7 @@ body {
     align-items: center;
     margin-bottom: 5px;
     padding: 0;
+    flex: 1;
 }
 
 .category-item-single {
@@ -665,7 +665,6 @@ body {
     background: #f7ca00;
 }
 
-/* صفحة فارغة */
 .empty-section {
     text-align: center;
     padding: 60px 20px;
@@ -700,8 +699,4 @@ body {
     padding: 25px;
     font-size: 14px;
     margin-top: 20px;
-}
-/* إذا أردت مسافة أكبر */
-.second-row-large {
-    margin-top: 40px;
 }
