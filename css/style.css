@@ -35,16 +35,16 @@ body {
     white-space: nowrap;
 }
 
-/* ===== شريط البحث - مستطيل واحد بدون حواف دائرية ===== */
+/* ===== شريط البحث - مستطيل واحد ===== */
 .search-container {
     flex: 1;
-    max-width: 650px;
+    max-width: 600px;
     display: flex;
     margin: 0 8px;
     height: 32px;
 }
 
-/* قائمة الكل - بدون زوايا دائرية */
+/* قائمة الكل */
 .search-dropdown {
     position: relative;
 }
@@ -70,7 +70,7 @@ body {
     color: #666;
 }
 
-/* حقل البحث - بدون زوايا دائرية */
+/* حقل البحث */
 .search-input {
     flex: 1;
     padding: 0 8px;
@@ -81,7 +81,7 @@ body {
     background: white;
 }
 
-/* زر البحث - بدون زوايا دائرية */
+/* زر البحث */
 .search-btn {
     background: #febd69;
     border: none;
@@ -100,11 +100,11 @@ body {
     background: #f3a847;
 }
 
-/* ===== قسم اللغة ===== */
+/* ===== قسم اللغة - على اليمين ===== */
 .header-actions {
     display: flex;
     align-items: center;
-    gap: 6px;
+    gap: 8px;
     margin-right: 5px;
 }
 
@@ -129,8 +129,8 @@ body {
 }
 
 .flag-icon {
-    width: 12px;
-    height: 12px;
+    width: 14px;
+    height: 14px;
     border-radius: 1px;
 }
 
