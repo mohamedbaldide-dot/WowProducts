@@ -308,12 +308,13 @@ body {
     }
 }
 
-/* ===== البطاقة - مثل أمازون ===== */
+/* ===== البطاقة - أعرض قليلاً ===== */
 .category-box {
     background: white;
     border-radius: 8px;
     padding: 20px;
     min-height: auto;
+    width: 105%;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
 }
 
@@ -324,7 +325,7 @@ body {
     color: #111;
 }
 
-/* ===== شبكة الصور 2x2 - بدون مسافات زائدة ===== */
+/* ===== شبكة الصور 2x2 ===== */
 .category-grid {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
@@ -332,7 +333,7 @@ body {
     margin-bottom: 15px;
 }
 
-/* ===== كل صورة - بدون خلفية وبدون padding ===== */
+/* ===== كل صورة ===== */
 .category-item {
     background: transparent;
     padding: 0;
@@ -345,10 +346,10 @@ body {
     transform: scale(1.02);
 }
 
-/* ===== الصورة - مستطيلة قليلاً وكبيرة جداً ===== */
+/* ===== الصورة - مستطيلة أفقيًا (1.6 / 1) ===== */
 .category-item img {
     width: 100%;
-    aspect-ratio: 1.2 / 1;
+    aspect-ratio: 1.6 / 1;
     height: auto;
     object-fit: cover;
     border-radius: 0;
