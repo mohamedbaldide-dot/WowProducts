@@ -20,7 +20,7 @@ body {
 }
 
 /* ========================================
-   HEADER
+   HEADER مع شريط البحث
    ======================================== */
 .header {
     background: #222f3e;
@@ -32,11 +32,90 @@ body {
     position: sticky;
     top: 0;
     z-index: 100;
+    flex-wrap: wrap;
+    gap: 15px;
 }
 
 .logo h1 {
     font-size: 24px;
     font-weight: bold;
+}
+
+/* شريط البحث */
+.search-container {
+    flex: 1;
+    max-width: 600px;
+    display: flex;
+    margin: 0 20px;
+}
+
+.search-dropdown {
+    position: relative;
+}
+
+.dropdown-btn {
+    background: #f3f3f3;
+    color: #555;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 8px 0 0 8px;
+    cursor: pointer;
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.dropdown-btn i {
+    font-size: 12px;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background: white;
+    min-width: 180px;
+    box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+    border-radius: 8px;
+    z-index: 1;
+}
+
+.dropdown-content a {
+    color: #333;
+    padding: 10px 15px;
+    text-decoration: none;
+    display: block;
+    font-size: 14px;
+}
+
+.dropdown-content a:hover {
+    background: #f0f0f0;
+}
+
+.dropdown-content.show {
+    display: block;
+}
+
+.search-input {
+    flex: 1;
+    padding: 10px 15px;
+    border: none;
+    font-size: 14px;
+}
+
+.search-btn {
+    background: #febd69;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 0 8px 8px 0;
+    cursor: pointer;
+    color: #333;
+}
+
+.search-btn:hover {
+    background: #f3a847;
 }
 
 .header-actions i {
@@ -103,7 +182,6 @@ body {
     object-fit: cover;
 }
 
-/* أزرار السلايدر */
 .slider-btn {
     position: absolute;
     top: 50%;
@@ -133,7 +211,6 @@ body {
     border-radius: 0 8px 8px 0;
 }
 
-/* النقاط */
 .slider-dots {
     position: absolute;
     bottom: 15px;
@@ -171,10 +248,97 @@ body {
 }
 
 /* ========================================
-   CATEGORY BOXES
+   قسم السماعات - خصم 30%
+   ======================================== */
+.audio-section {
+    padding: 40px 20px;
+    background: white;
+    margin: 20px 0;
+}
+
+.audio-header {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.audio-header h2 {
+    font-size: 28px;
+    color: #c45500;
+    position: relative;
+    display: inline-block;
+}
+
+.audio-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+@media (max-width: 768px) {
+    .audio-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 480px) {
+    .audio-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+.audio-card {
+    text-align: center;
+    padding: 20px;
+    background: #f8f8f8;
+    border-radius: 12px;
+    transition: transform 0.3s;
+}
+
+.audio-card:hover {
+    transform: translateY(-5px);
+}
+
+.audio-card img {
+    width: 100%;
+    max-width: 150px;
+    height: 150px;
+    object-fit: contain;
+    margin-bottom: 15px;
+}
+
+.audio-card h3 {
+    font-size: 18px;
+    margin-bottom: 5px;
+    color: #333;
+}
+
+.audio-card .brand-tag {
+    display: block;
+    font-size: 12px;
+    color: #007185;
+    margin-bottom: 10px;
+}
+
+.audio-link {
+    display: inline-block;
+    color: #007185;
+    text-decoration: none;
+    font-size: 13px;
+    font-weight: bold;
+}
+
+.audio-link:hover {
+    color: #c7511f;
+    text-decoration: underline;
+}
+
+/* ========================================
+   CATEGORY BOXES - مرتفعة
    ======================================== */
 .categories {
-    margin-top: -30px;
+    margin-top: -50px;
     padding: 0 20px 30px;
     position: relative;
     z-index: 10;
@@ -182,16 +346,21 @@ body {
 
 .categories-grid {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(4, 1fr);
     gap: 20px;
     max-width: 1400px;
     margin: 0 auto;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 992px) {
+    .categories-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 576px) {
     .categories-grid {
         grid-template-columns: 1fr;
-        gap: 15px;
     }
 }
 
@@ -290,21 +459,18 @@ body {
     gap: 20px;
 }
 
-/* ===== Desktop: 6 products per row ===== */
 @media (min-width: 1200px) {
     .products-grid {
         grid-template-columns: repeat(6, 1fr);
     }
 }
 
-/* ===== Tablet: 3 products per row ===== */
 @media (min-width: 768px) and (max-width: 1199px) {
     .products-grid {
         grid-template-columns: repeat(3, 1fr);
     }
 }
 
-/* ===== Mobile: 2 products per row ===== */
 @media (max-width: 767px) {
     .products-grid {
         grid-template-columns: repeat(2, 1fr);
@@ -434,4 +600,18 @@ body {
     padding: 25px;
     font-size: 14px;
     margin-top: 20px;
+}
+
+/* رسالة المنتج غير متوفر */
+.out-of-stock {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: rgba(0,0,0,0.8);
+    color: white;
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-size: 12px;
+    white-space: nowrap;
 }
