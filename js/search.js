@@ -13,7 +13,6 @@ function performSearch() {
         return;
     }
     
-    // البحث في جميع المنتجات
     const results = allProducts.filter(product => 
         product.title.toLowerCase().includes(searchTerm) ||
         product.brand.toLowerCase().includes(searchTerm)
@@ -33,7 +32,9 @@ function performSearch() {
         sectionHeader.innerText = `نتائج البحث: "${searchTerm}"`;
     } else {
         sectionHeader.innerText = `نتائج البحث: ${results.length} منتج`;
-        renderProductsGrid(results);
+        if (typeof renderProductsGrid === 'function') {
+            renderProductsGrid(results);
+        }
     }
 }
 
