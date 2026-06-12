@@ -26,30 +26,25 @@ body {
     position: sticky;
     top: 0;
     z-index: 100;
-    gap: 15px;
-}
-
-.logo {
-    flex: 0 0 auto;
 }
 
 .logo h1 {
     font-size: 22px;
     font-weight: bold;
-    margin: 0;
+    margin-left: 15px;
     white-space: nowrap;
 }
 
-/* ===== شريط البحث ===== */
+/* ===== شريط البحث - مستطيل واحد بدون حواف دائرية ===== */
 .search-container {
     flex: 1;
-    max-width: 550px;
+    max-width: 650px;
     display: flex;
-    margin: 0;
-    height: 34px;
+    margin: 0 8px;
+    height: 32px;
 }
 
-/* قائمة الكل */
+/* قائمة الكل - بدون زوايا دائرية */
 .search-dropdown {
     position: relative;
 }
@@ -58,44 +53,44 @@ body {
     background: #e6e6e6;
     color: #333;
     border: none;
-    padding: 0 12px;
-    height: 34px;
-    border-radius: 4px 0 0 4px;
+    padding: 0 8px;
+    height: 32px;
+    border-radius: 0;
     cursor: pointer;
-    font-size: 12px;
+    font-size: 11px;
     display: flex;
     align-items: center;
-    gap: 6px;
+    gap: 4px;
     white-space: nowrap;
     font-weight: 500;
 }
 
 .dropdown-btn i {
-    font-size: 9px;
+    font-size: 8px;
     color: #666;
 }
 
-/* حقل البحث */
+/* حقل البحث - بدون زوايا دائرية */
 .search-input {
     flex: 1;
-    padding: 0 10px;
+    padding: 0 8px;
     border: none;
-    font-size: 13px;
-    height: 34px;
+    font-size: 12px;
+    height: 32px;
     outline: none;
     background: white;
 }
 
-/* زر البحث */
+/* زر البحث - بدون زوايا دائرية */
 .search-btn {
     background: #febd69;
     border: none;
-    padding: 0 16px;
-    height: 34px;
-    border-radius: 0 4px 4px 0;
+    padding: 0 12px;
+    height: 32px;
+    border-radius: 0;
     cursor: pointer;
     color: #333;
-    font-size: 14px;
+    font-size: 13px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -105,12 +100,12 @@ body {
     background: #f3a847;
 }
 
-/* ===== الأقسام على اليمين ===== */
+/* ===== قسم اللغة ===== */
 .header-actions {
     display: flex;
     align-items: center;
-    gap: 12px;
-    flex: 0 0 auto;
+    gap: 6px;
+    margin-right: 5px;
 }
 
 .language-selector {
@@ -121,12 +116,12 @@ body {
 .lang-btn {
     display: flex;
     align-items: center;
-    gap: 5px;
+    gap: 3px;
     background: transparent;
-    padding: 5px 10px;
-    border-radius: 4px;
+    padding: 3px 5px;
+    border-radius: 2px;
     transition: background 0.2s;
-    font-size: 12px;
+    font-size: 11px;
 }
 
 .lang-btn:hover {
@@ -134,9 +129,9 @@ body {
 }
 
 .flag-icon {
-    width: 16px;
-    height: 16px;
-    border-radius: 2px;
+    width: 12px;
+    height: 12px;
+    border-radius: 1px;
 }
 
 .lang-dropdown {
@@ -145,19 +140,19 @@ body {
     top: 100%;
     left: 0;
     background: white;
-    min-width: 170px;
+    min-width: 160px;
     box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-    border-radius: 6px;
+    border-radius: 4px;
     z-index: 1000;
     overflow: hidden;
 }
 
 .lang-dropdown a {
     display: block;
-    padding: 8px 12px;
+    padding: 6px 10px;
     color: #333;
     text-decoration: none;
-    font-size: 12px;
+    font-size: 11px;
 }
 
 .lang-dropdown a:hover {
@@ -165,9 +160,9 @@ body {
 }
 
 .lang-dropdown .lang-footer {
-    padding: 8px 12px;
+    padding: 6px 10px;
     border-top: 1px solid #eee;
-    font-size: 10px;
+    font-size: 9px;
     color: #666;
     text-align: center;
 }
@@ -177,7 +172,7 @@ body {
 }
 
 .header-actions i {
-    font-size: 20px;
+    font-size: 16px;
     cursor: pointer;
     transition: opacity 0.3s;
 }
@@ -187,7 +182,8 @@ body {
 }
 
 .header-actions .fa-shopping-cart {
-    font-size: 20px;
+    font-size: 16px;
+    margin-left: 0;
 }
 
 /* القائمة المنسدلة للأقسام */
@@ -199,17 +195,17 @@ body {
     background: white;
     min-width: 200px;
     box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-    border-radius: 6px;
+    border-radius: 4px;
     z-index: 1000;
     overflow: hidden;
 }
 
 .dropdown-content a {
     color: #333;
-    padding: 10px 15px;
+    padding: 8px 12px;
     text-decoration: none;
     display: block;
-    font-size: 13px;
+    font-size: 12px;
 }
 
 .dropdown-content a:hover {
