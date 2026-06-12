@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
     <title>متجرك - تسوق أونلاين</title>
     <link rel="stylesheet" href="css/style.css">
-    <!-- Font Awesome للأيقونات -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 <body>
@@ -38,21 +37,17 @@
         <div class="slider-container">
             <div class="slider">
                 <div class="slide active">
-                    <img src="images/banners/banner1.webp" alt="Banner 1">
+                    <img src="images/banners/banner1.webp" alt="Banner 1" style="object-fit: cover; width: 100%; height: 100%;">
                 </div>
                 <div class="slide">
-                    <img src="images/banners/banner2.webp" alt="Banner 2">
+                    <img src="images/banners/banner2.webp" alt="Banner 2" style="object-fit: cover; width: 100%; height: 100%;">
                 </div>
                 <div class="slide">
-                    <img src="images/banners/banner3.webp" alt="Banner 3">
+                    <img src="images/banners/banner3.webp" alt="Banner 3" style="object-fit: cover; width: 100%; height: 100%;">
                 </div>
             </div>
-            <button class="slider-btn prev" id="prevBtn">
-                <i class="fas fa-chevron-right"></i>
-            </button>
-            <button class="slider-btn next" id="nextBtn">
-                <i class="fas fa-chevron-left"></i>
-            </button>
+            <button class="slider-btn prev" id="prevBtn"><i class="fas fa-chevron-right"></i></button>
+            <button class="slider-btn next" id="nextBtn"><i class="fas fa-chevron-left"></i></button>
         </div>
         <div class="slider-dots">
             <span class="dot active" data-index="0"></span>
@@ -64,64 +59,29 @@
     <!-- ==================== FADE EFFECT ==================== -->
     <div class="fade-overlay"></div>
 
-    <!-- ==================== قسم السماعات - خصم 30% ==================== -->
-    <section class="audio-section">
-        <div class="container">
-            <div class="audio-header">
-                <h2>🎧 خصم حتى 30% - السماعات ومكبرات الصوت</h2>
-            </div>
-            <div class="audio-grid">
-                <div class="audio-card">
-                    <img src="images/audio/headphone.webp" alt="سماعات الرأس">
-                    <h3>سماعات الرأس</h3>
-                    <span class="brand-tag">HUAWEI</span>
-                    <a href="#" class="audio-link">تسوق الآن →</a>
-                </div>
-                <div class="audio-card">
-                    <img src="images/audio/earbuds.webp" alt="سماعات الأذن">
-                    <h3>سماعات الأذن</h3>
-                    <span class="brand-tag">HUAWEI</span>
-                    <a href="#" class="audio-link">تسوق الآن →</a>
-                </div>
-                <div class="audio-card">
-                    <img src="images/audio/speaker.webp" alt="مكبرات الصوت">
-                    <h3>مكبرات الصوت</h3>
-                    <span class="brand-tag">HUAWEI</span>
-                    <a href="#" class="audio-link">تسوق الآن →</a>
-                </div>
-                <div class="audio-card">
-                    <img src="images/audio/soundbar.webp" alt="ساوند بار">
-                    <h3>ساوند بار</h3>
-                    <span class="brand-tag">HUAWEI</span>
-                    <a href="#" class="audio-link">تسوق الآن →</a>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- ==================== CATEGORY BOXES (مرتفعة - تحت نصف الصورة) ==================== -->
+    <!-- ==================== CATEGORY BOXES ==================== -->
     <section class="categories elevated">
         <div class="container">
             <div class="categories-grid">
-                <!-- Box 1 - إلكترونيات -->
+                <!-- Box 1 - خصم حتى 30% - السماعات ومكبرات الصوت (بدلاً من إلكترونيات) -->
                 <div class="category-box">
-                    <h3>إلكترونيات</h3>
+                    <h3>🎧 خصم حتى 30% - السماعات ومكبرات الصوت</h3>
                     <div class="category-grid">
                         <div class="category-item">
-                            <img src="images/categories/electronics1.webp" alt="إلكترونيات">
-                            <span>لابتوب</span>
+                            <img src="images/audio/headphone.webp" alt="سماعات الرأس">
+                            <span>سماعات الرأس</span>
                         </div>
                         <div class="category-item">
-                            <img src="images/categories/electronics2.webp" alt="إلكترونيات">
-                            <span>جوالات</span>
+                            <img src="images/audio/earbuds.webp" alt="سماعات الأذن">
+                            <span>سماعات الأذن</span>
                         </div>
                         <div class="category-item">
-                            <img src="images/categories/electronics3.webp" alt="إلكترونيات">
-                            <span>تابلت</span>
+                            <img src="images/audio/speaker.webp" alt="مكبرات الصوت">
+                            <span>مكبرات الصوت</span>
                         </div>
                         <div class="category-item">
-                            <img src="images/categories/electronics4.webp" alt="إلكترونيات">
-                            <span>اكسسوارات</span>
+                            <img src="images/audio/soundbar.webp" alt="ساوند بار">
+                            <span>ساوند بار</span>
                         </div>
                     </div>
                     <a href="#" class="category-link">تسوق الآن →</a>
@@ -175,7 +135,7 @@
                     <a href="#" class="category-link">تسوق الآن →</a>
                 </div>
 
-                <!-- Box 4 - رياضة (مضاف كرابع) -->
+                <!-- Box 4 - رياضة -->
                 <div class="category-box">
                     <h3>رياضة</h3>
                     <div class="category-grid">
@@ -208,13 +168,10 @@
             <div class="section-header">
                 <h2>منتجات مميزة</h2>
             </div>
-            <div class="products-grid" id="productsGrid">
-                <!-- المنتجات ستظهر هنا عبر JavaScript -->
-            </div>
+            <div class="products-grid" id="productsGrid"></div>
         </div>
     </section>
 
-    <!-- ==================== FOOTER ==================== -->
     <footer class="footer">
         <div class="container">
             <p>&copy; 2025 متجرك. جميع الحقوق محفوظة</p>
