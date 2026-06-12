@@ -701,3 +701,7 @@ body {
     font-size: 14px;
     margin-top: 20px;
 }
+/* السطر الثاني من البطاقات */
+.second-row {
+    margin-top: 20px;
+}
