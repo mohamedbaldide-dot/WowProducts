@@ -131,7 +131,7 @@ body {
 }
 
 /* ========================================
-   HERO SLIDER - ارتفاع مناسب وصور من الأعلى
+   HERO SLIDER
    ======================================== */
 .hero-slider {
     position: relative;
@@ -145,18 +145,18 @@ body {
     position: relative;
     width: 100%;
     height: auto;
-    min-height: 400px;
+    min-height: 450px;
 }
 
 @media (min-width: 768px) {
     .slider-container {
-        min-height: 500px;
+        min-height: 550px;
     }
 }
 
 @media (min-width: 1200px) {
     .slider-container {
-        min-height: 600px;
+        min-height: 650px;
     }
 }
 
@@ -184,20 +184,20 @@ body {
 .slide img {
     width: 100%;
     height: auto;
-    min-height: 400px;
+    min-height: 450px;
     object-fit: cover;
     display: block;
 }
 
 @media (min-width: 768px) {
     .slide img {
-        min-height: 500px;
+        min-height: 550px;
     }
 }
 
 @media (min-width: 1200px) {
     .slide img {
-        min-height: 600px;
+        min-height: 650px;
     }
 }
 
@@ -256,29 +256,35 @@ body {
 }
 
 /* ========================================
-   FADE EFFECT
+   FADE EFFECT - شفاف جداً
    ======================================== */
 .fade-overlay {
     position: relative;
-    height: 60px;
-    background: linear-gradient(to bottom, rgba(234, 230, 227, 0), #eae6e3);
-    margin-top: -60px;
+    height: 80px;
+    background: linear-gradient(to bottom, rgba(234, 230, 227, 0.2), #eae6e3);
+    margin-top: -80px;
     z-index: 5;
 }
 
 /* ========================================
-   CATEGORY BOXES - متداخلة مع السلايدر
+   CATEGORY BOXES - مرتفعة جداً (عند مستوى السهمين)
    ======================================== */
 .categories {
-    margin-top: -80px;
+    margin-top: -180px;
     padding: 0 20px 30px;
     position: relative;
     z-index: 15;
 }
 
+@media (min-width: 768px) {
+    .categories {
+        margin-top: -220px;
+    }
+}
+
 @media (min-width: 1200px) {
     .categories {
-        margin-top: -100px;
+        margin-top: -260px;
     }
 }
 
@@ -310,7 +316,7 @@ body {
 }
 
 .category-box h3 {
-    font-size: 21px;
+    font-size: 18px;
     margin-bottom: 15px;
     color: #111;
 }
@@ -318,7 +324,7 @@ body {
 .category-grid {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    gap: 15px;
+    gap: 12px;
     margin-bottom: 15px;
 }
 
@@ -338,11 +344,11 @@ body {
     object-fit: contain;
     background: #f8f8f8;
     border-radius: 8px;
-    margin-bottom: 8px;
+    margin-bottom: 6px;
 }
 
 .category-item span {
-    font-size: 14px;
+    font-size: 13px;
     color: #555;
 }
 
@@ -361,7 +367,7 @@ body {
 }
 
 /* ========================================
-   PRODUCTS SECTION - بدون تغيير
+   PRODUCTS SECTION
    ======================================== */
 .products-section {
     padding: 30px 20px 50px;
