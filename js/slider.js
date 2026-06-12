@@ -10,7 +10,6 @@ const nextBtn = document.getElementById('nextBtn');
 let currentIndex = 0;
 let slideInterval;
 
-// عرض الشريحة المحددة
 function showSlide(index) {
     if (index < 0) index = slides.length - 1;
     if (index >= slides.length) index = 0;
