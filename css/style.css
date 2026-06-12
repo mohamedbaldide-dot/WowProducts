@@ -341,14 +341,27 @@ body {
 }
 
 /* ========================================
-   CATEGORY BOXES - شبكة منتظمة (بدون أي تداخل)
+   CATEGORY BOXES - مرتفعة للأعلى (فوق السهمين)
    ======================================== */
 .categories {
-    padding: 30px 15px 30px;
+    margin-top: -120px;
+    padding: 0 15px 30px;
     position: relative;
-    z-index: 10;
+    z-index: 15;
     width: 100%;
-    background: #eae6e3;
+    background: transparent;
+}
+
+@media (min-width: 768px) {
+    .categories {
+        margin-top: -140px;
+    }
+}
+
+@media (min-width: 1200px) {
+    .categories {
+        margin-top: -160px;
+    }
 }
 
 /* شبكة البطاقات - 4 في السطر */
@@ -374,9 +387,9 @@ body {
     }
 }
 
-/* السطر الثاني - مسافة من الأعلى */
+/* السطر الثاني - مسافة صغيرة مثل المسافة بين البطاقات */
 .second-row {
-    margin-top: 30px;
+    margin-top: 20px;
 }
 
 /* ===== البطاقة ===== */
