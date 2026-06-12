@@ -1,16 +1,156 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ar">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>WowProducts</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>متجرك - مستوحى من أمازون</title>
     <link rel="stylesheet" href="css/style.css">
+    <!-- Font Awesome للأيقونات -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
-<body class="home-page">
-    <div class="home-container">
-        <button class="show-products-btn" onclick="location.href='products.html'">
-            🔥 View All Deals 🔥
-        </button>
-    </div>
+<body>
+
+    <!-- ==================== الهيدر البسيط ==================== -->
+    <header class="header">
+        <div class="logo">
+            <h1>متجرك</h1>
+        </div>
+        <div class="header-actions">
+            <i class="fas fa-user"></i>
+            <i class="fas fa-shopping-cart"></i>
+        </div>
+    </header>
+
+    <!-- ==================== HERO SLIDER ==================== -->
+    <section class="hero-slider">
+        <div class="slider-container">
+            <div class="slider">
+                <div class="slide active">
+                    <img src="images/banners/banner1.jpg" alt="Banner 1">
+                </div>
+                <div class="slide">
+                    <img src="images/banners/banner2.jpg" alt="Banner 2">
+                </div>
+                <div class="slide">
+                    <img src="images/banners/banner3.jpg" alt="Banner 3">
+                </div>
+            </div>
+            <button class="slider-btn prev" id="prevBtn">
+                <i class="fas fa-chevron-left"></i>
+            </button>
+            <button class="slider-btn next" id="nextBtn">
+                <i class="fas fa-chevron-right"></i>
+            </button>
+        </div>
+        <div class="slider-dots">
+            <span class="dot active" data-index="0"></span>
+            <span class="dot" data-index="1"></span>
+            <span class="dot" data-index="2"></span>
+        </div>
+    </section>
+
+    <!-- ==================== FADE EFFECT ==================== -->
+    <div class="fade-overlay"></div>
+
+    <!-- ==================== CATEGORY BOXES ==================== -->
+    <section class="categories">
+        <div class="container">
+            <div class="categories-grid">
+                <!-- Box 1 -->
+                <div class="category-box">
+                    <h3>أقسام مميزة</h3>
+                    <div class="category-grid">
+                        <div class="category-item">
+                            <img src="images/categories/cat1a.jpg" alt="Category">
+                            <span>قسم 1</span>
+                        </div>
+                        <div class="category-item">
+                            <img src="images/categories/cat1b.jpg" alt="Category">
+                            <span>قسم 2</span>
+                        </div>
+                        <div class="category-item">
+                            <img src="images/categories/cat1c.jpg" alt="Category">
+                            <span>قسم 3</span>
+                        </div>
+                        <div class="category-item">
+                            <img src="images/categories/cat1d.jpg" alt="Category">
+                            <span>قسم 4</span>
+                        </div>
+                    </div>
+                    <a href="#" class="category-link">تسوق الآن →</a>
+                </div>
+
+                <!-- Box 2 -->
+                <div class="category-box">
+                    <h3>عروض حصرية</h3>
+                    <div class="category-grid">
+                        <div class="category-item">
+                            <img src="images/categories/cat2a.jpg" alt="Category">
+                            <span>عرض 1</span>
+                        </div>
+                        <div class="category-item">
+                            <img src="images/categories/cat2b.jpg" alt="Category">
+                            <span>عرض 2</span>
+                        </div>
+                        <div class="category-item">
+                            <img src="images/categories/cat2c.jpg" alt="Category">
+                            <span>عرض 3</span>
+                        </div>
+                        <div class="category-item">
+                            <img src="images/categories/cat2d.jpg" alt="Category">
+                            <span>عرض 4</span>
+                        </div>
+                    </div>
+                    <a href="#" class="category-link">تسوق الآن →</a>
+                </div>
+
+                <!-- Box 3 -->
+                <div class="category-box">
+                    <h3>الأكثر مبيعاً</h3>
+                    <div class="category-grid">
+                        <div class="category-item">
+                            <img src="images/categories/cat3a.jpg" alt="Category">
+                            <span>منتج 1</span>
+                        </div>
+                        <div class="category-item">
+                            <img src="images/categories/cat3b.jpg" alt="Category">
+                            <span>منتج 2</span>
+                        </div>
+                        <div class="category-item">
+                            <img src="images/categories/cat3c.jpg" alt="Category">
+                            <span>منتج 3</span>
+                        </div>
+                        <div class="category-item">
+                            <img src="images/categories/cat3d.jpg" alt="Category">
+                            <span>منتج 4</span>
+                        </div>
+                    </div>
+                    <a href="#" class="category-link">تسوق الآن →</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== PRODUCTS SECTION ==================== -->
+    <section class="products-section">
+        <div class="container">
+            <div class="section-header">
+                <h2>منتجات مميزة</h2>
+            </div>
+            <div class="products-grid" id="productsGrid">
+                <!-- المنتجات ستظهر هنا عبر JavaScript -->
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== FOOTER ==================== -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2025 متجرك. جميع الحقوق محفوظة</p>
+        </div>
+    </footer>
+
+    <script src="js/slider.js"></script>
+    <script src="js/products.js"></script>
 </body>
 </html>
