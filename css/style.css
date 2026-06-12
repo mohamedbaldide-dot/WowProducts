@@ -271,7 +271,7 @@ body {
    ======================================== */
 .categories {
     margin-top: -180px;
-    padding: 0 20px 30px;
+    padding: 0 8px 30px;  /* التعديل 1: تقليل الهوامش الجانبية من 20px إلى 8px */
     position: relative;
     z-index: 15;
 }
@@ -291,7 +291,7 @@ body {
 .categories-grid {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    gap: 20px;
+    gap: 16px;  /* التعديل 2: تقليل المسافة بين البطاقات من 25px إلى 16px */
     max-width: 1400px;
     margin: 0 auto;
 }
@@ -308,13 +308,12 @@ body {
     }
 }
 
-/* ===== البطاقة - أعرض قليلاً ===== */
+/* ===== البطاقة ===== */
 .category-box {
     background: white;
     border-radius: 8px;
     padding: 20px;
     min-height: auto;
-    width: 105%;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
 }
 
@@ -346,14 +345,15 @@ body {
     transform: scale(1.02);
 }
 
-/* ===== الصورة - مستطيلة أفقيًا (1.6 / 1) ===== */
+/* ===== الصورة - أكبر قليلاً ===== */
 .category-item img {
     width: 100%;
-    aspect-ratio: 1.6 / 1;
+    aspect-ratio: 1.45 / 1;  /* التعديل 3: تغيير النسبة من 1.6 إلى 1.45 */
     height: auto;
     object-fit: cover;
     border-radius: 0;
     display: block;
+    transform: scale(1.05);  /* التعديل 3: تكبير الصورة قليلاً */
 }
 
 /* ===== النص تحت الصورة ===== */
