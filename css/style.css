@@ -14,9 +14,9 @@ body {
 }
 
 .container {
-    max-width: 1400px;
+    max-width: 1600px;
     margin: 0 auto;
-    padding: 0 20px;
+    padding: 0 10px;
 }
 
 /* ========================================
@@ -267,11 +267,11 @@ body {
 }
 
 /* ========================================
-   CATEGORY BOXES - مثل أمازون
+   CATEGORY BOXES - مثل أمازون (بعد التعديل)
    ======================================== */
 .categories {
     margin-top: -180px;
-    padding: 0 8px 30px;  /* التعديل 1: تقليل الهوامش الجانبية من 20px إلى 8px */
+    padding: 0 5px 30px;
     position: relative;
     z-index: 15;
 }
@@ -291,14 +291,15 @@ body {
 .categories-grid {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    gap: 16px;  /* التعديل 2: تقليل المسافة بين البطاقات من 25px إلى 16px */
-    max-width: 1400px;
+    gap: 12px;
+    max-width: 100%;
     margin: 0 auto;
 }
 
 @media (max-width: 992px) {
     .categories-grid {
         grid-template-columns: repeat(2, 1fr);
+        gap: 15px;
     }
 }
 
@@ -312,15 +313,15 @@ body {
 .category-box {
     background: white;
     border-radius: 8px;
-    padding: 20px;
+    padding: 15px;
     min-height: auto;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
 }
 
 /* ===== عنوان البطاقة ===== */
 .category-box h3 {
-    font-size: 18px;
-    margin-bottom: 15px;
+    font-size: 16px;
+    margin-bottom: 12px;
     color: #111;
 }
 
@@ -328,8 +329,8 @@ body {
 .category-grid {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    gap: 10px;
-    margin-bottom: 15px;
+    gap: 8px;
+    margin-bottom: 12px;
 }
 
 /* ===== كل صورة ===== */
@@ -345,32 +346,32 @@ body {
     transform: scale(1.02);
 }
 
-/* ===== الصورة - أكبر قليلاً ===== */
+/* ===== الصورة - أكبر بكثير ===== */
 .category-item img {
     width: 100%;
-    aspect-ratio: 1.45 / 1;  /* التعديل 3: تغيير النسبة من 1.6 إلى 1.45 */
+    aspect-ratio: 1.4 / 1;
     height: auto;
     object-fit: cover;
     border-radius: 0;
     display: block;
-    transform: scale(1.05);  /* التعديل 3: تكبير الصورة قليلاً */
+    transform: scale(1.08);
 }
 
 /* ===== النص تحت الصورة ===== */
 .category-item span {
     display: block;
-    margin-top: 8px;
-    font-size: 14px;
+    margin-top: 6px;
+    font-size: 13px;
     text-align: center;
     color: #555;
 }
 
-/* ===== رابط تسوق الآن ===== */
+/* ===== رابط تسوق الآن / شاهد المزيد ===== */
 .category-link {
     display: inline-block;
     color: #007185;
     text-decoration: none;
-    font-size: 13px;
+    font-size: 12px;
     font-weight: bold;
     margin-top: 5px;
 }
