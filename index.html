@@ -37,14 +37,14 @@
         <div class="header-actions">
             <div class="language-selector" id="languageSelector">
                 <div class="lang-btn">
-                    <img src="images/saudi-flag.webp" alt="SA" class="flag-icon">
+                    <img src="images/saudi-flag.webp" alt="SA" class="flag-icon" onerror="this.src='https://flagcdn.com/w20/sa.png'">
                     <span id="currentLang">AR</span>
                     <i class="fas fa-chevron-down"></i>
                 </div>
                 <div class="lang-dropdown" id="langDropdown">
                     <a href="#" data-lang="ar">العربية - AR</a>
                     <a href="#" data-lang="en">English - EN</a>
-                    <div class="lang-footer">أنت تتسوق على Amazon.sa</div>
+                    <div class="lang-footer">أنت تتسوق على متجرك</div>
                 </div>
             </div>
             <i class="fas fa-shopping-cart"></i>
@@ -81,11 +81,92 @@
     <!-- ==================== CATEGORY BOXES ==================== -->
     <section class="categories">
         <div class="categories-grid" id="categoriesGrid">
-            <!-- البطاقات تظهر هنا عبر JavaScript -->
+            <!-- Box 1 - خصم حتى 30% - السماعات ومكبرات الصوت -->
+            <div class="category-box">
+                <h3>خصم حتى 30% - السماعات ومكبرات الصوت</h3>
+                <div class="category-grid">
+                    <div class="category-item" onclick="window.open('https://www.amazon.sa/s?k=headphones', '_blank')">
+                        <img src="images/categories/electronics1.webp" alt="سماعات الرأس">
+                        <span>سماعات الرأس</span>
+                    </div>
+                    <div class="category-item" onclick="window.open('https://www.amazon.sa/s?k=earbuds', '_blank')">
+                        <img src="images/categories/electronics2.webp" alt="سماعات الأذن">
+                        <span>سماعات الأذن</span>
+                    </div>
+                    <div class="category-item" onclick="window.open('https://www.amazon.sa/s?k=speakers', '_blank')">
+                        <img src="images/categories/electronics3.webp" alt="مكبرات الصوت">
+                        <span>مكبرات الصوت</span>
+                    </div>
+                    <div class="category-item" onclick="window.open('https://www.amazon.sa/s?k=soundbar', '_blank')">
+                        <img src="images/categories/electronics4.webp" alt="ساوند بار">
+                        <span>ساوند بار</span>
+                    </div>
+                </div>
+                <a href="https://www.amazon.sa/s?i=electronics" class="category-link" target="_blank">تسوق الآن</a>
+            </div>
+
+            <!-- Box 2 - الألعاب -->
+            <div class="category-box">
+                <h3>الألعاب | خصم 10% - 40%</h3>
+                <div class="category-grid">
+                    <div class="category-item" onclick="window.open('https://www.amazon.sa/b?node=16631543031', '_blank')">
+                        <img src="images/categories/games1.webp" alt="السكوترات">
+                        <span>السكوترات</span>
+                    </div>
+                    <div class="category-item" onclick="window.open('https://www.amazon.sa/b?node=16631425031', '_blank')">
+                        <img src="images/categories/games2.webp" alt="الألعاب الخارجية">
+                        <span>الألعاب الخارجية</span>
+                    </div>
+                    <div class="category-item" onclick="window.open('https://www.amazon.sa/b?node=16631407031', '_blank')">
+                        <img src="images/categories/games3.webp" alt="ألعاب البناء">
+                        <span>ألعاب البناء والتركيب</span>
+                    </div>
+                    <div class="category-item" onclick="window.open('https://www.amazon.sa/b?node=16631408031', '_blank')">
+                        <img src="images/categories/games4.webp" alt="الدمى">
+                        <span>الدمى واكسسواراتها</span>
+                    </div>
+                </div>
+                <a href="https://www.amazon.sa/b?node=12463618031" class="category-link" target="_blank">تسوق الآن</a>
+            </div>
+
+            <!-- Box 3 - الأثاث المنزلي -->
+            <div class="category-box">
+                <h3>الأثاث المنزلي | خصم 10% - 40%</h3>
+                <div class="category-grid">
+                    <div class="category-item" onclick="window.open('https://www.amazon.sa/b?node=16856128031', '_blank')">
+                        <img src="images/categories/home1.webp" alt="الطاولات">
+                        <span>الطاولات</span>
+                    </div>
+                    <div class="category-item" onclick="window.open('https://www.amazon.sa/b?node=16856128031', '_blank')">
+                        <img src="images/categories/home2.webp" alt="الأرائك">
+                        <span>الأرائك</span>
+                    </div>
+                    <div class="category-item" onclick="window.open('https://www.amazon.sa/b?node=16856128031', '_blank')">
+                        <img src="images/categories/home3.webp" alt="كراسي الألعاب">
+                        <span>كراسي الألعاب</span>
+                    </div>
+                    <div class="category-item" onclick="window.open('https://www.amazon.sa/b?node=16856128031', '_blank')">
+                        <img src="images/categories/home4.webp" alt="الخزائن">
+                        <span>الخزائن</span>
+                    </div>
+                </div>
+                <a href="https://www.amazon.sa/b?node=16856128031" class="category-link" target="_blank">شاهد المزيد</a>
+            </div>
+
+            <!-- Box 4 - الصنادل النسائية -->
+            <div class="category-box">
+                <h3>الصنادل النسائية | خصم حتى 60%</h3>
+                <div class="category-grid-single">
+                    <div class="category-item-single" onclick="window.open('https://www.amazon.sa/s?i=fashion&bbn=16667332031', '_blank')">
+                        <img src="images/categories/sandals.webp" alt="الصنادل النسائية">
+                    </div>
+                </div>
+                <a href="https://www.amazon.sa/s?i=fashion&bbn=16667332031" class="category-link" target="_blank">شاهد المزيد</a>
+            </div>
         </div>
     </section>
 
-    <!-- ==================== PRODUCTS SECTION ==================== -->
+    <!-- ==================== المنتجات المميزة ==================== -->
     <section class="products-section" id="productsSection">
         <div class="container">
             <div class="section-header">
@@ -104,6 +185,7 @@
     <script src="js/data.js"></script>
     <script src="js/translations.js"></script>
     <script src="js/slider.js"></script>
+    <script src="js/sections.js"></script>
     <script src="js/products.js"></script>
     <script src="js/search.js"></script>
 </body>
