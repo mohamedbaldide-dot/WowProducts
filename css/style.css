@@ -330,7 +330,7 @@ body {
 }
 
 /* ========================================
-   FADE EFFECT - خفيف
+   FADE EFFECT
    ======================================== */
 .fade-overlay {
     position: relative;
@@ -341,10 +341,10 @@ body {
 }
 
 /* ========================================
-   CATEGORY BOXES - مرتفعة للأعلى (فوق السهمين)
+   CATEGORY BOXES - مرتفعة للأعلى
    ======================================== */
 .categories {
-    margin-top: -120px;
+    margin-top: -180px;
     padding: 0 15px 30px;
     position: relative;
     z-index: 15;
@@ -354,17 +354,17 @@ body {
 
 @media (min-width: 768px) {
     .categories {
-        margin-top: -140px;
+        margin-top: -200px;
     }
 }
 
 @media (min-width: 1200px) {
     .categories {
-        margin-top: -160px;
+        margin-top: -220px;
     }
 }
 
-/* شبكة البطاقات - 4 في السطر */
+/* شبكة البطاقات */
 .categories-grid {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
@@ -387,9 +387,15 @@ body {
     }
 }
 
-/* السطر الثاني - مسافة صغيرة مثل المسافة بين البطاقات */
+/* السطر الثاني - مسافة صغيرة (نفس gap) */
 .second-row {
     margin-top: 20px;
+}
+
+@media (max-width: 992px) {
+    .second-row {
+        margin-top: 20px;
+    }
 }
 
 /* ===== البطاقة ===== */
@@ -574,7 +580,7 @@ body {
     padding: 20px;
     background: #fafafa;
     display: flex;
-    justify-content: center;
+    justify-center;
     align-items: center;
     height: 180px;
 }
