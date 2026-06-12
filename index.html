@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-    <title>متجرك - مستوحى من أمازون</title>
+    <title>متجرك - تسوق أونلاين</title>
     <link rel="stylesheet" href="css/style.css">
     <!-- Font Awesome للأيقونات -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
@@ -14,6 +14,18 @@
     <header class="header">
         <div class="logo">
             <h1>متجرك</h1>
+        </div>
+        <div class="search-container">
+            <div class="search-dropdown">
+                <button class="dropdown-btn" id="dropdownBtn">الكل <i class="fas fa-chevron-down"></i></button>
+                <div class="dropdown-content" id="dropdownContent">
+                    <a href="#">جميع الأقسام</a>
+                    <a href="#">الدفع عند الاستلام</a>
+                    <a href="#">أجهزة Amazon</a>
+                </div>
+            </div>
+            <input type="text" class="search-input" placeholder="البحث في متجرك...">
+            <button class="search-btn"><i class="fas fa-search"></i></button>
         </div>
         <div class="header-actions">
             <i class="fas fa-user"></i>
@@ -52,77 +64,136 @@
     <!-- ==================== FADE EFFECT ==================== -->
     <div class="fade-overlay"></div>
 
-    <!-- ==================== CATEGORY BOXES ==================== -->
-    <section class="categories">
+    <!-- ==================== قسم السماعات - خصم 30% ==================== -->
+    <section class="audio-section">
+        <div class="container">
+            <div class="audio-header">
+                <h2>🎧 خصم حتى 30% - السماعات ومكبرات الصوت</h2>
+            </div>
+            <div class="audio-grid">
+                <div class="audio-card">
+                    <img src="images/audio/headphone.webp" alt="سماعات الرأس">
+                    <h3>سماعات الرأس</h3>
+                    <span class="brand-tag">HUAWEI</span>
+                    <a href="#" class="audio-link">تسوق الآن →</a>
+                </div>
+                <div class="audio-card">
+                    <img src="images/audio/earbuds.webp" alt="سماعات الأذن">
+                    <h3>سماعات الأذن</h3>
+                    <span class="brand-tag">HUAWEI</span>
+                    <a href="#" class="audio-link">تسوق الآن →</a>
+                </div>
+                <div class="audio-card">
+                    <img src="images/audio/speaker.webp" alt="مكبرات الصوت">
+                    <h3>مكبرات الصوت</h3>
+                    <span class="brand-tag">HUAWEI</span>
+                    <a href="#" class="audio-link">تسوق الآن →</a>
+                </div>
+                <div class="audio-card">
+                    <img src="images/audio/soundbar.webp" alt="ساوند بار">
+                    <h3>ساوند بار</h3>
+                    <span class="brand-tag">HUAWEI</span>
+                    <a href="#" class="audio-link">تسوق الآن →</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== CATEGORY BOXES (مرتفعة - تحت نصف الصورة) ==================== -->
+    <section class="categories elevated">
         <div class="container">
             <div class="categories-grid">
-                <!-- Box 1 -->
+                <!-- Box 1 - إلكترونيات -->
                 <div class="category-box">
-                    <h3>أقسام مميزة</h3>
+                    <h3>إلكترونيات</h3>
                     <div class="category-grid">
                         <div class="category-item">
-                            <img src="images/categories/cat1a.webp" alt="Category">
-                            <span>إلكترونيات</span>
+                            <img src="images/categories/electronics1.webp" alt="إلكترونيات">
+                            <span>لابتوب</span>
                         </div>
                         <div class="category-item">
-                            <img src="images/categories/cat1b.webp" alt="Category">
-                            <span>موضة</span>
+                            <img src="images/categories/electronics2.webp" alt="إلكترونيات">
+                            <span>جوالات</span>
                         </div>
                         <div class="category-item">
-                            <img src="images/categories/cat1c.webp" alt="Category">
-                            <span>منزل</span>
+                            <img src="images/categories/electronics3.webp" alt="إلكترونيات">
+                            <span>تابلت</span>
                         </div>
                         <div class="category-item">
-                            <img src="images/categories/cat1d.webp" alt="Category">
-                            <span>رياضة</span>
+                            <img src="images/categories/electronics4.webp" alt="إلكترونيات">
+                            <span>اكسسوارات</span>
                         </div>
                     </div>
                     <a href="#" class="category-link">تسوق الآن →</a>
                 </div>
 
-                <!-- Box 2 -->
+                <!-- Box 2 - موضة -->
                 <div class="category-box">
-                    <h3>عروض حصرية</h3>
+                    <h3>موضة</h3>
                     <div class="category-grid">
                         <div class="category-item">
-                            <img src="images/categories/cat2a.webp" alt="Category">
-                            <span>خصم 50%</span>
+                            <img src="images/categories/fashion1.webp" alt="موضة">
+                            <span>رجالي</span>
                         </div>
                         <div class="category-item">
-                            <img src="images/categories/cat2b.webp" alt="Category">
-                            <span>توصيل مجاني</span>
+                            <img src="images/categories/fashion2.webp" alt="موضة">
+                            <span>نسائي</span>
                         </div>
                         <div class="category-item">
-                            <img src="images/categories/cat2c.webp" alt="Category">
-                            <span>عرض اليوم</span>
+                            <img src="images/categories/fashion3.webp" alt="موضة">
+                            <span>أحذية</span>
                         </div>
                         <div class="category-item">
-                            <img src="images/categories/cat2d.webp" alt="Category">
-                            <span>صفقات</span>
+                            <img src="images/categories/fashion4.webp" alt="موضة">
+                            <span>ساعات</span>
                         </div>
                     </div>
                     <a href="#" class="category-link">تسوق الآن →</a>
                 </div>
 
-                <!-- Box 3 -->
+                <!-- Box 3 - منزل -->
                 <div class="category-box">
-                    <h3>الأكثر مبيعاً</h3>
+                    <h3>منزل</h3>
                     <div class="category-grid">
                         <div class="category-item">
-                            <img src="images/categories/cat3a.webp" alt="Category">
-                            <span>المركز 1</span>
+                            <img src="images/categories/home1.webp" alt="منزل">
+                            <span>أثاث</span>
                         </div>
                         <div class="category-item">
-                            <img src="images/categories/cat3b.webp" alt="Category">
-                            <span>المركز 2</span>
+                            <img src="images/categories/home2.webp" alt="منزل">
+                            <span>إضاءة</span>
                         </div>
                         <div class="category-item">
-                            <img src="images/categories/cat3c.webp" alt="Category">
-                            <span>المركز 3</span>
+                            <img src="images/categories/home3.webp" alt="منزل">
+                            <span>مطبخ</span>
                         </div>
                         <div class="category-item">
-                            <img src="images/categories/cat3d.webp" alt="Category">
-                            <span>المركز 4</span>
+                            <img src="images/categories/home4.webp" alt="منزل">
+                            <span>ديكور</span>
+                        </div>
+                    </div>
+                    <a href="#" class="category-link">تسوق الآن →</a>
+                </div>
+
+                <!-- Box 4 - رياضة (مضاف كرابع) -->
+                <div class="category-box">
+                    <h3>رياضة</h3>
+                    <div class="category-grid">
+                        <div class="category-item">
+                            <img src="images/categories/sport1.webp" alt="رياضة">
+                            <span>معدات</span>
+                        </div>
+                        <div class="category-item">
+                            <img src="images/categories/sport2.webp" alt="رياضة">
+                            <span>ملابس</span>
+                        </div>
+                        <div class="category-item">
+                            <img src="images/categories/sport3.webp" alt="رياضة">
+                            <span>أحذية</span>
+                        </div>
+                        <div class="category-item">
+                            <img src="images/categories/sport4.webp" alt="رياضة">
+                            <span>اكسسوارات</span>
                         </div>
                     </div>
                     <a href="#" class="category-link">تسوق الآن →</a>
@@ -131,7 +202,7 @@
         </div>
     </section>
 
-    <!-- ==================== PRODUCTS SECTION ==================== -->
+    <!-- ==================== المنتجات المميزة ==================== -->
     <section class="products-section">
         <div class="container">
             <div class="section-header">
@@ -150,9 +221,9 @@
         </div>
     </footer>
 
-    <!-- ترتيب تحميل الملفات مهم -->
     <script src="js/data.js"></script>
     <script src="js/slider.js"></script>
     <script src="js/products.js"></script>
+    <script src="js/search.js"></script>
 </body>
 </html>
