@@ -256,7 +256,7 @@ body {
 }
 
 /* ========================================
-   FADE EFFECT - شفاف جداً
+   FADE EFFECT
    ======================================== */
 .fade-overlay {
     position: relative;
@@ -267,7 +267,7 @@ body {
 }
 
 /* ========================================
-   CATEGORY BOXES - مرتفعة جداً (عند مستوى السهمين)
+   CATEGORY BOXES
    ======================================== */
 .categories {
     margin-top: -180px;
@@ -321,35 +321,44 @@ body {
     color: #111;
 }
 
+/* ===== تعديل شبكة الصور - تقليل المسافات ===== */
 .category-grid {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    gap: 12px;
+    gap: 8px;
     margin-bottom: 15px;
 }
 
+/* ===== تعديل حاوية الصورة - إزالة المسافات الفارغة ===== */
 .category-item {
     text-align: center;
     cursor: pointer;
     transition: transform 0.2s;
+    background: #f8f8f8;
+    border-radius: 8px;
+    padding: 5px;
 }
 
 .category-item:hover {
     transform: scale(1.02);
 }
 
+/* ===== تعديل الصورة - جعلها أكبر وتقليل المسافات ===== */
 .category-item img {
     width: 100%;
     aspect-ratio: 1 / 1;
     object-fit: contain;
-    background: #f8f8f8;
-    border-radius: 8px;
-    margin-bottom: 6px;
+    background: transparent;
+    border-radius: 6px;
+    margin-bottom: 4px;
+    padding: 0;
 }
 
 .category-item span {
     font-size: 13px;
     color: #555;
+    display: block;
+    margin-top: 2px;
 }
 
 .category-link {
