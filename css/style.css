@@ -14,7 +14,7 @@ body {
 }
 
 /* ========================================
-   HEADER - مثل أمازون بالضبط
+   HEADER
    ======================================== */
 .header {
     background: #222f3e;
@@ -236,13 +236,13 @@ body {
 
 @media (min-width: 768px) {
     .slider-container {
-        min-height: 550px;
+        min-height: 500px;
     }
 }
 
 @media (min-width: 1200px) {
     .slider-container {
-        min-height: 650px;
+        min-height: 550px;
     }
 }
 
@@ -275,18 +275,6 @@ body {
     display: block;
 }
 
-@media (min-width: 768px) {
-    .slide img {
-        min-height: 550px;
-    }
-}
-
-@media (min-width: 1200px) {
-    .slide img {
-        min-height: 650px;
-    }
-}
-
 .slider-btn {
     position: absolute;
     top: 50%;
@@ -294,10 +282,10 @@ body {
     background: rgba(0, 0, 0, 0.4);
     color: white;
     border: none;
-    width: 50px;
-    height: 100px;
+    width: 45px;
+    height: 80px;
     cursor: pointer;
-    font-size: 24px;
+    font-size: 22px;
     transition: background 0.3s;
     z-index: 10;
 }
@@ -318,7 +306,7 @@ body {
 
 .slider-dots {
     position: absolute;
-    bottom: 20px;
+    bottom: 15px;
     left: 50%;
     transform: translateX(-50%);
     display: flex;
@@ -327,8 +315,8 @@ body {
 }
 
 .dot {
-    width: 12px;
-    height: 12px;
+    width: 10px;
+    height: 10px;
     background: rgba(255, 255, 255, 0.5);
     border-radius: 50%;
     cursor: pointer;
@@ -337,39 +325,39 @@ body {
 
 .dot.active {
     background: white;
-    width: 30px;
+    width: 25px;
     border-radius: 10px;
 }
 
 /* ========================================
-   FADE EFFECT - تعديل لتجنب التداخل
+   FADE EFFECT - خفيف
    ======================================== */
 .fade-overlay {
     position: relative;
-    height: 60px;
-    background: linear-gradient(to bottom, rgba(234, 230, 227, 0.4), #eae6e3);
-    margin-top: -60px;
+    height: 40px;
+    background: linear-gradient(to bottom, rgba(234, 230, 227, 0), #eae6e3);
+    margin-top: -40px;
     z-index: 5;
 }
 
 /* ========================================
-   CATEGORY BOXES - شبكة منتظمة (بدون تداخل)
+   CATEGORY BOXES - شبكة منتظمة (بدون أي تداخل)
    ======================================== */
 .categories {
-    padding: 20px 15px 30px;
+    padding: 30px 15px 30px;
     position: relative;
     z-index: 10;
     width: 100%;
     background: #eae6e3;
 }
 
-/* شبكة البطاقات - منتظمة تماماً */
+/* شبكة البطاقات - 4 في السطر */
 .categories-grid {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     gap: 20px;
     width: 100%;
-    max-width: 100%;
+    max-width: 1400px;
     margin: 0 auto;
 }
 
@@ -388,7 +376,7 @@ body {
 
 /* السطر الثاني - مسافة من الأعلى */
 .second-row {
-    margin-top: 25px;
+    margin-top: 30px;
 }
 
 /* ===== البطاقة ===== */
@@ -396,8 +384,7 @@ body {
     background: white;
     border-radius: 8px;
     padding: 15px;
-    min-height: auto;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
     display: flex;
     flex-direction: column;
     height: 100%;
@@ -423,6 +410,7 @@ body {
     border-radius: 0;
     cursor: pointer;
     transition: transform 0.2s;
+    text-align: center;
 }
 
 .category-item:hover {
@@ -434,14 +422,13 @@ body {
     aspect-ratio: 1.35 / 1;
     height: auto;
     object-fit: cover;
-    border-radius: 0;
     display: block;
 }
 
 .category-item span {
     display: block;
-    margin-top: 8px;
-    font-size: 13px;
+    margin-top: 6px;
+    font-size: 12px;
     text-align: center;
     color: #555;
 }
@@ -488,7 +475,6 @@ body {
     aspect-ratio: 1 / 1.1;
     height: auto;
     object-fit: cover;
-    border-radius: 0;
     display: block;
     margin: 0;
     padding: 0;
@@ -577,12 +563,12 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 200px;
+    height: 180px;
 }
 
 .product-image img {
     max-width: 100%;
-    max-height: 160px;
+    max-height: 140px;
     object-fit: contain;
 }
 
@@ -594,28 +580,28 @@ body {
     color: white;
     padding: 4px 8px;
     border-radius: 4px;
-    font-size: 12px;
+    font-size: 11px;
     font-weight: bold;
     z-index: 2;
 }
 
 .product-info {
-    padding: 15px;
+    padding: 12px;
 }
 
 .brand {
-    font-size: 12px;
+    font-size: 11px;
     color: #007185;
-    margin-bottom: 5px;
+    margin-bottom: 4px;
 }
 
 .product-title {
-    font-size: 14px;
+    font-size: 13px;
     font-weight: 500;
     color: #111;
-    margin-bottom: 8px;
+    margin-bottom: 6px;
     line-height: 1.4;
-    height: 40px;
+    height: 36px;
     overflow: hidden;
     display: -webkit-box;
     -webkit-line-clamp: 2;
@@ -623,24 +609,24 @@ body {
 }
 
 .colour-patterns {
-    font-size: 12px;
+    font-size: 11px;
     color: #565959;
-    margin-bottom: 8px;
+    margin-bottom: 6px;
 }
 
 .price {
-    margin-bottom: 12px;
+    margin-bottom: 10px;
 }
 
 .old-price {
-    font-size: 12px;
+    font-size: 11px;
     color: #565959;
     text-decoration: line-through;
-    margin-left: 8px;
+    margin-left: 6px;
 }
 
 .current-price {
-    font-size: 18px;
+    font-size: 16px;
     font-weight: bold;
     color: #b12704;
 }
@@ -648,12 +634,12 @@ body {
 .view-btn {
     display: block;
     width: 100%;
-    padding: 10px;
+    padding: 8px;
     background: #ffd814;
     border: none;
-    border-radius: 8px;
+    border-radius: 6px;
     color: #0f1111;
-    font-size: 13px;
+    font-size: 12px;
     font-weight: bold;
     cursor: pointer;
     text-align: center;
