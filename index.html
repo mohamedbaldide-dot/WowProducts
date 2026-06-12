@@ -9,13 +9,28 @@
 </head>
 <body>
 
-    <!-- ==================== الهيدر - مثل أمازون ==================== -->
+    <!-- ==================== الهيدر - مثل أمازون بالضبط ==================== -->
     <header class="header">
         <div class="logo">
             <h1 id="logo-text">متجرك</h1>
         </div>
 
-        <!-- ==================== شريط البحث ==================== -->
+        <!-- ==================== شريط البحث (ترتيب أمازون) ==================== -->
+        <div class="header-actions-left">
+            <div class="language-selector" id="languageSelector">
+                <div class="lang-btn">
+                    <img src="images/saudi-flag.webp" alt="SA" class="flag-icon" onerror="this.src='https://flagcdn.com/w20/sa.png'">
+                    <span id="currentLang">AR</span>
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+                <div class="lang-dropdown" id="langDropdown">
+                    <a href="#" data-lang="ar">العربية - AR</a>
+                    <a href="#" data-lang="en">English - EN</a>
+                    <div class="lang-footer">أنت تتسوق على متجرك</div>
+                </div>
+            </div>
+        </div>
+
         <div class="search-container">
             <div class="search-dropdown">
                 <button class="dropdown-btn" id="dropdownBtn">الكل <i class="fas fa-chevron-down"></i></button>
@@ -33,20 +48,7 @@
             <button class="search-btn" id="searchBtn"><i class="fas fa-search"></i></button>
         </div>
 
-        <!-- ==================== اللغة والسلة ==================== -->
         <div class="header-actions">
-            <div class="language-selector" id="languageSelector">
-                <div class="lang-btn">
-                    <img src="images/saudi-flag.webp" alt="SA" class="flag-icon" onerror="this.src='https://flagcdn.com/w20/sa.png'">
-                    <span id="currentLang">AR</span>
-                    <i class="fas fa-chevron-down"></i>
-                </div>
-                <div class="lang-dropdown" id="langDropdown">
-                    <a href="#" data-lang="ar">العربية - AR</a>
-                    <a href="#" data-lang="en">English - EN</a>
-                    <div class="lang-footer">أنت تتسوق على متجرك</div>
-                </div>
-            </div>
             <i class="fas fa-shopping-cart"></i>
         </div>
     </header>
@@ -79,7 +81,7 @@
 
     <section class="categories">
         <div class="categories-grid" id="categoriesGrid">
-            <!-- Box 1 - خصم حتى 30% - السماعات ومكبرات الصوت -->
+            <!-- Box 1 -->
             <div class="category-box">
                 <h3>خصم حتى 30% - السماعات ومكبرات الصوت</h3>
                 <div class="category-grid">
@@ -103,7 +105,7 @@
                 <a href="https://www.amazon.sa/s?i=electronics" class="category-link" target="_blank">تسوق الآن</a>
             </div>
 
-            <!-- Box 2 - الألعاب -->
+            <!-- Box 2 -->
             <div class="category-box">
                 <h3>الألعاب | خصم 10% - 40%</h3>
                 <div class="category-grid">
@@ -127,7 +129,7 @@
                 <a href="https://www.amazon.sa/b?node=12463618031" class="category-link" target="_blank">تسوق الآن</a>
             </div>
 
-            <!-- Box 3 - الأثاث المنزلي -->
+            <!-- Box 3 -->
             <div class="category-box">
                 <h3>الأثاث المنزلي | خصم 10% - 40%</h3>
                 <div class="category-grid">
@@ -151,7 +153,7 @@
                 <a href="https://www.amazon.sa/b?node=16856128031" class="category-link" target="_blank">شاهد المزيد</a>
             </div>
 
-            <!-- Box 4 - الصنادل النسائية -->
+            <!-- Box 4 -->
             <div class="category-box">
                 <h3>الصنادل النسائية | خصم حتى 60%</h3>
                 <div class="category-grid-single">
