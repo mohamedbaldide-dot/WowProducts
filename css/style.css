@@ -598,3 +598,20 @@ body {
     margin-top: 5px;
     padding-top: 0;
 }
+/* ===== دعم 5 عناصر في الشبكة (للألعاب) ===== */
+.category-box .category-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+    margin-bottom: 12px;
+}
+
+/* لجعل الصف الأول 4 عناصر والصف الثاني عنصر واحد */
+.category-box .category-grid {
+    grid-auto-flow: row dense;
+}
+
+/* العنصر الخامس يأخذ عرض كامل */
+.category-item:last-child:nth-child(odd) {
+    grid-column: span 2;
+}
