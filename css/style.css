@@ -35,6 +35,7 @@ body {
     font-weight: bold;
 }
 
+/* شريط البحث مثل أمازون */
 .search-container {
     flex: 1;
     max-width: 800px;
@@ -113,9 +114,77 @@ body {
     background: #f3a847;
 }
 
+/* ===== اللغة ===== */
+.header-actions {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.language-selector {
+    position: relative;
+    cursor: pointer;
+}
+
+.lang-btn {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    background: transparent;
+    padding: 8px 12px;
+    border-radius: 8px;
+    transition: background 0.2s;
+}
+
+.lang-btn:hover {
+    background: rgba(255,255,255,0.1);
+}
+
+.flag-icon {
+    width: 20px;
+    height: 20px;
+    border-radius: 2px;
+}
+
+.lang-dropdown {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background: white;
+    min-width: 220px;
+    box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+    border-radius: 8px;
+    z-index: 1000;
+    overflow: hidden;
+}
+
+.lang-dropdown a {
+    display: block;
+    padding: 10px 15px;
+    color: #333;
+    text-decoration: none;
+    font-size: 14px;
+}
+
+.lang-dropdown a:hover {
+    background: #f0f0f0;
+}
+
+.lang-dropdown .lang-footer {
+    padding: 10px 15px;
+    border-top: 1px solid #eee;
+    font-size: 12px;
+    color: #666;
+    text-align: center;
+}
+
+.lang-dropdown.show {
+    display: block;
+}
+
 .header-actions i {
     font-size: 22px;
-    margin-left: 20px;
     cursor: pointer;
     transition: opacity 0.3s;
 }
@@ -261,7 +330,7 @@ body {
 }
 
 /* ========================================
-   CATEGORY BOXES - مسافات متساوية بين البطاقات والحافة
+   CATEGORY BOXES
    ======================================== */
 .categories {
     margin-top: -180px;
@@ -283,7 +352,6 @@ body {
     }
 }
 
-/* ===== شبكة البطاقات - المسافة بين البطاقات = 15px ===== */
 .categories-grid {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
@@ -306,7 +374,6 @@ body {
     }
 }
 
-/* ===== البطاقة ===== */
 .category-box {
     background: white;
     border-radius: 8px;
@@ -315,14 +382,12 @@ body {
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
 }
 
-/* ===== عنوان البطاقة ===== */
 .category-box h3 {
     font-size: 16px;
     margin-bottom: 12px;
     color: #111;
 }
 
-/* ===== شبكة الصور 2x2 داخل البطاقة ===== */
 .category-grid {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
@@ -330,7 +395,6 @@ body {
     margin-bottom: 12px;
 }
 
-/* ===== كل صورة ===== */
 .category-item {
     background: transparent;
     padding: 0;
@@ -343,7 +407,6 @@ body {
     transform: scale(1.02);
 }
 
-/* ===== الصورة ===== */
 .category-item img {
     width: 100%;
     aspect-ratio: 1.35 / 1;
@@ -353,7 +416,6 @@ body {
     display: block;
 }
 
-/* ===== النص تحت الصورة ===== */
 .category-item span {
     display: block;
     margin-top: 8px;
@@ -362,7 +424,6 @@ body {
     color: #555;
 }
 
-/* ===== رابط تسوق الآن ===== */
 .category-link {
     display: inline-block;
     color: #007185;
@@ -375,6 +436,39 @@ body {
 .category-link:hover {
     color: #c7511f;
     text-decoration: underline;
+}
+
+/* بطاقة الصورة الواحدة */
+.category-grid-single {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 5px;
+    padding: 0;
+}
+
+.category-item-single {
+    text-align: center;
+    cursor: pointer;
+    transition: transform 0.2s;
+    width: 100%;
+    padding: 0;
+    margin: 0;
+}
+
+.category-item-single:hover {
+    transform: scale(1.02);
+}
+
+.category-item-single img {
+    width: 100%;
+    aspect-ratio: 1 / 1.1;
+    height: auto;
+    object-fit: cover;
+    border-radius: 0;
+    display: block;
+    margin: 0;
+    padding: 0;
 }
 
 /* ========================================
@@ -548,226 +642,7 @@ body {
     background: #f7ca00;
 }
 
-/* ========================================
-   FOOTER
-   ======================================== */
-.footer {
-    background: #232f3e;
-    color: #ddd;
-    text-align: center;
-    padding: 25px;
-    font-size: 14px;
-    margin-top: 20px;
-}
-
-/* ===== بطاقة الصورة الواحدة (مثل الصنادل) - بدون مسافات فارغة ===== */
-.category-grid-single {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-bottom: 0;
-    padding: 0;
-}
-
-.category-item-single {
-    text-align: center;
-    cursor: pointer;
-    transition: transform 0.2s;
-    width: 100%;
-    padding: 0;
-    margin: 0;
-}
-
-.category-item-single:hover {
-    transform: scale(1.02);
-}
-
-.category-item-single img {
-    width: 100%;
-    aspect-ratio: 1 / 1.1;
-    height: auto;
-    object-fit: cover;
-    border-radius: 0;
-    display: block;
-    margin: 0;
-    padding: 0;
-}
-
-/* تقليل المسافة بين الصورة والرابط */
-.category-box .category-link {
-    margin-top: 5px;
-    padding-top: 0;
-}
-/* ===== دعم 5 عناصر في الشبكة (للألعاب) ===== */
-.category-box .category-grid {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 10px;
-    margin-bottom: 12px;
-}
-
-/* لجعل الصف الأول 4 عناصر والصف الثاني عنصر واحد */
-.category-box .category-grid {
-    grid-auto-flow: row dense;
-}
-
-/* العنصر الخامس يأخذ عرض كامل */
-.category-item:last-child:nth-child(odd) {
-    grid-column: span 2;
-}
-/* ========================================
-   أنماط إضافية للهيدر واللغة والبحث
-   ======================================== */
-
-/* شريط البحث مثل أمازون */
-.search-container {
-    flex: 1;
-    max-width: 800px;
-    display: flex;
-    margin: 0 20px;
-    height: 44px;
-}
-
-.search-dropdown {
-    position: relative;
-}
-
-.dropdown-btn {
-    background: #f3f3f3;
-    color: #555;
-    border: none;
-    padding: 0 15px;
-    height: 44px;
-    border-radius: 8px 0 0 8px;
-    cursor: pointer;
-    font-size: 14px;
-    display: flex;
-    align-items: center;
-    gap: 8px;
-}
-
-.dropdown-content {
-    display: none;
-    position: absolute;
-    top: 100%;
-    left: 0;
-    background: white;
-    min-width: 200px;
-    box-shadow: 0 8px 16px rgba(0,0,0,0.2);
-    border-radius: 8px;
-    z-index: 1000;
-}
-
-.dropdown-content a {
-    color: #333;
-    padding: 10px 15px;
-    text-decoration: none;
-    display: block;
-    font-size: 14px;
-}
-
-.dropdown-content a:hover {
-    background: #f0f0f0;
-}
-
-.dropdown-content.show {
-    display: block;
-}
-
-.search-input {
-    flex: 1;
-    padding: 0 15px;
-    border: none;
-    font-size: 15px;
-    height: 44px;
-    outline: none;
-}
-
-.search-btn {
-    background: #febd69;
-    border: none;
-    padding: 0 25px;
-    height: 44px;
-    border-radius: 0 8px 8px 0;
-    cursor: pointer;
-    color: #333;
-    font-size: 18px;
-}
-
-.search-btn:hover {
-    background: #f3a847;
-}
-
-/* ===== اللغة ===== */
-.header-actions {
-    display: flex;
-    align-items: center;
-    gap: 20px;
-}
-
-.language-selector {
-    position: relative;
-    cursor: pointer;
-}
-
-.lang-btn {
-    display: flex;
-    align-items: center;
-    gap: 5px;
-    background: transparent;
-    padding: 8px 12px;
-    border-radius: 8px;
-    transition: background 0.2s;
-}
-
-.lang-btn:hover {
-    background: rgba(255,255,255,0.1);
-}
-
-.flag-icon {
-    width: 20px;
-    height: 20px;
-    border-radius: 2px;
-}
-
-.lang-dropdown {
-    display: none;
-    position: absolute;
-    top: 100%;
-    left: 0;
-    background: white;
-    min-width: 200px;
-    box-shadow: 0 8px 16px rgba(0,0,0,0.2);
-    border-radius: 8px;
-    z-index: 1000;
-    overflow: hidden;
-}
-
-.lang-dropdown a {
-    display: block;
-    padding: 10px 15px;
-    color: #333;
-    text-decoration: none;
-    font-size: 14px;
-}
-
-.lang-dropdown a:hover {
-    background: #f0f0f0;
-}
-
-.lang-dropdown .lang-footer {
-    padding: 10px 15px;
-    border-top: 1px solid #eee;
-    font-size: 12px;
-    color: #666;
-    text-align: center;
-}
-
-.lang-dropdown.show {
-    display: block;
-}
-
-/* ===== صفحة فارغة ===== */
+/* صفحة فارغة */
 .empty-section {
     text-align: center;
     padding: 60px 20px;
@@ -792,11 +667,14 @@ body {
     color: #666;
 }
 
-/* ===== أزرار الأقسام في القائمة ===== */
-#dropdownContent a[data-section="cod"] {
-    color: #28a745;
-}
-
-#dropdownContent a[data-section="amazon"] {
-    color: #ff9900;
+/* ========================================
+   FOOTER
+   ======================================== */
+.footer {
+    background: #232f3e;
+    color: #ddd;
+    text-align: center;
+    padding: 25px;
+    font-size: 14px;
+    margin-top: 20px;
 }
