@@ -267,7 +267,7 @@ body {
 }
 
 /* ========================================
-   CATEGORY BOXES
+   CATEGORY BOXES - بطاقات مربعة الشكل
    ======================================== */
 .categories {
     margin-top: -180px;
@@ -291,15 +291,14 @@ body {
 .categories-grid {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    gap: 25px;
-    max-width: 1500px;
+    gap: 20px;
+    max-width: 1400px;
     margin: 0 auto;
 }
 
 @media (max-width: 992px) {
     .categories-grid {
         grid-template-columns: repeat(2, 1fr);
-        gap: 20px;
     }
 }
 
@@ -309,37 +308,42 @@ body {
     }
 }
 
-/* ===== البطاقة ===== */
+/* ===== البطاقة - شبه مربعة (العرض أكبر قليلاً من الارتفاع) ===== */
 .category-box {
     background: white;
     border-radius: 8px;
-    padding: 18px 15px;
+    padding: 15px;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
 }
 
-/* ===== عنوان البطاقة - أكبر ===== */
+/* ===== عنوان البطاقة ===== */
 .category-box h3 {
-    font-size: 20px;
-    margin-bottom: 15px;
+    font-size: 16px;
+    margin-bottom: 12px;
     color: #111;
 }
 
-/* ===== شبكة الصور - 2x2 ===== */
+/* ===== شبكة الصور 2x2 - تشغل معظم المساحة ===== */
 .category-grid {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    gap: 15px;
+    gap: 12px;
     margin-bottom: 12px;
 }
 
-/* ===== حاوية الصورة ===== */
+/* ===== كل صورة - شبه مربعة ===== */
 .category-item {
     text-align: center;
     cursor: pointer;
     transition: transform 0.2s;
     background: #f8f8f8;
-    border-radius: 10px;
-    padding: 15px 12px;
+    border-radius: 8px;
+    padding: 12px 8px;
+    aspect-ratio: 1 / 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
 .category-item:hover {
@@ -347,32 +351,31 @@ body {
     background: #eaeaea;
 }
 
-/* ===== الصورة - مستطيلة وأكبر ===== */
+/* ===== الصورة - كبيرة وواضحة ===== */
 .category-item img {
     width: 100%;
-    height: 140px;
-    object-fit: cover;
+    height: auto;
+    max-height: 100px;
+    object-fit: contain;
     display: block;
     margin: 0 auto;
-    border-radius: 8px;
 }
 
 .category-item span {
-    font-size: 14px;
-    font-weight: 500;
-    color: #333;
-    margin-top: 10px;
+    font-size: 12px;
+    color: #555;
+    margin-top: 8px;
     display: block;
 }
 
-/* ===== رابط تسوق الآن / شاهد المزيد ===== */
+/* ===== رابط تسوق الآن ===== */
 .category-link {
     display: inline-block;
     color: #007185;
     text-decoration: none;
-    font-size: 14px;
+    font-size: 13px;
     font-weight: bold;
-    margin-top: 12px;
+    margin-top: 8px;
 }
 
 .category-link:hover {
