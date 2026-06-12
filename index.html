@@ -12,22 +12,41 @@
     <!-- ==================== الهيدر ==================== -->
     <header class="header">
         <div class="logo">
-            <h1>متجرك</h1>
+            <h1 id="logo-text">متجرك</h1>
         </div>
+
+        <!-- ==================== شريط البحث مثل أمازون ==================== -->
         <div class="search-container">
             <div class="search-dropdown">
                 <button class="dropdown-btn" id="dropdownBtn">الكل <i class="fas fa-chevron-down"></i></button>
                 <div class="dropdown-content" id="dropdownContent">
-                    <a href="#">جميع الأقسام</a>
-                    <a href="#">الدفع عند الاستلام</a>
-                    <a href="#">أجهزة Amazon</a>
+                    <a href="#" data-section="all">جميع الأقسام</a>
+                    <a href="#" data-section="cod">الدفع عند الاستلام</a>
+                    <a href="#" data-section="amazon">أجهزة Amazon</a>
+                    <a href="#" data-section="electronics">إلكترونيات</a>
+                    <a href="#" data-section="home">منزل</a>
+                    <a href="#" data-section="fashion">موضة</a>
+                    <a href="#" data-section="sports">رياضة</a>
                 </div>
             </div>
-            <input type="text" class="search-input" placeholder="البحث في متجرك...">
-            <button class="search-btn"><i class="fas fa-search"></i></button>
+            <input type="text" class="search-input" id="searchInput" placeholder="البحث في متجرك...">
+            <button class="search-btn" id="searchBtn"><i class="fas fa-search"></i></button>
         </div>
+
+        <!-- ==================== اللغة والسلة ==================== -->
         <div class="header-actions">
-            <i class="fas fa-user"></i>
+            <div class="language-selector" id="languageSelector">
+                <div class="lang-btn">
+                    <img src="images/saudi-flag.webp" alt="SA" class="flag-icon">
+                    <span id="currentLang">AR</span>
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+                <div class="lang-dropdown" id="langDropdown">
+                    <a href="#" data-lang="ar">العربية - AR</a>
+                    <a href="#" data-lang="en">English - EN</a>
+                    <div class="lang-footer">أنت تتسوق على Amazon.sa</div>
+                </div>
+            </div>
             <i class="fas fa-shopping-cart"></i>
         </div>
     </header>
@@ -61,97 +80,16 @@
 
     <!-- ==================== CATEGORY BOXES ==================== -->
     <section class="categories">
-        <div class="categories-grid">
-            <!-- Box 1 - خصم حتى 30% - السماعات ومكبرات الصوت -->
-            <div class="category-box">
-                <h3>خصم حتى 30% - السماعات ومكبرات الصوت</h3>
-                <div class="category-grid">
-                    <div class="category-item" onclick="window.open('https://www.amazon.sa/s?k=earbuds&rh=n%3A16966390031&_encoding=UTF8&content-id=amzn1.sym.999365cc-deb4-4cfc-8dd1-a42acff201e7&pd_rd_r=61417dc4-b3f6-437a-928a-691098fefb71&pd_rd_w=qbqfL&pd_rd_wg=YjxqU&pf_rd_p=999365cc-deb4-4cfc-8dd1-a42acff201e7&pf_rd_r=5C2G6KMM2EMKE7VJG8HD&linkCode=ll2&tag=wowproduct074-21&linkId=b262b24382e60d47bd8e7992e653dcaa&ref_=as_li_ss_tl', '_blank')">
-                        <img src="images/categories/electronics1.webp" alt="سماعات الرأس">
-                        <span>سماعات الرأس</span>
-                    </div>
-                    <div class="category-item" onclick="window.open('https://www.amazon.sa/s?k=earbuds&rh=n%3A16966390031&_encoding=UTF8&content-id=amzn1.sym.999365cc-deb4-4cfc-8dd1-a42acff201e7&pd_rd_r=61417dc4-b3f6-437a-928a-691098fefb71&pd_rd_w=qbqfL&pd_rd_wg=YjxqU&pf_rd_p=999365cc-deb4-4cfc-8dd1-a42acff201e7&pf_rd_r=5C2G6KMM2EMKE7VJG8HD&linkCode=ll2&tag=wowproduct074-21&linkId=865c85e5ab635afd35c180a2ff12d87a&ref_=as_li_ss_tl', '_blank')">
-                        <img src="images/categories/electronics2.webp" alt="سماعات الأذن">
-                        <span>سماعات الأذن</span>
-                    </div>
-                    <div class="category-item" onclick="window.open('https://www.amazon.sa/s?i=electronics&rh=n%3A16966452031&s=popularity-rank&_encoding=UTF8&content-id=amzn1.sym.999365cc-deb4-4cfc-8dd1-a42acff201e7&pd_rd_r=61417dc4-b3f6-437a-928a-691098fefb71&pd_rd_w=qbqfL&pd_rd_wg=YjxqU&pf_rd_p=999365cc-deb4-4cfc-8dd1-a42acff201e7&pf_rd_r=5C2G6KMM2EMKE7VJG8HD&linkCode=ll2&tag=wowproduct074-21&linkId=c5d10cbed6477d2906d9e7bea7608586&ref_=as_li_ss_tl', '_blank')">
-                        <img src="images/categories/electronics3.webp" alt="مكبرات الصوت">
-                        <span>مكبرات الصوت</span>
-                    </div>
-                    <div class="category-item" onclick="window.open('https://www.amazon.sa/s?i=electronics&rh=n%3A16966642031&s=popularity-rank&_encoding=UTF8&content-id=amzn1.sym.999365cc-deb4-4cfc-8dd1-a42acff201e7&pd_rd_r=61417dc4-b3f6-437a-928a-691098fefb71&pd_rd_w=qbqfL&pd_rd_wg=YjxqU&pf_rd_p=999365cc-deb4-4cfc-8dd1-a42acff201e7&pf_rd_r=5C2G6KMM2EMKE7VJG8HD&linkCode=ll2&tag=wowproduct074-21&linkId=9334c57cfceef7ab74ad6f795ee7d9f9&ref_=as_li_ss_tl', '_blank')">
-                        <img src="images/categories/electronics4.webp" alt="ساوند بار">
-                        <span>ساوند بار</span>
-                    </div>
-                </div>
-                <a href="https://www.amazon.sa/s?i=electronics&rh=n%3A16966390031&s=popularity-rank&_encoding=UTF8&content-id=amzn1.sym.999365cc-deb4-4cfc-8dd1-a42acff201e7&pd_rd_r=61417dc4-b3f6-437a-928a-691098fefb71&pd_rd_w=qbqfL&pd_rd_wg=YjxqU&pf_rd_p=999365cc-deb4-4cfc-8dd1-a42acff201e7&pf_rd_r=5C2G6KMM2EMKE7VJG8HD&linkCode=ll2&tag=wowproduct074-21&linkId=38d48a2b1f0342b896fe994881346935&ref_=as_li_ss_tl" class="category-link" target="_blank">تسوق الآن</a>
-            </div>
-
-            <!-- Box 2 - الألعاب | خصم 10% - 40% (4 صور فقط) -->
-            <div class="category-box">
-                <h3>الألعاب | خصم 10% - 40%</h3>
-                <div class="category-grid">
-                    <div class="category-item" onclick="window.open('https://www.amazon.sa/b?_encoding=UTF8&node=16631543031&pd_rd_w=joik9&content-id=amzn1.sym.6802925c-e344-439c-8cec-4f95b527697d&pf_rd_p=6802925c-e344-439c-8cec-4f95b527697d&pf_rd_r=5C2G6KMM2EMKE7VJG8HD&pd_rd_wg=YjxqU&pd_rd_r=61417dc4-b3f6-437a-928a-691098fefb71&linkCode=ll2&tag=wowproduct074-21&linkId=60b70d504a16e0c4db2213000f3ca6ef&ref_=as_li_ss_tl', '_blank')">
-                        <img src="images/categories/games1.webp" alt="السكوترات">
-                        <span>السكوترات</span>
-                    </div>
-                    <div class="category-item" onclick="window.open('https://www.amazon.sa/b?_encoding=UTF8&node=16631425031&pd_rd_w=joik9&content-id=amzn1.sym.6802925c-e344-439c-8cec-4f95b527697d&pf_rd_p=6802925c-e344-439c-8cec-4f95b527697d&pf_rd_r=5C2G6KMM2EMKE7VJG8HD&pd_rd_wg=YjxqU&pd_rd_r=61417dc4-b3f6-437a-928a-691098fefb71&linkCode=ll2&tag=wowproduct074-21&linkId=ff27c9be69a9c8ae2a9ec7a7374a5347&ref_=as_li_ss_tl', '_blank')">
-                        <img src="images/categories/games2.webp" alt="الألعاب الخارجية">
-                        <span>الألعاب الخارجية</span>
-                    </div>
-                    <div class="category-item" onclick="window.open('https://www.amazon.sa/b?_encoding=UTF8&node=16631407031&pd_rd_w=joik9&content-id=amzn1.sym.6802925c-e344-439c-8cec-4f95b527697d&pf_rd_p=6802925c-e344-439c-8cec-4f95b527697d&pf_rd_r=5C2G6KMM2EMKE7VJG8HD&pd_rd_wg=YjxqU&pd_rd_r=61417dc4-b3f6-437a-928a-691098fefb71&linkCode=ll2&tag=wowproduct074-21&linkId=f054970ff1e01fb0b6d5ba1823cd9e09&ref_=as_li_ss_tl', '_blank')">
-                        <img src="images/categories/games3.webp" alt="ألعاب البناء والتركيب">
-                        <span>ألعاب البناء والتركيب</span>
-                    </div>
-                    <div class="category-item" onclick="window.open('https://www.amazon.sa/b?_encoding=UTF8&node=16631408031&pd_rd_w=joik9&content-id=amzn1.sym.6802925c-e344-439c-8cec-4f95b527697d&pf_rd_p=6802925c-e344-439c-8cec-4f95b527697d&pf_rd_r=5C2G6KMM2EMKE7VJG8HD&pd_rd_wg=YjxqU&pd_rd_r=61417dc4-b3f6-437a-928a-691098fefb71&linkCode=ll2&tag=wowproduct074-21&linkId=d44c80228a8adbf9d0635a9bdc797099&ref_=as_li_ss_tl', '_blank')">
-                        <img src="images/categories/games4.webp" alt="الدمى واكسسواراتها">
-                        <span>الدمى واكسسواراتها</span>
-                    </div>
-                </div>
-                <a href="https://www.amazon.sa/b?_encoding=UTF8&node=12463618031&pd_rd_w=joik9&content-id=amzn1.sym.6802925c-e344-439c-8cec-4f95b527697d&pf_rd_p=6802925c-e344-439c-8cec-4f95b527697d&pf_rd_r=5C2G6KMM2EMKE7VJG8HD&pd_rd_wg=YjxqU&pd_rd_r=61417dc4-b3f6-437a-928a-691098fefb71&linkCode=ll2&tag=wowproduct074-21&linkId=8054c492df42d7e142e59c68e50bab3b&ref_=as_li_ss_tl" class="category-link" target="_blank">تسوق الآن</a>
-            </div>
-
-            <!-- Box 3 - الأثاث المنزلي | خصم 10% - 40% -->
-            <div class="category-box">
-                <h3>الأثاث المنزلي | خصم 10% - 40%</h3>
-                <div class="category-grid">
-                    <div class="category-item" onclick="window.open('https://www.amazon.sa/b?_encoding=UTF8&node=16856128031&pd_rd_w=OZYfN&content-id=amzn1.sym.37f930c1-9ae2-41c3-9ade-25a4e3878b1e&pf_rd_p=37f930c1-9ae2-41c3-9ade-25a4e3878b1e&pf_rd_r=OKFAJYG95QYH4TFONR7T&pd_rd_wg=YjxqU&pd_rd_r=61417dc4-b3f6-437a-928a-691098fefb71&linkCode=ll2&tag=wowproduct074-21&linkId=f01eaf1c2904ada927647780af381fa9&ref_=as_li_ss_tl', '_blank')">
-                        <img src="images/categories/home1.webp" alt="الطاولات">
-                        <span>الطاولات</span>
-                    </div>
-                    <div class="category-item" onclick="window.open('https://www.amazon.sa/b?_encoding=UTF8&node=16856128031&pd_rd_w=OZYfN&content-id=amzn1.sym.37f930c1-9ae2-41c3-9ade-25a4e3878b1e&pf_rd_p=37f930c1-9ae2-41c3-9ade-25a4e3878b1e&pf_rd_r=OKFAJYG95QYH4TFONR7T&pd_rd_wg=YjxqU&pd_rd_r=61417dc4-b3f6-437a-928a-691098fefb71&linkCode=ll2&tag=wowproduct074-21&linkId=f01eaf1c2904ada927647780af381fa9&ref_=as_li_ss_tl', '_blank')">
-                        <img src="images/categories/home2.webp" alt="الأرائك">
-                        <span>الأرائك</span>
-                    </div>
-                    <div class="category-item" onclick="window.open('https://www.amazon.sa/b?_encoding=UTF8&node=16856128031&pd_rd_w=OZYfN&content-id=amzn1.sym.37f930c1-9ae2-41c3-9ade-25a4e3878b1e&pf_rd_p=37f930c1-9ae2-41c3-9ade-25a4e3878b1e&pf_rd_r=OKFAJYG95QYH4TFONR7T&pd_rd_wg=YjxqU&pd_rd_r=61417dc4-b3f6-437a-928a-691098fefb71&linkCode=ll2&tag=wowproduct074-21&linkId=f01eaf1c2904ada927647780af381fa9&ref_=as_li_ss_tl', '_blank')">
-                        <img src="images/categories/home3.webp" alt="كراسي الألعاب">
-                        <span>كراسي الألعاب</span>
-                    </div>
-                    <div class="category-item" onclick="window.open('https://www.amazon.sa/b?_encoding=UTF8&node=16856128031&pd_rd_w=OZYfN&content-id=amzn1.sym.37f930c1-9ae2-41c3-9ade-25a4e3878b1e&pf_rd_p=37f930c1-9ae2-41c3-9ade-25a4e3878b1e&pf_rd_r=OKFAJYG95QYH4TFONR7T&pd_rd_wg=YjxqU&pd_rd_r=61417dc4-b3f6-437a-928a-691098fefb71&linkCode=ll2&tag=wowproduct074-21&linkId=f01eaf1c2904ada927647780af381fa9&ref_=as_li_ss_tl', '_blank')">
-                        <img src="images/categories/home4.webp" alt="الخزائن">
-                        <span>الخزائن</span>
-                    </div>
-                </div>
-                <a href="https://www.amazon.sa/b?_encoding=UTF8&node=16856128031&pd_rd_w=OZYfN&content-id=amzn1.sym.37f930c1-9ae2-41c3-9ade-25a4e3878b1e&pf_rd_p=37f930c1-9ae2-41c3-9ade-25a4e3878b1e&pf_rd_r=OKFAJYG95QYH4TFONR7T&pd_rd_wg=YjxqU&pd_rd_r=61417dc4-b3f6-437a-928a-691098fefb71&linkCode=ll2&tag=wowproduct074-21&linkId=f01eaf1c2904ada927647780af381fa9&ref_=as_li_ss_tl" class="category-link" target="_blank">شاهد المزيد</a>
-            </div>
-
-            <!-- Box 4 - الصنادل النسائية | خصم حتى 60% -->
-            <div class="category-box">
-                <h3>الصنادل النسائية | خصم حتى 60%</h3>
-                <div class="category-grid-single">
-                    <div class="category-item-single" onclick="window.open('https://www.amazon.sa/s?i=fashion&bbn=16667332031&rh=n%3A12463219031%2Cn%3A16667017031%2Cn%3A16667062031%2Cn%3A16667332031&s=date-desc-rank&_encoding=UTF8&content-id=amzn1.sym.076ce966-023d-4ec9-abe1-027b945cc09c&pd_rd_r=61417dc4-b3f6-437a-928a-691098fefb71&pd_rd_w=Vbrgp&pd_rd_wg=YjxqU&pf_rd_p=076ce966-023d-4ec9-abe1-027b945cc09c&pf_rd_r=5C2G6KMM2EMKE7VJG8HD&linkCode=ll2&tag=wowproduct074-21&linkId=bb444d2430e6b5cb1c9f9d043f2ab8d4&ref_=as_li_ss_tl', '_blank')">
-                        <img src="images/categories/sandals.webp" alt="الصنادل النسائية">
-                    </div>
-                </div>
-                <a href="https://www.amazon.sa/s?i=fashion&bbn=16667332031&rh=n%3A12463219031%2Cn%3A16667017031%2Cn%3A16667062031%2Cn%3A16667332031&s=date-desc-rank&_encoding=UTF8&content-id=amzn1.sym.076ce966-023d-4ec9-abe1-027b945cc09c&pd_rd_r=61417dc4-b3f6-437a-928a-691098fefb71&pd_rd_w=Vbrgp&pd_rd_wg=YjxqU&pf_rd_p=076ce966-023d-4ec9-abe1-027b945cc09c&pf_rd_r=5C2G6KMM2EMKE7VJG8HD&linkCode=ll2&tag=wowproduct074-21&linkId=bb444d2430e6b5cb1c9f9d043f2ab8d4&ref_=as_li_ss_tl" class="category-link" target="_blank">شاهد المزيد</a>
-            </div>
+        <div class="categories-grid" id="categoriesGrid">
+            <!-- البطاقات تظهر هنا عبر JavaScript -->
         </div>
     </section>
 
-    <!-- ==================== المنتجات المميزة ==================== -->
-    <section class="products-section">
+    <!-- ==================== PRODUCTS SECTION ==================== -->
+    <section class="products-section" id="productsSection">
         <div class="container">
             <div class="section-header">
-                <h2>منتجات مميزة</h2>
+                <h2 id="products-title">منتجات مميزة</h2>
             </div>
             <div class="products-grid" id="productsGrid"></div>
         </div>
@@ -159,11 +97,12 @@
 
     <footer class="footer">
         <div class="container">
-            <p>&copy; 2025 متجرك. جميع الحقوق محفوظة</p>
+            <p id="footer-text">&copy; 2025 متجرك. جميع الحقوق محفوظة</p>
         </div>
     </footer>
 
     <script src="js/data.js"></script>
+    <script src="js/translations.js"></script>
     <script src="js/slider.js"></script>
     <script src="js/products.js"></script>
     <script src="js/search.js"></script>
