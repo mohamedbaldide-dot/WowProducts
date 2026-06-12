@@ -19,7 +19,7 @@ body {
 .header {
     background: #222f3e;
     color: white;
-    padding: 8px 16px;
+    padding: 6px 16px;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -35,40 +35,164 @@ body {
     white-space: nowrap;
 }
 
-/* ===== شريط البحث - أضيق ومناسب ===== */
+/* ===== شريط البحث - مثل أمازون ===== */
 .search-container {
     flex: 1;
-    max-width: 700px;
+    max-width: 850px;
     display: flex;
     margin: 0 8px;
-    height: 38px;
+    height: 36px;
 }
 
-/* قائمة الكل - ملتصقة */
+/* قائمة الكل - متصلة بخانة البحث */
 .search-dropdown {
     position: relative;
 }
 
 .dropdown-btn {
-    background: #f3f3f3;
-    color: #555;
+    background: #e6e6e6;
+    color: #333;
     border: none;
     padding: 0 10px;
-    height: 38px;
-    border-radius: 6px 0 0 6px;
+    height: 36px;
+    border-radius: 4px 0 0 4px;
     cursor: pointer;
     font-size: 12px;
     display: flex;
     align-items: center;
     gap: 4px;
     white-space: nowrap;
+    font-weight: 500;
 }
 
 .dropdown-btn i {
-    font-size: 9px;
+    font-size: 8px;
+    color: #666;
 }
 
-/* القائمة المنسدلة */
+/* حقل البحث */
+.search-input {
+    flex: 1;
+    padding: 0 10px;
+    border: none;
+    font-size: 13px;
+    height: 36px;
+    outline: none;
+    background: white;
+}
+
+/* زر البحث - متصل مباشرة */
+.search-btn {
+    background: #febd69;
+    border: none;
+    padding: 0 14px;
+    height: 36px;
+    border-radius: 0 4px 4px 0;
+    cursor: pointer;
+    color: #333;
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.search-btn:hover {
+    background: #f3a847;
+}
+
+/* ===== قسم اللغة - صغير وملاصق ===== */
+.header-actions-left {
+    display: flex;
+    align-items: center;
+    margin-left: 5px;
+}
+
+.language-selector {
+    position: relative;
+    cursor: pointer;
+}
+
+.lang-btn {
+    display: flex;
+    align-items: center;
+    gap: 3px;
+    background: transparent;
+    padding: 4px 6px;
+    border-radius: 3px;
+    transition: background 0.2s;
+    font-size: 12px;
+}
+
+.lang-btn:hover {
+    background: rgba(255,255,255,0.08);
+}
+
+.flag-icon {
+    width: 14px;
+    height: 14px;
+    border-radius: 1px;
+}
+
+.lang-dropdown {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background: white;
+    min-width: 170px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    border-radius: 4px;
+    z-index: 1000;
+    overflow: hidden;
+}
+
+.lang-dropdown a {
+    display: block;
+    padding: 7px 12px;
+    color: #333;
+    text-decoration: none;
+    font-size: 12px;
+}
+
+.lang-dropdown a:hover {
+    background: #f0f0f0;
+}
+
+.lang-dropdown .lang-footer {
+    padding: 7px 12px;
+    border-top: 1px solid #eee;
+    font-size: 10px;
+    color: #666;
+    text-align: center;
+}
+
+.lang-dropdown.show {
+    display: block;
+}
+
+/* السلة */
+.header-actions {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.header-actions i {
+    font-size: 18px;
+    cursor: pointer;
+    transition: opacity 0.3s;
+}
+
+.header-actions i:hover {
+    opacity: 0.8;
+}
+
+.header-actions .fa-shopping-cart {
+    font-size: 18px;
+    margin-left: 0;
+}
+
+/* القائمة المنسدلة للأقسام */
 .dropdown-content {
     display: none;
     position: absolute;
@@ -76,8 +200,8 @@ body {
     left: 0;
     background: white;
     min-width: 200px;
-    box-shadow: 0 8px 16px rgba(0,0,0,0.2);
-    border-radius: 6px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    border-radius: 4px;
     z-index: 1000;
     overflow: hidden;
 }
@@ -98,121 +222,6 @@ body {
     display: block;
 }
 
-/* حقل البحث */
-.search-input {
-    flex: 1;
-    padding: 0 10px;
-    border: none;
-    font-size: 13px;
-    height: 38px;
-    outline: none;
-    background: white;
-}
-
-/* زر البحث - متصل مباشرة */
-.search-btn {
-    background: #febd69;
-    border: none;
-    padding: 0 16px;
-    height: 38px;
-    border-radius: 0 6px 6px 0;
-    cursor: pointer;
-    color: #333;
-    font-size: 14px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.search-btn:hover {
-    background: #f3a847;
-}
-
-/* ===== قسم اللغة ===== */
-.header-actions {
-    display: flex;
-    align-items: center;
-    gap: 6px;
-    margin-right: 5px;
-}
-
-.language-selector {
-    position: relative;
-    cursor: pointer;
-}
-
-.lang-btn {
-    display: flex;
-    align-items: center;
-    gap: 4px;
-    background: transparent;
-    padding: 5px 8px;
-    border-radius: 4px;
-    transition: background 0.2s;
-}
-
-.lang-btn:hover {
-    background: rgba(255,255,255,0.1);
-}
-
-.flag-icon {
-    width: 16px;
-    height: 16px;
-    border-radius: 2px;
-}
-
-.lang-dropdown {
-    display: none;
-    position: absolute;
-    top: 100%;
-    left: 0;
-    background: white;
-    min-width: 180px;
-    box-shadow: 0 8px 16px rgba(0,0,0,0.2);
-    border-radius: 6px;
-    z-index: 1000;
-    overflow: hidden;
-}
-
-.lang-dropdown a {
-    display: block;
-    padding: 8px 12px;
-    color: #333;
-    text-decoration: none;
-    font-size: 12px;
-}
-
-.lang-dropdown a:hover {
-    background: #f0f0f0;
-}
-
-.lang-dropdown .lang-footer {
-    padding: 8px 12px;
-    border-top: 1px solid #eee;
-    font-size: 10px;
-    color: #666;
-    text-align: center;
-}
-
-.lang-dropdown.show {
-    display: block;
-}
-
-.header-actions i {
-    font-size: 18px;
-    cursor: pointer;
-    transition: opacity 0.3s;
-}
-
-.header-actions i:hover {
-    opacity: 0.8;
-}
-
-/* السلة */
-.header-actions .fa-shopping-cart {
-    font-size: 18px;
-    margin-left: 0;
-}
 /* ========================================
    HERO SLIDER
    ======================================== */
