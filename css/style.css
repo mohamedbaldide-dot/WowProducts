@@ -14,36 +14,37 @@ body {
 }
 
 /* ========================================
-   HEADER مع شريط البحث
+   HEADER - مثل أمازون بالضبط
    ======================================== */
 .header {
     background: #222f3e;
     color: white;
-    padding: 12px 30px;
+    padding: 8px 20px;
     display: flex;
     justify-content: space-between;
     align-items: center;
     position: sticky;
     top: 0;
     z-index: 100;
-    flex-wrap: wrap;
-    gap: 15px;
 }
 
 .logo h1 {
     font-size: 24px;
     font-weight: bold;
+    margin-left: 20px;
+    white-space: nowrap;
 }
 
-/* شريط البحث مثل أمازون */
+/* ===== شريط البحث - أعرض وأقرب مثل أمازون ===== */
 .search-container {
     flex: 1;
-    max-width: 800px;
+    max-width: 900px;
     display: flex;
-    margin: 0 20px;
-    height: 44px;
+    margin: 0 10px;
+    height: 40px;
 }
 
+/* قائمة الكل - ملتصقة بخانة البحث */
 .search-dropdown {
     position: relative;
 }
@@ -52,101 +53,23 @@ body {
     background: #f3f3f3;
     color: #555;
     border: none;
-    padding: 0 15px;
-    height: 44px;
+    padding: 0 12px;
+    height: 40px;
     border-radius: 8px 0 0 8px;
     cursor: pointer;
-    font-size: 14px;
+    font-size: 13px;
     display: flex;
     align-items: center;
-    gap: 8px;
+    gap: 6px;
+    white-space: nowrap;
 }
 
+.dropdown-btn i {
+    font-size: 10px;
+}
+
+/* القائمة المنسدلة */
 .dropdown-content {
-    display: none;
-    position: absolute;
-    top: 100%;
-    left: 0;
-    background: white;
-    min-width: 200px;
-    box-shadow: 0 8px 16px rgba(0,0,0,0.2);
-    border-radius: 8px;
-    z-index: 1000;
-}
-
-.dropdown-content a {
-    color: #333;
-    padding: 10px 15px;
-    text-decoration: none;
-    display: block;
-    font-size: 14px;
-}
-
-.dropdown-content a:hover {
-    background: #f0f0f0;
-}
-
-.dropdown-content.show {
-    display: block;
-}
-
-.search-input {
-    flex: 1;
-    padding: 0 15px;
-    border: none;
-    font-size: 15px;
-    height: 44px;
-    outline: none;
-}
-
-.search-btn {
-    background: #febd69;
-    border: none;
-    padding: 0 25px;
-    height: 44px;
-    border-radius: 0 8px 8px 0;
-    cursor: pointer;
-    color: #333;
-    font-size: 18px;
-}
-
-.search-btn:hover {
-    background: #f3a847;
-}
-
-/* ===== اللغة ===== */
-.header-actions {
-    display: flex;
-    align-items: center;
-    gap: 20px;
-}
-
-.language-selector {
-    position: relative;
-    cursor: pointer;
-}
-
-.lang-btn {
-    display: flex;
-    align-items: center;
-    gap: 5px;
-    background: transparent;
-    padding: 8px 12px;
-    border-radius: 8px;
-    transition: background 0.2s;
-}
-
-.lang-btn:hover {
-    background: rgba(255,255,255,0.1);
-}
-
-.flag-icon {
-    width: 20px;
-    height: 20px;
-    border-radius: 2px;
-}
-
-.lang-dropdown {
     display: none;
     position: absolute;
     top: 100%;
@@ -159,12 +82,104 @@ body {
     overflow: hidden;
 }
 
+.dropdown-content a {
+    color: #333;
+    padding: 10px 15px;
+    text-decoration: none;
+    display: block;
+    font-size: 13px;
+}
+
+.dropdown-content a:hover {
+    background: #f0f0f0;
+}
+
+.dropdown-content.show {
+    display: block;
+}
+
+/* حقل البحث */
+.search-input {
+    flex: 1;
+    padding: 0 12px;
+    border: none;
+    font-size: 14px;
+    height: 40px;
+    outline: none;
+    background: white;
+}
+
+/* زر البحث - متصل مباشرة */
+.search-btn {
+    background: #febd69;
+    border: none;
+    padding: 0 20px;
+    height: 40px;
+    border-radius: 0 8px 8px 0;
+    cursor: pointer;
+    color: #333;
+    font-size: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.search-btn:hover {
+    background: #f3a847;
+}
+
+/* ===== قسم اللغة - ملاصق لخانة البحث ===== */
+.header-actions {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-right: 5px;
+}
+
+.language-selector {
+    position: relative;
+    cursor: pointer;
+}
+
+.lang-btn {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    background: transparent;
+    padding: 6px 10px;
+    border-radius: 6px;
+    transition: background 0.2s;
+}
+
+.lang-btn:hover {
+    background: rgba(255,255,255,0.1);
+}
+
+.flag-icon {
+    width: 18px;
+    height: 18px;
+    border-radius: 2px;
+}
+
+.lang-dropdown {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background: white;
+    min-width: 200px;
+    box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+    border-radius: 8px;
+    z-index: 1000;
+    overflow: hidden;
+}
+
 .lang-dropdown a {
     display: block;
     padding: 10px 15px;
     color: #333;
     text-decoration: none;
-    font-size: 14px;
+    font-size: 13px;
 }
 
 .lang-dropdown a:hover {
@@ -174,7 +189,7 @@ body {
 .lang-dropdown .lang-footer {
     padding: 10px 15px;
     border-top: 1px solid #eee;
-    font-size: 12px;
+    font-size: 11px;
     color: #666;
     text-align: center;
 }
@@ -184,13 +199,19 @@ body {
 }
 
 .header-actions i {
-    font-size: 22px;
+    font-size: 20px;
     cursor: pointer;
     transition: opacity 0.3s;
 }
 
 .header-actions i:hover {
     opacity: 0.8;
+}
+
+/* السلة */
+.header-actions .fa-shopping-cart {
+    font-size: 20px;
+    margin-left: 0;
 }
 
 /* ========================================
