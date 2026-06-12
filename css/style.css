@@ -35,16 +35,16 @@ body {
     white-space: nowrap;
 }
 
-/* ===== شريط البحث - مثل أمازون ===== */
+/* ===== شريط البحث - مستطيل واحد بدون حواف دائرية ===== */
 .search-container {
     flex: 1;
-    max-width: 850px;
+    max-width: 650px;
     display: flex;
     margin: 0 8px;
-    height: 36px;
+    height: 32px;
 }
 
-/* قائمة الكل - متصلة بخانة البحث */
+/* قائمة الكل - بدون زوايا دائرية */
 .search-dropdown {
     position: relative;
 }
@@ -53,11 +53,11 @@ body {
     background: #e6e6e6;
     color: #333;
     border: none;
-    padding: 0 10px;
-    height: 36px;
-    border-radius: 4px 0 0 4px;
+    padding: 0 8px;
+    height: 32px;
+    border-radius: 0;
     cursor: pointer;
-    font-size: 12px;
+    font-size: 11px;
     display: flex;
     align-items: center;
     gap: 4px;
@@ -70,27 +70,27 @@ body {
     color: #666;
 }
 
-/* حقل البحث */
+/* حقل البحث - بدون زوايا دائرية */
 .search-input {
     flex: 1;
-    padding: 0 10px;
+    padding: 0 8px;
     border: none;
-    font-size: 13px;
-    height: 36px;
+    font-size: 12px;
+    height: 32px;
     outline: none;
     background: white;
 }
 
-/* زر البحث - متصل مباشرة */
+/* زر البحث - بدون زوايا دائرية */
 .search-btn {
     background: #febd69;
     border: none;
-    padding: 0 14px;
-    height: 36px;
-    border-radius: 0 4px 4px 0;
+    padding: 0 12px;
+    height: 32px;
+    border-radius: 0;
     cursor: pointer;
     color: #333;
-    font-size: 14px;
+    font-size: 13px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -100,11 +100,12 @@ body {
     background: #f3a847;
 }
 
-/* ===== قسم اللغة - صغير وملاصق ===== */
-.header-actions-left {
+/* ===== قسم اللغة ===== */
+.header-actions {
     display: flex;
     align-items: center;
-    margin-left: 5px;
+    gap: 6px;
+    margin-right: 5px;
 }
 
 .language-selector {
@@ -117,10 +118,10 @@ body {
     align-items: center;
     gap: 3px;
     background: transparent;
-    padding: 4px 6px;
-    border-radius: 3px;
+    padding: 3px 5px;
+    border-radius: 2px;
     transition: background 0.2s;
-    font-size: 12px;
+    font-size: 11px;
 }
 
 .lang-btn:hover {
@@ -128,8 +129,8 @@ body {
 }
 
 .flag-icon {
-    width: 14px;
-    height: 14px;
+    width: 12px;
+    height: 12px;
     border-radius: 1px;
 }
 
@@ -139,7 +140,7 @@ body {
     top: 100%;
     left: 0;
     background: white;
-    min-width: 170px;
+    min-width: 160px;
     box-shadow: 0 4px 8px rgba(0,0,0,0.2);
     border-radius: 4px;
     z-index: 1000;
@@ -148,10 +149,10 @@ body {
 
 .lang-dropdown a {
     display: block;
-    padding: 7px 12px;
+    padding: 6px 10px;
     color: #333;
     text-decoration: none;
-    font-size: 12px;
+    font-size: 11px;
 }
 
 .lang-dropdown a:hover {
@@ -159,9 +160,9 @@ body {
 }
 
 .lang-dropdown .lang-footer {
-    padding: 7px 12px;
+    padding: 6px 10px;
     border-top: 1px solid #eee;
-    font-size: 10px;
+    font-size: 9px;
     color: #666;
     text-align: center;
 }
@@ -170,15 +171,8 @@ body {
     display: block;
 }
 
-/* السلة */
-.header-actions {
-    display: flex;
-    align-items: center;
-    gap: 4px;
-}
-
 .header-actions i {
-    font-size: 18px;
+    font-size: 16px;
     cursor: pointer;
     transition: opacity 0.3s;
 }
@@ -188,7 +182,7 @@ body {
 }
 
 .header-actions .fa-shopping-cart {
-    font-size: 18px;
+    font-size: 16px;
     margin-left: 0;
 }
 
