@@ -267,7 +267,7 @@ body {
 }
 
 /* ========================================
-   CATEGORY BOXES - بطاقات أعرض وأقصر مع صور أكبر
+   CATEGORY BOXES
    ======================================== */
 .categories {
     margin-top: -180px;
@@ -309,27 +309,27 @@ body {
     }
 }
 
-/* ===== البطاقة - أعرض وأقصر ===== */
+/* ===== البطاقة ===== */
 .category-box {
     background: white;
     border-radius: 8px;
-    padding: 15px 12px;
+    padding: 18px 15px;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
 }
 
-/* ===== الخط الرئيسي أكبر ===== */
+/* ===== عنوان البطاقة - أكبر ===== */
 .category-box h3 {
-    font-size: 18px;
-    margin-bottom: 12px;
+    font-size: 20px;
+    margin-bottom: 15px;
     color: #111;
 }
 
-/* ===== شبكة الصور ===== */
+/* ===== شبكة الصور - 2x2 ===== */
 .category-grid {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    gap: 12px;
-    margin-bottom: 10px;
+    gap: 15px;
+    margin-bottom: 12px;
 }
 
 /* ===== حاوية الصورة ===== */
@@ -338,8 +338,8 @@ body {
     cursor: pointer;
     transition: transform 0.2s;
     background: #f8f8f8;
-    border-radius: 8px;
-    padding: 15px 10px;
+    border-radius: 10px;
+    padding: 15px 12px;
 }
 
 .category-item:hover {
@@ -347,19 +347,20 @@ body {
     background: #eaeaea;
 }
 
-/* ===== الصورة - أكبر بكثير ===== */
+/* ===== الصورة - مستطيلة وأكبر ===== */
 .category-item img {
     width: 100%;
-    max-width: 160px;
-    height: 160px;
-    object-fit: contain;
+    height: 140px;
+    object-fit: cover;
     display: block;
     margin: 0 auto;
+    border-radius: 8px;
 }
 
 .category-item span {
-    font-size: 13px;
-    color: #555;
+    font-size: 14px;
+    font-weight: 500;
+    color: #333;
     margin-top: 10px;
     display: block;
 }
@@ -369,7 +370,7 @@ body {
     display: inline-block;
     color: #007185;
     text-decoration: none;
-    font-size: 13px;
+    font-size: 14px;
     font-weight: bold;
     margin-top: 12px;
 }
