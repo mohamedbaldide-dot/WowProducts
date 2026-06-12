@@ -321,44 +321,49 @@ body {
     color: #111;
 }
 
-/* ===== تعديل شبكة الصور - تقليل المسافات ===== */
+/* ===== شبكة الصور - 2x2 ===== */
 .category-grid {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    gap: 8px;
+    gap: 12px;
     margin-bottom: 15px;
 }
 
-/* ===== تعديل حاوية الصورة - إزالة المسافات الفارغة ===== */
+/* ===== حاوية الصورة - كل الصور بنفس الحجم ===== */
 .category-item {
     text-align: center;
     cursor: pointer;
     transition: transform 0.2s;
-    background: #f8f8f8;
+    background: #f5f5f5;
     border-radius: 8px;
-    padding: 5px;
+    padding: 15px 10px;
+    min-height: 160px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
 .category-item:hover {
     transform: scale(1.02);
+    background: #f0f0f0;
 }
 
-/* ===== تعديل الصورة - جعلها أكبر وتقليل المسافات ===== */
+/* ===== الصورة - حجم ثابت ومتساوي للجميع ===== */
 .category-item img {
     width: 100%;
-    aspect-ratio: 1 / 1;
+    max-width: 120px;
+    height: 120px;
     object-fit: contain;
-    background: transparent;
-    border-radius: 6px;
-    margin-bottom: 4px;
-    padding: 0;
+    display: block;
+    margin: 0 auto;
 }
 
 .category-item span {
     font-size: 13px;
     color: #555;
+    margin-top: 8px;
     display: block;
-    margin-top: 2px;
 }
 
 .category-link {
