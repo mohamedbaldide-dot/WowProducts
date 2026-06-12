@@ -19,7 +19,7 @@ body {
 .header {
     background: #222f3e;
     color: white;
-    padding: 8px 20px;
+    padding: 8px 16px;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -29,22 +29,22 @@ body {
 }
 
 .logo h1 {
-    font-size: 24px;
+    font-size: 22px;
     font-weight: bold;
-    margin-left: 20px;
+    margin-left: 15px;
     white-space: nowrap;
 }
 
-/* ===== شريط البحث - أعرض وأقرب مثل أمازون ===== */
+/* ===== شريط البحث - أضيق ومناسب ===== */
 .search-container {
     flex: 1;
-    max-width: 900px;
+    max-width: 700px;
     display: flex;
-    margin: 0 10px;
-    height: 40px;
+    margin: 0 8px;
+    height: 38px;
 }
 
-/* قائمة الكل - ملتصقة بخانة البحث */
+/* قائمة الكل - ملتصقة */
 .search-dropdown {
     position: relative;
 }
@@ -53,19 +53,19 @@ body {
     background: #f3f3f3;
     color: #555;
     border: none;
-    padding: 0 12px;
-    height: 40px;
-    border-radius: 8px 0 0 8px;
+    padding: 0 10px;
+    height: 38px;
+    border-radius: 6px 0 0 6px;
     cursor: pointer;
-    font-size: 13px;
+    font-size: 12px;
     display: flex;
     align-items: center;
-    gap: 6px;
+    gap: 4px;
     white-space: nowrap;
 }
 
 .dropdown-btn i {
-    font-size: 10px;
+    font-size: 9px;
 }
 
 /* القائمة المنسدلة */
@@ -75,19 +75,19 @@ body {
     top: 100%;
     left: 0;
     background: white;
-    min-width: 220px;
+    min-width: 200px;
     box-shadow: 0 8px 16px rgba(0,0,0,0.2);
-    border-radius: 8px;
+    border-radius: 6px;
     z-index: 1000;
     overflow: hidden;
 }
 
 .dropdown-content a {
     color: #333;
-    padding: 10px 15px;
+    padding: 8px 12px;
     text-decoration: none;
     display: block;
-    font-size: 13px;
+    font-size: 12px;
 }
 
 .dropdown-content a:hover {
@@ -101,10 +101,10 @@ body {
 /* حقل البحث */
 .search-input {
     flex: 1;
-    padding: 0 12px;
+    padding: 0 10px;
     border: none;
-    font-size: 14px;
-    height: 40px;
+    font-size: 13px;
+    height: 38px;
     outline: none;
     background: white;
 }
@@ -113,12 +113,12 @@ body {
 .search-btn {
     background: #febd69;
     border: none;
-    padding: 0 20px;
-    height: 40px;
-    border-radius: 0 8px 8px 0;
+    padding: 0 16px;
+    height: 38px;
+    border-radius: 0 6px 6px 0;
     cursor: pointer;
     color: #333;
-    font-size: 16px;
+    font-size: 14px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -128,11 +128,11 @@ body {
     background: #f3a847;
 }
 
-/* ===== قسم اللغة - ملاصق لخانة البحث ===== */
+/* ===== قسم اللغة ===== */
 .header-actions {
     display: flex;
     align-items: center;
-    gap: 8px;
+    gap: 6px;
     margin-right: 5px;
 }
 
@@ -144,10 +144,10 @@ body {
 .lang-btn {
     display: flex;
     align-items: center;
-    gap: 5px;
+    gap: 4px;
     background: transparent;
-    padding: 6px 10px;
-    border-radius: 6px;
+    padding: 5px 8px;
+    border-radius: 4px;
     transition: background 0.2s;
 }
 
@@ -156,8 +156,8 @@ body {
 }
 
 .flag-icon {
-    width: 18px;
-    height: 18px;
+    width: 16px;
+    height: 16px;
     border-radius: 2px;
 }
 
@@ -167,19 +167,19 @@ body {
     top: 100%;
     left: 0;
     background: white;
-    min-width: 200px;
+    min-width: 180px;
     box-shadow: 0 8px 16px rgba(0,0,0,0.2);
-    border-radius: 8px;
+    border-radius: 6px;
     z-index: 1000;
     overflow: hidden;
 }
 
 .lang-dropdown a {
     display: block;
-    padding: 10px 15px;
+    padding: 8px 12px;
     color: #333;
     text-decoration: none;
-    font-size: 13px;
+    font-size: 12px;
 }
 
 .lang-dropdown a:hover {
@@ -187,9 +187,9 @@ body {
 }
 
 .lang-dropdown .lang-footer {
-    padding: 10px 15px;
+    padding: 8px 12px;
     border-top: 1px solid #eee;
-    font-size: 11px;
+    font-size: 10px;
     color: #666;
     text-align: center;
 }
@@ -199,7 +199,7 @@ body {
 }
 
 .header-actions i {
-    font-size: 20px;
+    font-size: 18px;
     cursor: pointer;
     transition: opacity 0.3s;
 }
@@ -210,10 +210,9 @@ body {
 
 /* السلة */
 .header-actions .fa-shopping-cart {
-    font-size: 20px;
+    font-size: 18px;
     margin-left: 0;
 }
-
 /* ========================================
    HERO SLIDER
    ======================================== */
