@@ -3,10 +3,9 @@
 // ========================================
 
 let currentSection = 'all';
-let codProducts = [];     // منتجات الدفع عند الاستلام (ستضاف لاحقاً)
-let amazonProducts = [];  // منتجات أجهزة Amazon (ستضاف لاحقاً)
+let codProducts = [];
+let amazonProducts = [];
 
-// عرض صفحة القسم
 function showSection(section) {
     currentSection = section;
     const productsGrid = document.getElementById('productsGrid');
@@ -45,8 +44,13 @@ function showSection(section) {
         renderProducts();
     }
     else {
-        // أقسام أخرى (إلكترونيات، منزل، موضة، رياضة)
-        sectionHeader.innerText = getSectionTitle(section);
+        const titles = {
+            electronics: translations[currentLang].electronics,
+            home: translations[currentLang].home,
+            fashion: translations[currentLang].fashion,
+            sports: translations[currentLang].sports
+        };
+        sectionHeader.innerText = titles[section] || section;
         const filtered = allProducts.filter(p => p.category === section);
         if (filtered.length === 0) {
             productsGrid.innerHTML = `
@@ -72,7 +76,6 @@ function getSectionTitle(section) {
     return titles[section] || section;
 }
 
-// عرض منتجات في شبكة
 function renderProductsGrid(products) {
     const gridContainer = document.getElementById('productsGrid');
     if (!gridContainer) return;
@@ -105,9 +108,6 @@ function renderProductsGrid(products) {
     });
 }
 
-// ========================================
-// القائمة المنسدلة للأقسام
-// ========================================
 const dropdownBtn = document.getElementById('dropdownBtn');
 const dropdownContent = document.getElementById('dropdownContent');
 
@@ -118,20 +118,16 @@ if (dropdownBtn) {
     });
 }
 
-// عند اختيار قسم من القائمة
 document.querySelectorAll('#dropdownContent a').forEach(link => {
     link.addEventListener('click', (e) => {
         e.preventDefault();
         const section = link.getAttribute('data-section');
         showSection(section);
         dropdownContent.classList.remove('show');
-        
-        // تحديث نص الزر
         dropdownBtn.innerHTML = link.innerText + ' <i class="fas fa-chevron-down"></i>';
     });
 });
 
-// إغلاق القائمة عند النقر خارجها
 window.addEventListener('click', (e) => {
     if (!dropdownBtn?.contains(e.target)) {
         dropdownContent?.classList.remove('show');
