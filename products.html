@@ -1,61 +1,536 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ar" dir="rtl">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>WowProducts - Deals</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>تفاصيل المنتج - متجرك</title>
     <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        /* product page specific styles */
+        .product-detail-container {
+            max-width: 1400px;
+            margin: 30px auto;
+            padding: 0 20px;
+        }
+        
+        .product-detail-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            background: white;
+            border-radius: 16px;
+            padding: 30px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+        }
+        
+        /* معرض الصور */
+        .product-gallery {
+            position: sticky;
+            top: 100px;
+        }
+        
+        .main-image {
+            width: 100%;
+            aspect-ratio: 1 / 1;
+            background: #f8f8f8;
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            margin-bottom: 20px;
+        }
+        
+        .main-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+        
+        .thumbnail-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 10px;
+        }
+        
+        .thumbnail {
+            aspect-ratio: 1 / 1;
+            background: #f8f8f8;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            border: 2px solid transparent;
+            transition: all 0.2s;
+        }
+        
+        .thumbnail.active {
+            border-color: #ff9900;
+        }
+        
+        .thumbnail img {
+            width: 80%;
+            height: 80%;
+            object-fit: contain;
+        }
+        
+        /* معلومات المنتج */
+        .product-info {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+        
+        .product-badge {
+            display: inline-block;
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: bold;
+            width: fit-content;
+        }
+        
+        .product-title {
+            font-size: 28px;
+            font-weight: bold;
+            color: #111;
+        }
+        
+        .product-price-section {
+            background: #f8f8f8;
+            padding: 20px;
+            border-radius: 12px;
+        }
+        
+        .current-price {
+            font-size: 32px;
+            font-weight: bold;
+            color: #b12704;
+        }
+        
+        .old-price {
+            font-size: 18px;
+            color: #565959;
+            text-decoration: line-through;
+            margin-left: 10px;
+        }
+        
+        .discount {
+            font-size: 16px;
+            color: #28a745;
+            font-weight: bold;
+        }
+        
+        /* مميزات المنتج */
+        .features-list {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .features-list li {
+            padding: 8px 0;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .features-list li i {
+            color: #28a745;
+            font-size: 18px;
+        }
+        
+        /* قسم الثقة */
+        .trust-badges {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+            margin: 20px 0;
+            padding: 15px;
+            background: #f8f8f8;
+            border-radius: 12px;
+        }
+        
+        .trust-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 13px;
+            color: #555;
+        }
+        
+        .trust-item i {
+            font-size: 18px;
+            color: #28a745;
+        }
+        
+        /* زر الطلب */
+        .order-btn {
+            width: 100%;
+            padding: 18px;
+            background: #ff9900;
+            color: white;
+            border: none;
+            border-radius: 12px;
+            font-size: 20px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background 0.3s;
+            margin-top: 10px;
+        }
+        
+        .order-btn:hover {
+            background: #e68a00;
+        }
+        
+        /* وصف المنتج */
+        .product-description {
+            margin-top: 40px;
+            background: white;
+            border-radius: 16px;
+            padding: 30px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+        }
+        
+        .product-description h3 {
+            font-size: 22px;
+            margin-bottom: 20px;
+            color: #111;
+        }
+        
+        .product-description p {
+            line-height: 1.8;
+            color: #555;
+            margin-bottom: 15px;
+        }
+        
+        /* منتجات مشابهة */
+        .similar-products {
+            margin-top: 40px;
+        }
+        
+        .similar-products h3 {
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+        
+        .similar-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+        }
+        
+        @media (max-width: 768px) {
+            .product-detail-grid {
+                grid-template-columns: 1fr;
+            }
+            .similar-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        
+        /* نموذج الطلب */
+        .order-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.5);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .order-modal.active {
+            display: flex;
+        }
+        
+        .order-modal-content {
+            background: white;
+            border-radius: 20px;
+            padding: 30px;
+            max-width: 500px;
+            width: 90%;
+            max-height: 90vh;
+            overflow-y: auto;
+        }
+        
+        .order-modal-content h3 {
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+        
+        .form-group {
+            margin-bottom: 15px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+        
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            font-size: 14px;
+        }
+        
+        .submit-order-btn {
+            width: 100%;
+            padding: 15px;
+            background: #28a745;
+            color: white;
+            border: none;
+            border-radius: 10px;
+            font-size: 18px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+        
+        .close-modal {
+            float: left;
+            font-size: 24px;
+            cursor: pointer;
+        }
+    </style>
 </head>
-<body class="products-page">
-    <div class="products-header">
-        <h1>⚡ Today's Best Deals ⚡</h1>
-        <button class="back-home-btn" onclick="location.href='index.html'">← Back</button>
-    </div>
-    
-    <div class="products-grid" id="productsGrid"></div>
+<body>
 
-    <script src="js/data.js"></script>
+    <header class="header">
+        <div class="logo">
+            <h1>متجرك</h1>
+        </div>
+        <div class="search-container">
+            <div class="search-dropdown">
+                <button class="dropdown-btn">الكل <i class="fas fa-chevron-down"></i></button>
+            </div>
+            <input type="text" class="search-input" placeholder="ابحث في متجرك...">
+            <button class="search-btn"><i class="fas fa-search"></i></button>
+        </div>
+        <div class="header-actions">
+            <div class="language-selector">
+                <div class="lang-btn">
+                    <img src="images/saudi-flag.webp" alt="SA" class="flag-icon">
+                    <span>AR</span>
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+            </div>
+            <i class="fas fa-shopping-cart"></i>
+        </div>
+    </header>
+
+    <div class="product-detail-container" id="productDetailContainer">
+        <!-- المحتوى يظهر عبر JavaScript -->
+    </div>
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2025 متجرك. جميع الحقوق محفوظة</p>
+        </div>
+    </footer>
+
+    <!-- نموذج الطلب -->
+    <div class="order-modal" id="orderModal">
+        <div class="order-modal-content">
+            <span class="close-modal" id="closeModal">&times;</span>
+            <h3>طلب منتج</h3>
+            <form id="orderForm">
+                <div class="form-group">
+                    <label>الاسم الكامل</label>
+                    <input type="text" id="fullName" required>
+                </div>
+                <div class="form-group">
+                    <label>رقم الهاتف</label>
+                    <input type="tel" id="phone" required>
+                </div>
+                <div class="form-group">
+                    <label>المدينة</label>
+                    <input type="text" id="city" required>
+                </div>
+                <div class="form-group">
+                    <label>العنوان</label>
+                    <input type="text" id="address" required>
+                </div>
+                <div class="form-group">
+                    <label>ملاحظات (اختياري)</label>
+                    <textarea id="notes" rows="3"></textarea>
+                </div>
+                <button type="submit" class="submit-order-btn">تأكيد الطلب</button>
+            </form>
+        </div>
+    </div>
+
+    <script src="js/my-products-data.js"></script>
     <script>
-        function loadProducts() {
-            const grid = document.getElementById('productsGrid');
-            if (!grid) return;
-            
-            if (typeof allProducts === 'undefined') {
-                grid.innerHTML = '<div style="text-align:center; padding:50px;">❌ Error: Products not loaded</div>';
+        // الحصول على معرف المنتج من URL
+        const urlParams = new URLSearchParams(window.location.search);
+        const productId = parseInt(urlParams.get('id'));
+        
+        // البحث عن المنتج
+        const product = myProducts.find(p => p.id === productId);
+        
+        // صور إضافية للمنتج (يمكن تعديلها حسب المنتج)
+        const productImages = {
+            101: ["images/my-products/product1.webp", "images/my-products/product1-2.webp", "images/my-products/product1-3.webp", "images/my-products/product1-4.webp"],
+            102: ["images/my-products/product2.webp", "images/my-products/product2-2.webp", "images/my-products/product2-3.webp", "images/my-products/product2-4.webp"]
+        };
+        
+        function renderProductDetail() {
+            const container = document.getElementById('productDetailContainer');
+            if (!product) {
+                container.innerHTML = '<div style="text-align:center; padding:50px;"><h2>المنتج غير موجود</h2><a href="index.html">العودة للرئيسية</a></div>';
                 return;
             }
             
-            grid.innerHTML = '';
+            const images = productImages[productId] || [product.image, product.image, product.image, product.image];
             
-            allProducts.forEach(product => {
-                const card = document.createElement('div');
-                card.className = 'product-card';
-                card.innerHTML = `
-                    <div class="product-image-container">
-                        <img src="${product.image}" alt="${product.title}" class="product-image" 
-                             onerror="this.src='https://placehold.co/300x300?text=No+Image'">
-                        <div class="discount-badge">${product.discount}</div>
+            container.innerHTML = `
+                <div class="product-detail-grid">
+                    <div class="product-gallery">
+                        <div class="main-image">
+                            <img src="${images[0]}" alt="${product.title}" id="mainImage">
+                        </div>
+                        <div class="thumbnail-grid" id="thumbnailGrid">
+                            ${images.map((img, idx) => `
+                                <div class="thumbnail ${idx === 0 ? 'active' : ''}" data-img="${img}">
+                                    <img src="${img}" alt="صورة ${idx + 1}">
+                                </div>
+                            `).join('')}
+                        </div>
                     </div>
+                    
                     <div class="product-info">
-                        <div class="price-row">
-                            <span class="current-price">${product.price}</span>
-                            <span class="old-price">${product.oldPrice}</span>
+                        <span class="product-badge" style="background: ${product.badgeColor}; color: white;">${product.badge}</span>
+                        <h1 class="product-title">${product.title}</h1>
+                        
+                        <div class="product-price-section">
+                            <span class="current-price">${product.price} ر.س</span>
+                            <span class="old-price">${product.oldPrice} ر.س</span>
+                            <span class="discount">-${product.discount}%</span>
                         </div>
-                        <h3 class="product-title">${product.title}…</h3>
-                        <div class="colour-patterns">${product.colourPatterns}</div>
-                        <div class="brand-shop">
-                            <a href="${product.brandLink}" class="brand-link" target="_blank">Shop ${product.brand} deals</a>
+                        
+                        <ul class="features-list">
+                            <li><i class="fas fa-check-circle"></i> 6 سرعات تدليك مختلفة</li>
+                            <li><i class="fas fa-check-circle"></i> شحن Type-C سريع</li>
+                            <li><i class="fas fa-check-circle"></i> هادئ جداً عند الاستخدام</li>
+                            <li><i class="fas fa-check-circle"></i> بطارية قوية تدوم طويلاً</li>
+                            <li><i class="fas fa-check-circle"></i> مناسب للظهر والرقبة والكتفين</li>
+                        </ul>
+                        
+                        <div class="trust-badges">
+                            <div class="trust-item"><i class="fas fa-money-bill-wave"></i> الدفع عند الاستلام</div>
+                            <div class="trust-item"><i class="fas fa-truck-fast"></i> شحن سريع داخل السعودية</div>
+                            <div class="trust-item"><i class="fas fa-shield-alt"></i> ضمان الاستبدال عند وجود مشكلة</div>
+                            <div class="trust-item"><i class="fas fa-headset"></i> خدمة العملاء</div>
                         </div>
-                        <a href="${product.amazonLink}" class="amazon-btn" target="_blank" rel="noopener noreferrer">
-                            🛒 View on Amazon
-                        </a>
+                        
+                        <button class="order-btn" id="orderBtn">اطلب الآن</button>
                     </div>
-                `;
-                grid.appendChild(card);
+                </div>
+                
+                <div class="product-description">
+                    <h3>وصف المنتج</h3>
+                    <p><strong>مسدس تدليك عضلات محمول</strong> هو جهاز تدليك احترافي يساعد في تخفيف آلام العضلات والتعب بعد التمرين أو العمل الطويل.</p>
+                    <p><strong>المميزات:</strong></p>
+                    <ul>
+                        <li>6 سرعات قابلة للتعديل تناسب جميع الاحتياجات</li>
+                        <li>رؤوس تدليك قابلة للتبديل لمناطق مختلفة من الجسم</li>
+                        <li>بطارية عالية السعة تدوم حتى 6 ساعات من الاستخدام المتواصل</li>
+                        <li>تصميم مريح وسهل الحمل</li>
+                        <li>شحن سريع عبر Type-C</li>
+                    </ul>
+                    <p><strong>طريقة الاستخدام:</strong> اضغط على الزر لتشغيل الجهاز، ثم اختر السرعة المناسبة، ومرر الجهاز بلطف على المنطقة المراد تدليكها لمدة 30-60 ثانية.</p>
+                    <p><strong>المواصفات:</strong> الوزن: 800 جرام، البطارية: 2500mAh، وقت الشحن: 3 ساعات، مستوى الضوضاء: أقل من 45 ديسيبل.</p>
+                </div>
+                
+                <div class="similar-products">
+                    <h3>🔄 منتجات قد تعجبك</h3>
+                    <div class="similar-grid" id="similarGrid"></div>
+                </div>
+            `;
+            
+            // إضافة منتجات مشابهة
+            const similarContainer = document.getElementById('similarGrid');
+            const similarProducts = myProducts.filter(p => p.id !== productId).slice(0, 4);
+            similarContainer.innerHTML = similarProducts.map(p => `
+                <div class="my-product-card" onclick="window.location.href='product.html?id=${p.id}'">
+                    <div class="my-product-image">
+                        <img src="${p.image}" alt="${p.title}" onerror="this.src='https://placehold.co/400x400?text=Product'">
+                    </div>
+                    <div class="my-product-info">
+                        <h3 class="my-product-title">${p.title}</h3>
+                        <div class="my-product-price">
+                            <span class="my-current-price">${p.price} ر.س</span>
+                        </div>
+                    </div>
+                </div>
+            `).join('');
+            
+            // معرض الصور
+            document.querySelectorAll('.thumbnail').forEach(thumb => {
+                thumb.addEventListener('click', () => {
+                    document.querySelectorAll('.thumbnail').forEach(t => t.classList.remove('active'));
+                    thumb.classList.add('active');
+                    document.getElementById('mainImage').src = thumb.dataset.img;
+                });
+            });
+            
+            // زر الطلب
+            document.getElementById('orderBtn').addEventListener('click', () => {
+                document.getElementById('orderModal').classList.add('active');
             });
         }
         
-        document.addEventListener('DOMContentLoaded', loadProducts);
+        // نموذج الطلب
+        const modal = document.getElementById('orderModal');
+        const closeModal = document.getElementById('closeModal');
+        const orderForm = document.getElementById('orderForm');
+        
+        closeModal.onclick = () => modal.classList.remove('active');
+        window.onclick = (e) => {
+            if (e.target === modal) modal.classList.remove('active');
+        };
+        
+        orderForm.onsubmit = async (e) => {
+            e.preventDefault();
+            
+            const orderData = {
+                product: product?.title,
+                name: document.getElementById('fullName').value,
+                phone: document.getElementById('phone').value,
+                city: document.getElementById('city').value,
+                address: document.getElementById('address').value,
+                notes: document.getElementById('notes').value,
+                date: new Date().toLocaleString('ar-SA')
+            };
+            
+            // إرسال إلى Telegram
+            const botToken = 'YOUR_BOT_TOKEN';
+            const chatId = 'YOUR_CHAT_ID';
+            const message = `🛒 طلب جديد من متجرك\n\n📦 المنتج: ${orderData.product}\n👤 الاسم: ${orderData.name}\n📞 الهاتف: ${orderData.phone}\n🏙️ المدينة: ${orderData.city}\n📍 العنوان: ${orderData.address}\n📝 ملاحظات: ${orderData.notes || 'لا يوجد'}\n📅 التاريخ: ${orderData.date}`;
+            
+            try {
+                await fetch(`https://api.telegram.org/bot${botToken}/sendMessage`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ chat_id: chatId, text: message })
+                });
+                alert('تم إرسال طلبك بنجاح! سنتواصل معك قريباً.');
+                modal.classList.remove('active');
+                orderForm.reset();
+            } catch (error) {
+                alert('حدث خطأ، يرجى المحاولة مرة أخرى.');
+            }
+        };
+        
+        renderProductDetail();
     </script>
 </body>
 </html>
