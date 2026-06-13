@@ -3,304 +3,306 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-    <title>تفاصيل المنتج - متجرك</title>
+    <title>متجرك - تسوق أونلاين</title>
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <style>
-        .product-detail-container { max-width: 1400px; margin: 30px auto; padding: 0 20px; }
-        .product-detail-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; background: white; border-radius: 16px; padding: 30px; box-shadow: 0 4px 20px rgba(0,0,0,0.08); }
-        @media (max-width: 768px) { .product-detail-grid { grid-template-columns: 1fr; padding: 20px; } }
-        .product-gallery { position: sticky; top: 100px; }
-        @media (max-width: 768px) { .product-gallery { position: relative; top: 0; } }
-        .main-image { width: 100%; aspect-ratio: 1/1; background: #f8f8f8; border-radius: 16px; display: flex; align-items: center; justify-content: center; overflow: hidden; margin-bottom: 20px; }
-        .main-image img { width: 100%; height: 100%; object-fit: contain; }
-        .thumbnail-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; }
-        .thumbnail { aspect-ratio: 1/1; background: #f8f8f8; border-radius: 8px; display: flex; align-items: center; justify-content: center; cursor: pointer; border: 2px solid transparent; transition: all 0.2s; }
-        .thumbnail.active { border-color: #ff9900; }
-        .thumbnail img { width: 80%; height: 80%; object-fit: contain; }
-        .product-badge { display: inline-block; padding: 6px 12px; border-radius: 20px; font-size: 12px; font-weight: bold; width: fit-content; }
-        .product-title { font-size: 28px; font-weight: bold; color: #111; margin: 0 0 15px 0; }
-        .product-price-section { background: #f8f8f8; padding: 20px; border-radius: 12px; margin-bottom: 20px; }
-        .current-price { font-size: 32px; font-weight: bold; color: #b12704; }
-        .old-price { font-size: 18px; color: #565959; text-decoration: line-through; margin-left: 10px; }
-        .discount { font-size: 16px; color: #28a745; font-weight: bold; }
-        .features-list { list-style: none; padding: 0; margin: 0 0 20px 0; }
-        .features-list li { padding: 8px 0; display: flex; align-items: center; gap: 10px; }
-        .features-list li i { color: #28a745; font-size: 18px; }
-        .trust-badges { display: flex; gap: 20px; flex-wrap: wrap; margin: 20px 0; padding: 15px; background: #f8f8f8; border-radius: 12px; }
-        .trust-item { display: flex; align-items: center; gap: 8px; font-size: 13px; color: #555; }
-        .trust-item i { font-size: 18px; color: #28a745; }
-        .order-btn { width: 100%; padding: 18px; background: #ff9900; color: white; border: none; border-radius: 12px; font-size: 20px; font-weight: bold; cursor: pointer; transition: background 0.3s; margin-top: 10px; }
-        .order-btn:hover { background: #e68a00; }
-        .product-description { margin-top: 40px; background: white; border-radius: 16px; padding: 30px; box-shadow: 0 4px 20px rgba(0,0,0,0.08); }
-        .product-description h3 { font-size: 22px; margin-bottom: 20px; color: #111; }
-        .product-description p { line-height: 1.8; color: #555; margin-bottom: 15px; }
-
-        /* ========== نموذج الطلب ========== */
-        .order-modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5); z-index: 1000; justify-content: center; align-items: center; }
-        .order-modal.active { display: flex; }
-        .order-modal-content { background: white; border-radius: 20px; padding: 30px; max-width: 500px; width: 90%; max-height: 90vh; overflow-y: auto; position: relative; }
-        .order-modal-content h3 { font-size: 24px; margin-bottom: 20px; }
-        .close-modal { position: absolute; top: 15px; left: 20px; font-size: 24px; cursor: pointer; color: #999; }
-        .close-modal:hover { color: #333; }
-        .form-group { margin-bottom: 15px; }
-        .form-group label { display: block; margin-bottom: 5px; font-weight: bold; }
-        .form-group input, .form-group textarea { width: 100%; padding: 12px; border: 1px solid #ddd; border-radius: 8px; font-size: 14px; }
-        .submit-order-btn { width: 100%; padding: 15px; background: #28a745; color: white; border: none; border-radius: 10px; font-size: 18px; font-weight: bold; cursor: pointer; }
-        .submit-order-btn:hover { background: #218838; }
-
-        /* ========== صفحة نجاح الطلب ========== */
-        .success-page { min-height: 70vh; display: flex; align-items: center; justify-content: center; padding: 40px 20px; }
-        .success-card { background: white; border-radius: 24px; padding: 40px; max-width: 600px; width: 100%; text-align: center; box-shadow: 0 10px 40px rgba(0,0,0,0.1); }
-        .success-icon { width: 80px; height: 80px; background: #28a745; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 20px; }
-        .success-icon i { font-size: 45px; color: white; }
-        .success-card h2 { font-size: 28px; color: #28a745; margin-bottom: 10px; }
-        .order-number { background: #f8f8f8; padding: 15px; border-radius: 12px; margin: 20px 0; direction: ltr; }
-        .order-number span { font-size: 20px; font-weight: bold; color: #ff9900; letter-spacing: 1px; }
-        .steps { display: flex; justify-content: space-between; margin: 30px 0; flex-wrap: wrap; gap: 15px; }
-        .step { flex: 1; text-align: center; min-width: 100px; }
-        .step-circle { width: 40px; height: 40px; background: #ff9900; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 10px; color: white; font-weight: bold; }
-        .step p { font-size: 12px; color: #666; }
-        .order-info { background: #f8f8f8; border-radius: 12px; padding: 20px; text-align: right; margin: 20px 0; }
-        .order-info-item { display: flex; justify-content: space-between; padding: 10px 0; border-bottom: 1px solid #eee; }
-        .order-info-item:last-child { border-bottom: none; }
-        .success-buttons { display: flex; gap: 15px; margin-top: 25px; flex-wrap: wrap; }
-        .btn-continue { flex: 1; padding: 14px; background: #28a745; color: white; border: none; border-radius: 10px; font-size: 16px; font-weight: bold; cursor: pointer; text-decoration: none; display: inline-block; text-align: center; }
-        .btn-track { flex: 1; padding: 14px; background: #f8f8f8; color: #333; border: 1px solid #ddd; border-radius: 10px; font-size: 16px; font-weight: bold; cursor: pointer; text-decoration: none; display: inline-block; text-align: center; }
-        .btn-track:hover { background: #e9ecef; }
-        .btn-continue:hover { background: #218838; }
-        .trust-footer { display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; margin-top: 25px; padding-top: 20px; border-top: 1px solid #eee; }
-        .trust-footer span { font-size: 12px; color: #666; }
-        .trust-footer i { color: #28a745; margin-left: 5px; }
-        .loading { text-align: center; padding: 50px; font-size: 18px; color: #666; }
-        .not-found { text-align: center; padding: 50px; }
-        .not-found a { color: #ff9900; text-decoration: none; }
-    </style>
 </head>
 <body>
 
+    <!-- ==================== الهيدر ==================== -->
     <header class="header">
-        <div class="logo"><h1>متجرك</h1></div>
-        <div class="search-container">
-            <div class="search-dropdown"><button class="dropdown-btn">الكل <i class="fas fa-chevron-down"></i></button></div>
-            <input type="text" class="search-input" placeholder="ابحث في متجرك...">
-            <button class="search-btn"><i class="fas fa-search"></i></button>
+        <div class="logo">
+            <h1 id="logo-text">متجرك</h1>
         </div>
+
+        <div class="search-container">
+            <div class="search-dropdown">
+                <button class="dropdown-btn" id="dropdownBtn">الكل <i class="fas fa-chevron-down"></i></button>
+                <div class="dropdown-content" id="dropdownContent">
+                    <a href="#" data-section="all">جميع الأقسام</a>
+                    <a href="#" data-section="cod">الدفع عند الاستلام</a>
+                    <a href="#" data-section="amazon">أجهزة Amazon</a>
+                    <a href="#" data-section="electronics">إلكترونيات</a>
+                    <a href="#" data-section="home">منزل</a>
+                    <a href="#" data-section="fashion">موضة</a>
+                    <a href="#" data-section="sports">رياضة</a>
+                </div>
+            </div>
+            <input type="text" class="search-input" id="searchInput" placeholder="ابحث في أمازون السعودية">
+            <button class="search-btn" id="searchBtn"><i class="fas fa-search"></i></button>
+        </div>
+
         <div class="header-actions">
-            <div class="language-selector">
+            <div class="language-selector" id="languageSelector">
                 <div class="lang-btn">
-                    <img src="images/saudi-flag.webp" alt="SA" class="flag-icon">
-                    <span>AR</span>
+                    <img src="images/saudi-flag.webp" alt="SA" class="flag-icon" onerror="this.src='https://flagcdn.com/w20/sa.png'">
+                    <span id="currentLang">AR</span>
                     <i class="fas fa-chevron-down"></i>
+                </div>
+                <div class="lang-dropdown" id="langDropdown">
+                    <a href="#" data-lang="ar">العربية - AR</a>
+                    <a href="#" data-lang="en">English - EN</a>
+                    <div class="lang-footer">أنت تتسوق على متجرك</div>
                 </div>
             </div>
             <i class="fas fa-shopping-cart"></i>
         </div>
     </header>
 
-    <div id="mainContent">
-        <!-- محتوى المنتج أو صفحة النجاح يظهر هنا -->
-    </div>
+    <!-- ==================== HERO SLIDER ==================== -->
+    <section class="hero-slider">
+        <div class="slider-container">
+            <div class="slider">
+                <div class="slide active">
+                    <img src="images/banners/banner1.webp" alt="Banner 1">
+                </div>
+                <div class="slide">
+                    <img src="images/banners/banner2.webp" alt="Banner 2">
+                </div>
+                <div class="slide">
+                    <img src="images/banners/banner3.webp" alt="Banner 3">
+                </div>
+                <div class="slide">
+                    <img src="images/banners/banner4.webp" alt="Banner 4">
+                </div>
+            </div>
+            <button class="slider-btn prev" id="prevBtn"><i class="fas fa-chevron-right"></i></button>
+            <button class="slider-btn next" id="nextBtn"><i class="fas fa-chevron-left"></i></button>
+        </div>
+        <div class="slider-dots">
+            <span class="dot active" data-index="0"></span>
+            <span class="dot" data-index="1"></span>
+            <span class="dot" data-index="2"></span>
+            <span class="dot" data-index="3"></span>
+        </div>
+    </section>
+
+    <div class="fade-overlay"></div>
+
+    <!-- ==================== السطر الأول من البطاقات ==================== -->
+    <section class="categories">
+        <div class="categories-grid">
+            <!-- Box 1 - السماعات -->
+            <div class="category-box">
+                <h3>خصم حتى 30% - السماعات ومكبرات الصوت</h3>
+                <div class="category-grid">
+                    <div class="category-item" onclick="window.open('https://www.amazon.sa/s?k=headphones', '_blank')">
+                        <img src="images/categories/electronics1.webp" alt="سماعات الرأس">
+                        <span>سماعات الرأس</span>
+                    </div>
+                    <div class="category-item" onclick="window.open('https://www.amazon.sa/s?k=earbuds', '_blank')">
+                        <img src="images/categories/electronics2.webp" alt="سماعات الأذن">
+                        <span>سماعات الأذن</span>
+                    </div>
+                    <div class="category-item" onclick="window.open('https://www.amazon.sa/s?k=speakers', '_blank')">
+                        <img src="images/categories/electronics3.webp" alt="مكبرات الصوت">
+                        <span>مكبرات الصوت</span>
+                    </div>
+                    <div class="category-item" onclick="window.open('https://www.amazon.sa/s?k=soundbar', '_blank')">
+                        <img src="images/categories/electronics4.webp" alt="ساوند بار">
+                        <span>ساوند بار</span>
+                    </div>
+                </div>
+                <a href="https://www.amazon.sa/s?i=electronics" class="category-link" target="_blank">تسوق الآن</a>
+            </div>
+
+            <!-- Box 2 - الألعاب -->
+            <div class="category-box">
+                <h3>الألعاب | خصم 10% - 40%</h3>
+                <div class="category-grid">
+                    <div class="category-item" onclick="window.open('https://www.amazon.sa/b?node=16631543031', '_blank')">
+                        <img src="images/categories/games1.webp" alt="السكوترات">
+                        <span>السكوترات</span>
+                    </div>
+                    <div class="category-item" onclick="window.open('https://www.amazon.sa/b?node=16631425031', '_blank')">
+                        <img src="images/categories/games2.webp" alt="الألعاب الخارجية">
+                        <span>الألعاب الخارجية</span>
+                    </div>
+                    <div class="category-item" onclick="window.open('https://www.amazon.sa/b?node=16631407031', '_blank')">
+                        <img src="images/categories/games3.webp" alt="ألعاب البناء">
+                        <span>ألعاب البناء والتركيب</span>
+                    </div>
+                    <div class="category-item" onclick="window.open('https://www.amazon.sa/b?node=16631408031', '_blank')">
+                        <img src="images/categories/games4.webp" alt="الدمى">
+                        <span>الدمى واكسسواراتها</span>
+                    </div>
+                </div>
+                <a href="https://www.amazon.sa/b?node=12463618031" class="category-link" target="_blank">تسوق الآن</a>
+            </div>
+
+            <!-- Box 3 - الأثاث المنزلي -->
+            <div class="category-box">
+                <h3>الأثاث المنزلي | خصم 10% - 40%</h3>
+                <div class="category-grid">
+                    <div class="category-item" onclick="window.open('https://www.amazon.sa/b?node=16856128031', '_blank')">
+                        <img src="images/categories/home1.webp" alt="الطاولات">
+                        <span>الطاولات</span>
+                    </div>
+                    <div class="category-item" onclick="window.open('https://www.amazon.sa/b?node=16856128031', '_blank')">
+                        <img src="images/categories/home2.webp" alt="الأرائك">
+                        <span>الأرائك</span>
+                    </div>
+                    <div class="category-item" onclick="window.open('https://www.amazon.sa/b?node=16856128031', '_blank')">
+                        <img src="images/categories/home3.webp" alt="كراسي الألعاب">
+                        <span>كراسي الألعاب</span>
+                    </div>
+                    <div class="category-item" onclick="window.open('https://www.amazon.sa/b?node=16856128031', '_blank')">
+                        <img src="images/categories/home4.webp" alt="الخزائن">
+                        <span>الخزائن</span>
+                    </div>
+                </div>
+                <a href="https://www.amazon.sa/b?node=16856128031" class="category-link" target="_blank">شاهد المزيد</a>
+            </div>
+
+            <!-- Box 4 - الصنادل النسائية -->
+            <div class="category-box">
+                <h3>الصنادل النسائية | خصم حتى 60%</h3>
+                <div class="category-grid-single">
+                    <div class="category-item-single" onclick="window.open('https://www.amazon.sa/s?i=fashion&bbn=16667332031', '_blank')">
+                        <img src="images/categories/sandals.webp" alt="الصنادل النسائية">
+                    </div>
+                </div>
+                <a href="https://www.amazon.sa/s?i=fashion&bbn=16667332031" class="category-link" target="_blank">شاهد المزيد</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== السطر الثاني من البطاقات ==================== -->
+    <section class="categories second-row">
+        <div class="categories-grid">
+            <!-- Box 5 - ألعاب الفيديو -->
+            <div class="category-box">
+                <h3>خصم حتى 30% - ألعاب الفيديو</h3>
+                <div class="category-grid">
+                    <div class="category-item" onclick="window.open('https://www.amazon.sa/s?k=consoles&i=videogames&rh=n%3A12463675031%2Cp_36%3A53000-&_encoding=UTF8&content-id=amzn1.sym.31817b2b-a610-4321-9099-c4690d33c435&pd_rd_r=97753de3-00c0-417c-a4b1-7c2ead96227e&pd_rd_w=Yodne&pd_rd_wg=L0NOQ&pf_rd_p=31817b2b-a610-4321-9099-c4690d33c435&pf_rd_r=3HT3Y88D0GS65H9GKWAB&linkCode=ll2&tag=wowproduct074-21&linkId=35890dd99e4778e3f8f47f37ac8010a9&ref_=as_li_ss_tl', '_blank')">
+                        <img src="images/categories/gaming1.webp" alt="جهاز ألعاب">
+                        <span>جهاز ألعاب</span>
+                    </div>
+                    <div class="category-item" onclick="window.open('https://www.amazon.sa/s?i=videogames&srs=17471908031&rh=n%3A17471908031&s=popularity-rank&_encoding=UTF8&content-id=amzn1.sym.31817b2b-a610-4321-9099-c4690d33c435&pd_rd_r=97753de3-00c0-417c-a4b1-7c2ead96227e&pd_rd_w=Yodne&pd_rd_wg=L0NOQ&pf_rd_p=31817b2b-a610-4321-9099-c4690d33c435&pf_rd_r=3HT3Y88D0GS65H9GKWAB&linkCode=ll2&tag=wowproduct074-21&linkId=505e8741c53a1868cf80e8b933000ea5&ref_=as_li_ss_tl', '_blank')">
+                        <img src="images/categories/gaming2.webp" alt="إكسسوارات">
+                        <span>إكسسوارات</span>
+                    </div>
+                    <div class="category-item" onclick="window.open('https://www.amazon.sa/b?_encoding=UTF8&ie=UTF8&node=89242354031&pd_rd_w=Yodne&content-id=amzn1.sym.31817b2b-a610-4321-9099-c4690d33c435&pf_rd_p=31817b2b-a610-4321-9099-c4690d33c435&pf_rd_r=3HT3Y88D0GS65H9GKWAB&pd_rd_wg=L0NOQ&pd_rd_r=97753de3-00c0-417c-a4b1-7c2ead96227e&linkCode=ll2&tag=wowproduct074-21&linkId=770a7f7b5e81c9edceb7e6fd62d4e42b&ref_=as_li_ss_tl', '_blank')">
+                        <img src="images/categories/gaming3.webp" alt="العاب فيديو رقمية">
+                        <span>العاب فيديو رقمية</span>
+                    </div>
+                    <div class="category-item" onclick="window.open('https://www.amazon.sa/s?i=videogames&rh=n%3A16949326031&s=popularity-rank&_encoding=UTF8&content-id=amzn1.sym.31817b2b-a610-4321-9099-c4690d33c435&pd_rd_r=97753de3-00c0-417c-a4b1-7c2ead96227e&pd_rd_w=Yodne&pd_rd_wg=L0NOQ&pf_rd_p=31817b2b-a610-4321-9099-c4690d33c435&pf_rd_r=3HT3Y88D0GS65H9GKWAB&linkCode=ll2&tag=wowproduct074-21&linkId=d09a7c3e2c2531af669635e8103239e4&ref_=as_li_ss_tl', '_blank')">
+                        <img src="images/categories/gaming4.webp" alt="ألعاب الكمبيوتر">
+                        <span>ألعاب الكمبيوتر</span>
+                    </div>
+                </div>
+                <a href="https://www.amazon.sa/s?i=videogames&rh=n%3A12463675031&s=popularity-rank&_encoding=UTF8&content-id=amzn1.sym.31817b2b-a610-4321-9099-c4690d33c435&pd_rd_r=97753de3-00c0-417c-a4b1-7c2ead96227e&pd_rd_w=Yodne&pd_rd_wg=L0NOQ&pf_rd_p=31817b2b-a610-4321-9099-c4690d33c435&pf_rd_r=3HT3Y88D0GS65H9GKWAB&linkCode=ll2&tag=wowproduct074-21&linkId=4f95dc7d3e6505a99e734666456596f8&ref_=as_li_ss_tl" class="category-link" target="_blank">تسوق الآن</a>
+            </div>
+
+            <!-- Box 6 - عطور -->
+            <div class="category-box">
+                <h3>عطور | خصم يصل إلى 50%</h3>
+                <div class="category-grid">
+                    <div class="category-item" onclick="window.open('https://www.amazon.sa/l/16630503031?_encoding=UTF8&pd_rd_w=eTCSB&content-id=amzn1.sym.f7195597-d140-428d-aa9c-4c6a02ea9f1a&pf_rd_p=f7195597-d140-428d-aa9c-4c6a02ea9f1a&pf_rd_r=3HT3Y88D0GS65H9GKWAB&pd_rd_wg=kpvNk&pd_rd_r=4771e543-f67b-40b6-a8f5-8a3b0bfe07b7&linkCode=ll2&tag=wowproduct074-21&linkId=9aef0f10d344a912167a484806cf1d5f&ref_=as_li_ss_tl', '_blank')">
+                        <img src="images/categories/perfume1.webp" alt="العطور الرجالية">
+                        <span>العطور الرجالية</span>
+                    </div>
+                    <div class="category-item" onclick="window.open('https://www.amazon.sa/l/16630504031?_encoding=UTF8&pd_rd_w=eTCSB&content-id=amzn1.sym.f7195597-d140-428d-aa9c-4c6a02ea9f1a&pf_rd_p=f7195597-d140-428d-aa9c-4c6a02ea9f1a&pf_rd_r=3HT3Y88D0GS65H9GKWAB&pd_rd_wg=kpvNk&pd_rd_r=4771e543-f67b-40b6-a8f5-8a3b0bfe07b7&linkCode=ll2&tag=wowproduct074-21&linkId=0f53438e84b784e23e770b6649b3ab26&ref_=as_li_ss_tl', '_blank')">
+                        <img src="images/categories/perfume2.webp" alt="العطور النسائية">
+                        <span>العطور النسائية</span>
+                    </div>
+                    <div class="category-item" onclick="window.open('https://www.amazon.sa/s?k=oud&rh=n%3A16630489031&_encoding=UTF8&content-id=amzn1.sym.f7195597-d140-428d-aa9c-4c6a02ea9f1a&pd_rd_r=4771e543-f67b-40b6-a8f5-8a3b0bfe07b7&pd_rd_w=eTCSB&pd_rd_wg=kpvNk&pf_rd_i=16630489031&pf_rd_m=A2XPWB6MYN7ZDK&pf_rd_p=f7195597-d140-428d-aa9c-4c6a02ea9f1a&pf_rd_r=3HT3Y88D0GS65H9GKWAB&pf_rd_s=merchandised-search-3&pf_rd_t=101&linkCode=ll2&tag=wowproduct074-21&linkId=18efff0e911139376cd37f2fd9e32898&ref_=as_li_ss_tl', '_blank')">
+                        <img src="images/categories/perfume3.webp" alt="عطور العود">
+                        <span>عطور العود</span>
+                    </div>
+                    <div class="category-item" onclick="window.open('https://www.amazon.sa/l/17477563031?_encoding=UTF8&pd_rd_w=eTCSB&content-id=amzn1.sym.f7195597-d140-428d-aa9c-4c6a02ea9f1a&pf_rd_p=f7195597-d140-428d-aa9c-4c6a02ea9f1a&pf_rd_r=3HT3Y88D0GS65H9GKWAB&pd_rd_wg=kpvNk&pd_rd_r=4771e543-f67b-40b6-a8f5-8a3b0bfe07b7&linkCode=ll2&tag=wowproduct074-21&linkId=a05bd62747afa67666418d12f2aafe2b&ref_=as_li_ss_tl', '_blank')">
+                        <img src="images/categories/perfume4.webp" alt="أطقم العطور">
+                        <span>أطقم العطور</span>
+                    </div>
+                </div>
+                <a href="https://www.amazon.sa/l/16630489031?_encoding=UTF8&pd_rd_w=eTCSB&content-id=amzn1.sym.f7195597-d140-428d-aa9c-4c6a02ea9f1a&pf_rd_p=f7195597-d140-428d-aa9c-4c6a02ea9f1a&pf_rd_r=3HT3Y88D0GS65H9GKWAB&pd_rd_wg=kpvNk&pd_rd_r=4771e543-f67b-40b6-a8f5-8a3b0bfe07b7&linkCode=ll2&tag=wowproduct074-21&linkId=b997b6989169900e2e2e8624baa1127e&ref_=as_li_ss_tl" class="category-link" target="_blank">شاهد جميع العروض</a>
+            </div>
+
+            <!-- Box 7 - الكاميرات -->
+            <div class="category-box">
+                <h3>خصم حتى 30% - الكاميرات</h3>
+                <div class="category-grid">
+                    <div class="category-item" onclick="window.open('https://www.amazon.sa/s?i=electronics&bbn=12463162031&rh=n%3A16966409031&s=popularity-rank&_encoding=UTF8&content-id=amzn1.sym.1198f33f-c83b-4a32-89d0-108340293a2a&pd_rd_r=97753de3-00c0-417c-a4b1-7c2ead96227e&pd_rd_w=D4Z3z&pd_rd_wg=L0NOQ&pf_rd_p=1198f33f-c83b-4a32-89d0-108340293a2a&pf_rd_r=3HT3Y88D0GS65H9GKWAB&linkCode=ll2&tag=wowproduct074-21&linkId=6097ce6db5c5b46afce890635a1c0fa4&ref_=as_li_ss_tl', '_blank')">
+                        <img src="images/categories/camera1.webp" alt="كاميرات المراقبة">
+                        <span>كاميرات المراقبة الأمنية</span>
+                    </div>
+                    <div class="category-item" onclick="window.open('https://www.amazon.sa/s?i=electronics&bbn=12463162031&rh=n%3A51685938031&s=popularity-rank&_encoding=UTF8&content-id=amzn1.sym.1198f33f-c83b-4a32-89d0-108340293a2a&pd_rd_r=97753de3-00c0-417c-a4b1-7c2ead96227e&pd_rd_w=D4Z3z&pd_rd_wg=L0NOQ&pf_rd_p=1198f33f-c83b-4a32-89d0-108340293a2a&pf_rd_r=3HT3Y88D0GS65H9GKWAB&linkCode=ll2&tag=wowproduct074-21&linkId=16a26b0282e43bc0c60fd2840fdac75e&ref_=as_li_ss_tl', '_blank')">
+                        <img src="images/categories/camera2.webp" alt="كاميرات الأكشن">
+                        <span>كاميرات الأكشن</span>
+                    </div>
+                    <div class="category-item" onclick="window.open('https://www.amazon.sa/s?i=electronics&bbn=12463162031&rh=n%3A16966405031&s=popularity-rank&_encoding=UTF8&content-id=amzn1.sym.1198f33f-c83b-4a32-89d0-108340293a2a&pd_rd_r=97753de3-00c0-417c-a4b1-7c2ead96227e&pd_rd_w=D4Z3z&pd_rd_wg=L0NOQ&pf_rd_p=1198f33f-c83b-4a32-89d0-108340293a2a&pf_rd_r=3HT3Y88D0GS65H9GKWAB&linkCode=ll2&tag=wowproduct074-21&linkId=016b9a025d76244ea165eedb7d7f3239&ref_=as_li_ss_tl', '_blank')">
+                        <img src="images/categories/camera3.webp" alt="كاميرات الأفلام">
+                        <span>كاميرات الأفلام</span>
+                    </div>
+                    <div class="category-item" onclick="window.open('https://www.amazon.sa/s?i=electronics&bbn=12463162031&rh=n%3A16966402031&s=popularity-rank&_encoding=UTF8&content-id=amzn1.sym.1198f33f-c83b-4a32-89d0-108340293a2a&pd_rd_r=97753de3-00c0-417c-a4b1-7c2ead96227e&pd_rd_w=D4Z3z&pd_rd_wg=L0NOQ&pf_rd_p=1198f33f-c83b-4a32-89d0-108340293a2a&pf_rd_r=3HT3Y88D0GS65H9GKWAB&linkCode=ll2&tag=wowproduct074-21&linkId=77166accff57518a1029b29359906fd5&ref_=as_li_ss_tl', '_blank')">
+                        <img src="images/categories/camera4.webp" alt="كاميرات رقمية">
+                        <span>كاميرات رقمية</span>
+                    </div>
+                </div>
+                <a href="https://www.amazon.sa/s?i=electronics&rh=n%3A16966385031&s=popularity-rank&_encoding=UTF8&content-id=amzn1.sym.1198f33f-c83b-4a32-89d0-108340293a2a&pd_rd_r=97753de3-00c0-417c-a4b1-7c2ead96227e&pd_rd_w=D4Z3z&pd_rd_wg=L0NOQ&pf_rd_p=1198f33f-c83b-4a32-89d0-108340293a2a&pf_rd_r=3HT3Y88D0GS65H9GKWAB&linkCode=ll2&tag=wowproduct074-21&linkId=f52175249089dca546eba2c8b27b3e83&ref_=as_li_ss_tl" class="category-link" target="_blank">تسوق الآن</a>
+            </div>
+
+            <!-- Box 8 - الحقائب -->
+            <div class="category-box">
+                <h3>20% - 60% خصم على الحقائب</h3>
+                <div class="category-grid">
+                    <div class="category-item" onclick="window.open('https://www.amazon.sa/s?_encoding=UTF8&rh=i%3Afashion%2Cn%3A21640185031&ie=UTF8&pd_rd_w=rvNmh&content-id=amzn1.sym.c696b80b-4efc-4b01-8fc7-29f9d88aa7d2&pf_rd_p=c696b80b-4efc-4b01-8fc7-29f9d88aa7d2&pf_rd_r=3HT3Y88D0GS65H9GKWAB&pd_rd_wg=L0NOQ&pd_rd_r=97753de3-00c0-417c-a4b1-7c2ead96227e&linkCode=ll2&tag=wowproduct074-21&linkId=2e74cec2515f967966e857182aa584c7&ref_=as_li_ss_tl', '_blank')">
+                        <img src="images/categories/bag1.webp" alt="الحقائب النسائية">
+                        <span>الحقائب النسائية</span>
+                    </div>
+                    <div class="category-item" onclick="window.open('https://www.amazon.sa/s?_encoding=UTF8&rh=i%3Afashion%2Cn%3A21640196031&ie=UTF8&pd_rd_w=rvNmh&content-id=amzn1.sym.c696b80b-4efc-4b01-8fc7-29f9d88aa7d2&pf_rd_p=c696b80b-4efc-4b01-8fc7-29f9d88aa7d2&pf_rd_r=3HT3Y88D0GS65H9GKWAB&pd_rd_wg=L0NOQ&pd_rd_r=97753de3-00c0-417c-a4b1-7c2ead96227e&linkCode=ll2&tag=wowproduct074-21&linkId=1b8f5939e822677c5fca968770783bbf&ref_=as_li_ss_tl', '_blank')">
+                        <img src="images/categories/bag2.webp" alt="حقائب السفر">
+                        <span>حقائب السفر</span>
+                    </div>
+                    <div class="category-item" onclick="window.open('https://www.amazon.sa/s?_encoding=UTF8&rh=i%3Afashion%2Cn%3A21640184031&ie=UTF8&pd_rd_w=rvNmh&content-id=amzn1.sym.c696b80b-4efc-4b01-8fc7-29f9d88aa7d2&pf_rd_p=c696b80b-4efc-4b01-8fc7-29f9d88aa7d2&pf_rd_r=3HT3Y88D0GS65H9GKWAB&pd_rd_wg=L0NOQ&pd_rd_r=97753de3-00c0-417c-a4b1-7c2ead96227e&linkCode=ll2&tag=wowproduct074-21&linkId=0fd7eff75ac7c1caa06a0faab38566fe&ref_=as_li_ss_tl', '_blank')">
+                        <img src="images/categories/bag3.webp" alt="المحافظ الرجالية">
+                        <span>المحافظ الرجالية</span>
+                    </div>
+                    <div class="category-item" onclick="window.open('https://www.amazon.sa/s?_encoding=UTF8&rh=i%3Afashion%2Cn%3A21640212031&ie=UTF8&pd_rd_w=rvNmh&content-id=amzn1.sym.c696b80b-4efc-4b01-8fc7-29f9d88aa7d2&pf_rd_p=c696b80b-4efc-4b01-8fc7-29f9d88aa7d2&pf_rd_r=3HT3Y88D0GS65H9GKWAB&pd_rd_wg=L0NOQ&pd_rd_r=97753de3-00c0-417c-a4b1-7c2ead96227e&linkCode=ll2&tag=wowproduct074-21&linkId=888910e61fc8f63eca8359d59d6e73f9&ref_=as_li_ss_tl', '_blank')">
+                        <img src="images/categories/bag4.webp" alt="حقائب الظهر">
+                        <span>حقائب الظهر</span>
+                    </div>
+                </div>
+                <a href="https://www.amazon.sa/s?_encoding=UTF8&rh=i%3Afashion%2Cn%3A21640181031&ie=UTF8&pd_rd_w=rvNmh&content-id=amzn1.sym.c696b80b-4efc-4b01-8fc7-29f9d88aa7d2&pf_rd_p=c696b80b-4efc-4b01-8fc7-29f9d88aa7d2&pf_rd_r=3HT3Y88D0GS65H9GKWAB&pd_rd_wg=L0NOQ&pd_rd_r=97753de3-00c0-417c-a4b1-7c2ead96227e&linkCode=ll2&tag=wowproduct074-21&linkId=1b89c33750ec8ea10a9949bbc2e5e14b&ref_=as_li_ss_tl" class="category-link" target="_blank">اكتشف المزيد</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== NEW SECTION - منتجاتي الأساسية (الدفع عند الاستلام) ==================== -->
+    <section class="my-products-section">
+        <div class="container">
+            <div class="section-header">
+                <h2>📦 منتجات الدفع عند الاستلام</h2>
+                <p>منتجات أصلية - جودة عالية - الدفع عند الاستلام</p>
+            </div>
+            <div class="my-products-grid" id="myProductsGrid">
+                <!-- المنتجات ستظهر هنا عبر JavaScript -->
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== المنتجات المميزة ==================== -->
+    <section class="products-section" id="productsSection">
+        <div class="container">
+            <div class="section-header">
+                <h2 id="products-title">منتجات مميزة</h2>
+            </div>
+            <div class="products-grid" id="productsGrid"></div>
+        </div>
+    </section>
 
     <footer class="footer">
-        <div class="container"><p>&copy; 2025 متجرك. جميع الحقوق محفوظة</p></div>
+        <div class="container">
+            <p id="footer-text">&copy; 2025 متجرك. جميع الحقوق محفوظة</p>
+        </div>
     </footer>
 
-    <!-- نموذج الطلب -->
-    <div class="order-modal" id="orderModal">
-        <div class="order-modal-content">
-            <span class="close-modal" id="closeModal">&times;</span>
-            <h3>طلب منتج</h3>
-            <form id="orderForm">
-                <div class="form-group"><label>الاسم الكامل</label><input type="text" id="fullName" required></div>
-                <div class="form-group"><label>رقم الهاتف</label><input type="tel" id="phone" required></div>
-                <div class="form-group"><label>العنوان</label><input type="text" id="address" required></div>
-                <button type="submit" class="submit-order-btn">تأكيد الطلب</button>
-            </form>
-        </div>
-    </div>
-
+    <script src="js/data.js"></script>
     <script src="js/my-products-data.js"></script>
-    <script src="js/product-details.js"></script>
-    <script>
-        // توليد رقم طلب عشوائي
-        function generateOrderNumber() {
-            const date = new Date();
-            const year = date.getFullYear();
-            const random = Math.floor(Math.random() * 10000).toString().padStart(5, '0');
-            return `SA-${year}-${random}`;
-        }
-
-        // عرض صفحة نجاح الطلب
-        function showSuccessPage(orderData) {
-            const container = document.getElementById('mainContent');
-            container.innerHTML = `
-                <div class="success-page">
-                    <div class="success-card">
-                        <div class="success-icon">
-                            <i class="fas fa-check"></i>
-                        </div>
-                        <h2>✅ تم استلام طلبك بنجاح</h2>
-                        <div class="order-number">
-                            <span>#${orderData.orderNumber}</span>
-                        </div>
-                        <div class="steps">
-                            <div class="step">
-                                <div class="step-circle">1</div>
-                                <p>مراجعة الطلب</p>
-                            </div>
-                            <div class="step">
-                                <div class="step-circle">2</div>
-                                <p>التواصل معك</p>
-                            </div>
-                            <div class="step">
-                                <div class="step-circle">3</div>
-                                <p>شحن المنتج</p>
-                            </div>
-                            <div class="step">
-                                <div class="step-circle">4</div>
-                                <p>الدفع عند الاستلام</p>
-                            </div>
-                        </div>
-                        <div class="order-info">
-                            <h4 style="margin-bottom: 15px;">📋 معلومات الطلب</h4>
-                            <div class="order-info-item">
-                                <span>المنتج:</span>
-                                <strong>${orderData.productName}</strong>
-                            </div>
-                            <div class="order-info-item">
-                                <span>السعر:</span>
-                                <strong>${orderData.price} ر.س</strong>
-                            </div>
-                            <div class="order-info-item">
-                                <span>الكمية:</span>
-                                <strong>1</strong>
-                            </div>
-                            <div class="order-info-item">
-                                <span>العنوان:</span>
-                                <strong>${orderData.address || 'غير محدد'}</strong>
-                            </div>
-                        </div>
-                        <div class="success-buttons">
-                            <a href="index.html" class="btn-continue">🛒 متابعة التسوق</a>
-                            <button class="btn-track" onclick="alert('🔜 سيتم إضافة خاصية تتبع الطلب قريباً')">📦 تتبع الطلب</button>
-                        </div>
-                        <div class="trust-footer">
-                            <span><i class="fas fa-lock"></i> بياناتك محفوظة وآمنة</span>
-                            <span><i class="fas fa-truck"></i> شحن سريع داخل السعودية</span>
-                            <span><i class="fas fa-money-bill-wave"></i> الدفع عند الاستلام</span>
-                            <span><i class="fas fa-headset"></i> دعم العملاء متوفر</span>
-                        </div>
-                    </div>
-                </div>
-            `;
-        }
-
-        // عرض صفحة المنتج
-        function renderProductDetail(product, productDetails) {
-            const container = document.getElementById('mainContent');
-            const images = productDetails?.images || [product.image];
-            
-            container.innerHTML = `
-                <div class="product-detail-container">
-                    <div class="product-detail-grid">
-                        <div class="product-gallery">
-                            <div class="main-image"><img src="${images[0]}" id="mainImage" onerror="this.src='https://placehold.co/600x600?text=Product'"></div>
-                            <div class="thumbnail-grid" id="thumbnailGrid">
-                                ${images.map((img, idx) => `<div class="thumbnail ${idx === 0 ? 'active' : ''}" data-img="${img}"><img src="${img}" onerror="this.src='https://placehold.co/100x100?text=Img'"></div>`).join('')}
-                            </div>
-                        </div>
-                        <div class="product-info">
-                            <span class="product-badge" style="background: ${product.badgeColor}; color: white;">${product.badge}</span>
-                            <h1 class="product-title">${product.title}</h1>
-                            <div class="product-price-section">
-                                <span class="current-price">${product.price} ر.س</span>
-                                <span class="old-price">${product.oldPrice} ر.س</span>
-                                <span class="discount">-${product.discount}%</span>
-                            </div>
-                            <ul class="features-list">
-                                ${(productDetails?.features || ["منتج عالي الجودة", "ضمان شامل", "شحن سريع"]).map(f => `<li><i class="fas fa-check-circle"></i> ${f}</li>`).join('')}
-                            </ul>
-                            <div class="trust-badges">
-                                <div class="trust-item"><i class="fas fa-money-bill-wave"></i> الدفع عند الاستلام</div>
-                                <div class="trust-item"><i class="fas fa-truck-fast"></i> شحن سريع داخل السعودية</div>
-                                <div class="trust-item"><i class="fas fa-shield-alt"></i> ضمان الاستبدال</div>
-                                <div class="trust-item"><i class="fas fa-headset"></i> خدمة العملاء</div>
-                            </div>
-                            <button class="order-btn" id="orderBtn">اطلب الآن</button>
-                        </div>
-                    </div>
-                    <div class="product-description">
-                        <h3>وصف المنتج</h3>
-                        ${(productDetails?.description || `${product.title} هو منتج مميز بتقنيات حديثة. يتميز بجودة عالية وسعر مناسب.`).split('\n').map(p => `<p>${p}</p>`).join('')}
-                    </div>
-                </div>
-            `;
-            
-            // معرض الصور
-            document.querySelectorAll('.thumbnail').forEach(thumb => {
-                thumb.addEventListener('click', () => {
-                    document.querySelectorAll('.thumbnail').forEach(t => t.classList.remove('active'));
-                    thumb.classList.add('active');
-                    document.getElementById('mainImage').src = thumb.dataset.img;
-                });
-            });
-            
-            // زر الطلب
-            document.getElementById('orderBtn').addEventListener('click', () => {
-                document.getElementById('orderModal').classList.add('active');
-            });
-        }
-
-        // الحصول على بيانات المنتج
-        function getProductDetails(id) {
-            if (typeof productsDetails !== 'undefined' && productsDetails[id]) return productsDetails[id];
-            const myProductsList = typeof myProducts !== 'undefined' ? myProducts : [];
-            return myProductsList.find(p => p.id === id) || null;
-        }
-
-        // تهيئة الصفحة
-        const urlParams = new URLSearchParams(window.location.search);
-        const productId = parseInt(urlParams.get('id'));
-        const product = getProductDetails(productId);
-        
-        if (!product) {
-            document.getElementById('mainContent').innerHTML = `<div class="not-found"><h2>المنتج غير موجود</h2><a href="index.html">العودة للرئيسية</a></div>`;
-        } else {
-            renderProductDetail(product, product);
-        }
-
-        // نموذج الطلب
-        const modal = document.getElementById('orderModal');
-        const closeModal = document.getElementById('closeModal');
-        if (closeModal) closeModal.onclick = () => modal.classList.remove('active');
-        window.onclick = (e) => { if (e.target === modal) modal.classList.remove('active'); };
-        
-        const orderForm = document.getElementById('orderForm');
-        if (orderForm && product) {
-            orderForm.onsubmit = (e) => {
-                e.preventDefault();
-                
-                const orderData = {
-                    orderNumber: generateOrderNumber(),
-                    productName: product.title,
-                    price: product.price,
-                    name: document.getElementById('fullName').value,
-                    phone: document.getElementById('phone').value,
-                    address: document.getElementById('address').value,
-                    date: new Date().toLocaleString('ar-SA')
-                };
-                
-                // إغلاق النموذج
-                modal.classList.remove('active');
-                
-                // عرض صفحة النجاح
-                showSuccessPage(orderData);
-                
-                // مسح حقول النموذج
-                document.getElementById('orderForm').reset();
-            };
-        }
-    </script>
+    <script src="js/translations.js"></script>
+    <script src="js/slider.js"></script>
+    <script src="js/sections.js"></script>
+    <script src="js/products.js"></script>
+    <script src="js/search.js"></script>
 </body>
 </html>
