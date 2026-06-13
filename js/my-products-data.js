@@ -1,5 +1,5 @@
 // ========================================
-// my-products-data.js - منتجات الدفع عند الاستلام
+// my-products-data.js - منتجات الدفع عند الاستلام (للعرض في الصفحة الرئيسية)
 // ========================================
 
 const myProducts = [
@@ -50,58 +50,10 @@ const myProducts = [
         image: "images/my-products/product4.webp",
         category: "شواحن",
         stock: true
-    },
-    {
-        id: 105,
-        title: "حامل ثلاثي للهاتف والكاميرا",
-        badge: "جديد",
-        badgeColor: "#007185",
-        price: 39,
-        oldPrice: 89,
-        discount: 56,
-        image: "images/my-products/product5.webp",
-        category: "اكسسوارات",
-        stock: true
-    },
-    {
-        id: 106,
-        title: "مروحة مكتبية USB صغيرة",
-        badge: "عرض محدود",
-        badgeColor: "#ff9900",
-        price: 29,
-        oldPrice: 69,
-        discount: 58,
-        image: "images/my-products/product6.webp",
-        category: "مكاتب",
-        stock: true
-    },
-    {
-        id: 107,
-        title: "قلم ذكي للكتابة على الشاشات",
-        badge: "الأكثر مبيعاً",
-        badgeColor: "#cc0c39",
-        price: 79,
-        oldPrice: 159,
-        discount: 50,
-        image: "images/my-products/product7.webp",
-        category: "اكسسوارات",
-        stock: true
-    },
-    {
-        id: 108,
-        title: "سماعة أذن رياضية بلوتوث",
-        badge: "جديد",
-        badgeColor: "#007185",
-        price: 69,
-        oldPrice: 149,
-        discount: 54,
-        image: "images/my-products/product8.webp",
-        category: "سماعات",
-        stock: true
     }
 ];
 
-// عرض منتجات الدفع عند الاستلام
+// عرض منتجات الدفع عند الاستلام في الصفحة الرئيسية
 function renderMyProducts() {
     const gridContainer = document.getElementById('myProductsGrid');
     if (!gridContainer) return;
@@ -131,7 +83,6 @@ function renderMyProducts() {
             </div>
         `;
         
-        // منع انتشار الحدث عند الضغط على الزر
         const btn = card.querySelector('.my-order-btn');
         if (btn) {
             btn.onclick = (e) => {
