@@ -124,6 +124,12 @@
         // ========================================
         const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbw3bkMBSrIFsxoO9V2li8w7dX0M42Qp8aKPXLJYuBbD3gf8xTViV2VvR_aMC6BdohQT/exec';
 
+        // ========================================
+        // إعدادات Telegram
+        // ========================================
+        const TELEGRAM_BOT_TOKEN = '8772476804:AAEWDs9MsiLk2HgSeWZtoi65JYIkQUdjakc';
+        const TELEGRAM_CHAT_ID = '7086739579';
+
         function generateOrderNumber() {
             const date = new Date();
             const year = date.getFullYear();
@@ -131,15 +137,40 @@
             return `SA-${year}-${random}`;
         }
 
-        // إرسال الطلب إلى Google Sheets (بدون انتظار)
+        // إرسال الطلب إلى Google Sheets
         function sendToGoogleSheets(orderData) {
             fetch(GOOGLE_SCRIPT_URL, {
                 method: 'POST',
                 mode: 'no-cors',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(orderData)
-            }).catch(error => console.error('خطأ:', error));
-            return true;
+            }).catch(error => console.error('Google Sheets error:', error));
+        }
+
+        // إرسال الطلب إلى Telegram
+        function sendToTelegram(orderData) {
+            const message = `🛒 طلب جديد من متجرك
+━━━━━━━━━━━━━━━━
+📦 المنتج: ${orderData.productName}
+💰 السعر: ${orderData.price} ر.س
+👤 الاسم: ${orderData.name}
+📞 الهاتف: ${orderData.phone}
+📍 العنوان: ${orderData.address}
+📅 التاريخ: ${orderData.date}
+━━━━━━━━━━━━━━━━
+✅ الدفع عند الاستلام`;
+            
+            const url = `https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendMessage`;
+            
+            fetch(url, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    chat_id: TELEGRAM_CHAT_ID,
+                    text: message,
+                    parse_mode: 'HTML'
+                })
+            }).catch(error => console.error('Telegram error:', error));
         }
 
         function showSuccessPage(orderData) {
@@ -293,6 +324,9 @@
                 
                 // إرسال إلى Google Sheets
                 sendToGoogleSheets(orderData);
+                
+                // إرسال إلى Telegram
+                sendToTelegram(orderData);
                 
                 modal.classList.remove('active');
                 showSuccessPage(orderData);
