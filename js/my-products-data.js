@@ -1,5 +1,5 @@
 // ========================================
-// my-products-data.js - منتجات الدفع عند الاستلام (للعرض في الصفحة الرئيسية)
+// my-products-data.js - منتجات الدفع عند الاستلام
 // ========================================
 
 const myProducts = [
@@ -53,7 +53,7 @@ const myProducts = [
     }
 ];
 
-// عرض منتجات الدفع عند الاستلام في الصفحة الرئيسية
+// عرض منتجات الدفع عند الاستلام
 function renderMyProducts() {
     const gridContainer = document.getElementById('myProductsGrid');
     if (!gridContainer) return;
@@ -63,8 +63,9 @@ function renderMyProducts() {
     myProducts.forEach(product => {
         const card = document.createElement('div');
         card.className = 'my-product-card';
+        // تعديل الرابط إلى products.html (وليس product.html)
         card.onclick = () => {
-            window.location.href = `product.html?id=${product.id}`;
+            window.location.href = `products.html?id=${product.id}`;
         };
         
         card.innerHTML = `
@@ -83,11 +84,12 @@ function renderMyProducts() {
             </div>
         `;
         
+        // تعديل الرابط للزر أيضاً
         const btn = card.querySelector('.my-order-btn');
         if (btn) {
             btn.onclick = (e) => {
                 e.stopPropagation();
-                window.location.href = `product.html?id=${product.id}`;
+                window.location.href = `products.html?id=${product.id}`;
             };
         }
         
