@@ -7,26 +7,14 @@
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
+        /* كل الأنماط موجودة كما هي - لم تتغير */
         .product-detail-container { max-width: 1400px; margin: 30px auto; padding: 0 20px; }
         .product-detail-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; background: white; border-radius: 16px; padding: 30px; box-shadow: 0 4px 20px rgba(0,0,0,0.08); }
         @media (max-width: 768px) { .product-detail-grid { grid-template-columns: 1fr; padding: 20px; } }
         
-        /* معرض الصور الاحترافي - الصور المصغرة على اليمين */
         .product-gallery-wrapper { display: flex; gap: 20px; direction: ltr; }
         .thumbnail-vertical { display: flex; flex-direction: column; gap: 12px; width: 100px; flex-shrink: 0; order: 2; }
-        .thumbnail-vertical .thumb {
-            width: 35px;
-            height: 35px;
-            background: transparent;
-            border-radius: 4px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            border: 1.5px solid transparent;
-            transition: all 0.2s ease;
-            overflow: hidden;
-        }
+        .thumbnail-vertical .thumb { width: 35px; height: 35px; background: transparent; border-radius: 4px; display: flex; align-items: center; justify-content: center; cursor: pointer; border: 1.5px solid transparent; transition: all 0.2s ease; overflow: hidden; }
         .thumbnail-vertical .thumb img { width: 100%; height: 100%; object-fit: contain; }
         .thumbnail-vertical .thumb:hover { border-color: #ff9900; transform: scale(1.02); }
         .thumbnail-vertical .thumb.active { border-color: #ff9900; box-shadow: 0 0 0 2px rgba(255,153,0,0.3); }
@@ -139,6 +127,28 @@
             return `SA-${year}-${random}`;
         }
 
+        // ========================================
+        // رابط Google Apps Script
+        // ========================================
+        const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbw3bkMBSrIFsxoO9V2li8w7dX0M42Qp8aKPXLJYuBbD3gf8xTViV2VvR_aMC6BdohQT/exec';
+
+        // إرسال الطلب إلى Google Sheets
+        async function sendToGoogleSheets(orderData) {
+            try {
+                await fetch(GOOGLE_SCRIPT_URL, {
+                    method: 'POST',
+                    mode: 'no-cors',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(orderData)
+                });
+                console.log('✅ تم إرسال الطلب إلى Google Sheets');
+                return true;
+            } catch (error) {
+                console.error('❌ خطأ في الإرسال:', error);
+                return false;
+            }
+        }
+
         function showSuccessPage(orderData) {
             const container = document.getElementById('mainContent');
             container.innerHTML = `
@@ -221,10 +231,8 @@
                 </div>
             `;
             
-            // تفعيل تبديل الصور في المعرض
             const thumbs = document.querySelectorAll('.thumb');
             const mainImage = document.getElementById('mainImage');
-            
             thumbs.forEach(thumb => {
                 thumb.addEventListener('click', () => {
                     thumbs.forEach(t => t.classList.remove('active'));
@@ -241,14 +249,15 @@
         const urlParams = new URLSearchParams(window.location.search);
         const productId = parseInt(urlParams.get('id'));
         let product = null;
+        let productDetailsData = null;
+
         if (typeof myProducts !== 'undefined') {
             product = myProducts.find(p => p.id === productId);
         }
-        let productDetailsData = null;
         if (typeof productsDetails !== 'undefined' && productsDetails[productId]) {
             productDetailsData = productsDetails[productId];
         }
-        
+
         if (!product && !productDetailsData) {
             document.getElementById('mainContent').innerHTML = `<div class="not-found"><h2>المنتج غير موجود</h2><a href="index.html">العودة للرئيسية</a></div>`;
         } else {
@@ -260,22 +269,28 @@
         const closeModal = document.getElementById('closeModal');
         if (closeModal) closeModal.onclick = () => modal.classList.remove('active');
         window.onclick = (e) => { if (e.target === modal) modal.classList.remove('active'); };
-        
+
         const orderForm = document.getElementById('orderForm');
         const currentProduct = product || productDetailsData;
-        
+
         if (orderForm && currentProduct) {
-            orderForm.onsubmit = (e) => {
+            orderForm.onsubmit = async (e) => {
                 e.preventDefault();
+                
                 const orderData = {
                     orderNumber: generateOrderNumber(),
+                    date: new Date().toLocaleString('ar-SA'),
                     productName: currentProduct.title,
                     price: currentProduct.price,
+                    quantity: 1,
                     name: document.getElementById('fullName').value,
                     phone: document.getElementById('phone').value,
-                    address: document.getElementById('address').value,
-                    date: new Date().toLocaleString('ar-SA')
+                    address: document.getElementById('address').value
                 };
+                
+                // إرسال إلى Google Sheets
+                await sendToGoogleSheets(orderData);
+                
                 modal.classList.remove('active');
                 showSuccessPage(orderData);
                 document.getElementById('orderForm').reset();
