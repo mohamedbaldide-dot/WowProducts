@@ -14,11 +14,13 @@ const productsDetails = {
         discount: 50,
         image: "images/my-products/product1.webp",
         images: [
-            "images/my-products/product1.webp",
-            "images/my-products/product1-2.webp",
-            "images/my-products/product1-3.webp",
-            "images/my-products/product1-4.webp"
-        ],
+    "images/my-products/product1.webp",
+    "images/my-products/product1-2.webp",
+    "images/my-products/product1-3.webp",
+    "images/my-products/product1-4.webp",
+    "images/my-products/product1-5.webp",
+    "images/my-products/product1-6.webp"
+],
         category: "تدليك",
         stock: true,
         features: [
