@@ -11,26 +11,26 @@
         .product-detail-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; background: white; border-radius: 16px; padding: 30px; box-shadow: 0 4px 20px rgba(0,0,0,0.08); }
         @media (max-width: 768px) { .product-detail-grid { grid-template-columns: 1fr; padding: 20px; } }
         
-        /* معرض الصور الاحترافي */
+        /* معرض الصور الاحترافي - الصور المصغرة على اليمين */
         .product-gallery-wrapper { display: flex; gap: 20px; direction: ltr; }
-        .thumbnail-vertical { display: flex; flex-direction: column; gap: 12px; width: 100px; flex-shrink: 0; }
+        .thumbnail-vertical { display: flex; flex-direction: column; gap: 12px; width: 100px; flex-shrink: 0; order: 2; }
         .thumbnail-vertical .thumb {
-    width: 35px;
-    height: 35px;
-    background: #f8f8f8;
-    border-radius: 8px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    border: 1.5px solid transparent;
-    transition: all 0.2s ease;
-    overflow: hidden;
-}
+            width: 35px;
+            height: 35px;
+            background: #f8f8f8;
+            border-radius: 4px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            border: 1.5px solid transparent;
+            transition: all 0.2s ease;
+            overflow: hidden;
+        }
         .thumbnail-vertical .thumb img { width: 100%; height: 100%; object-fit: contain; }
         .thumbnail-vertical .thumb:hover { border-color: #ff9900; transform: scale(1.02); }
         .thumbnail-vertical .thumb.active { border-color: #ff9900; box-shadow: 0 0 0 2px rgba(255,153,0,0.3); }
-        .main-image-large { flex: 1; background: #f8f8f8; border-radius: 16px; display: flex; align-items: center; justify-content: center; aspect-ratio: 1 / 1; overflow: hidden; }
+        .main-image-large { flex: 1; background: #f8f8f8; border-radius: 4px; display: flex; align-items: center; justify-content: center; aspect-ratio: 1 / 1; overflow: hidden; order: 1; }
         .main-image-large img { width: 100%; height: 100%; object-fit: contain; transition: transform 0.3s ease; }
         .main-image-large img:hover { transform: scale(1.05); }
         @media (max-width: 768px) { .product-gallery-wrapper { flex-direction: column; } .thumbnail-vertical { flex-direction: row; width: 100%; justify-content: center; order: 2; margin-top: 15px; } .main-image-large { order: 1; } }
@@ -183,15 +183,15 @@
                 <div class="product-detail-container">
                     <div class="product-detail-grid">
                         <div class="product-gallery-wrapper">
+                            <div class="main-image-large">
+                                <img src="${images[0]}" id="mainImage" alt="الصورة الرئيسية" onerror="this.src='https://placehold.co/600x600?text=Product'">
+                            </div>
                             <div class="thumbnail-vertical" id="thumbnailVertical">
                                 ${images.map((img, idx) => `
                                     <div class="thumb ${idx === 0 ? 'active' : ''}" data-img="${img}">
                                         <img src="${img}" alt="صورة ${idx + 1}" onerror="this.src='https://placehold.co/80x80?text=Img'">
                                     </div>
                                 `).join('')}
-                            </div>
-                            <div class="main-image-large">
-                                <img src="${images[0]}" id="mainImage" alt="الصورة الرئيسية" onerror="this.src='https://placehold.co/600x600?text=Product'">
                             </div>
                         </div>
                         <div class="product-info">
