@@ -846,3 +846,84 @@ body {
         width: 130px;
     }
 }
+/* ===== الشعار ===== */
+.logo-link {
+    text-decoration: none;
+    display: inline-block;
+}
+
+.logo-img {
+    width: 120px;
+    height: auto;
+    display: block;
+}
+
+@media (max-width: 768px) {
+    .logo-img {
+        width: 90px;
+    }
+}
+
+/* ===== اللغة ===== */
+.language-selector {
+    position: relative;
+    cursor: pointer;
+}
+
+.lang-btn {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    background: transparent;
+    padding: 5px 8px;
+    border-radius: 4px;
+    transition: background 0.2s;
+    font-size: 12px;
+}
+
+.lang-btn:hover {
+    background: rgba(255,255,255,0.1);
+}
+
+.flag-icon {
+    width: 16px;
+    height: 16px;
+    border-radius: 2px;
+}
+
+.lang-dropdown {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background: white;
+    min-width: 160px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    border-radius: 6px;
+    z-index: 1000;
+    overflow: hidden;
+}
+
+.lang-dropdown a {
+    display: block;
+    padding: 8px 12px;
+    color: #333;
+    text-decoration: none;
+    font-size: 12px;
+}
+
+.lang-dropdown a:hover {
+    background: #f0f0f0;
+}
+
+.lang-dropdown .lang-footer {
+    padding: 8px 12px;
+    border-top: 1px solid #eee;
+    font-size: 10px;
+    color: #666;
+    text-align: center;
+}
+
+.lang-dropdown.show {
+    display: block;
+}
