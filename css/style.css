@@ -580,7 +580,7 @@ body {
     padding: 20px;
     background: #fafafa;
     display: flex;
-    justify-center;
+    justify-content: center;
     align-items: center;
     height: 180px;
 }
@@ -705,6 +705,7 @@ body {
     font-size: 14px;
     margin-top: 20px;
 }
+
 /* ========================================
    منتجات الدفع عند الاستلام (القسم الجديد)
    ======================================== */
@@ -833,19 +834,7 @@ body {
 .my-order-btn:hover {
     background: #e68a00;
 }
-/* ===== الشعار - حجم مناسب ===== */
-.logo-img {
-    width: 180px;
-    height: auto;
-    display: block;
-}
 
-/* للهواتف */
-@media (max-width: 768px) {
-    .logo-img {
-        width: 130px;
-    }
-}
 /* ===== الشعار ===== */
 .logo-link {
     text-decoration: none;
@@ -927,11 +916,12 @@ body {
 .lang-dropdown.show {
     display: block;
 }
+
 /* ========================================
    طلباتي - Side Panel
    ======================================== */
 
-/* زر طلباتي (بدلاً من السلة) */
+/* زر طلباتي */
 .orders-icon {
     position: relative;
     cursor: pointer;
@@ -987,7 +977,7 @@ body {
     right: 0;
 }
 
-/* خلفية مظلمة خلف اللوحة */
+/* خلفية مظلمة */
 .orders-overlay {
     position: fixed;
     top: 0;
