@@ -11,9 +11,11 @@
 
     <!-- ==================== الهيدر ==================== -->
     <header class="header">
-      <div class="logo">
-    <img src="images/logo.webp" alt="شعار المتجر" class="logo-img">
-</div>
+        <a href="index.html" class="logo-link">
+            <div class="logo">
+                <img src="images/logo.webp" alt="شعار المتجر" class="logo-img">
+            </div>
+        </a>
         <div class="search-container">
             <div class="search-dropdown">
                 <button class="dropdown-btn" id="dropdownBtn">الكل <i class="fas fa-chevron-down"></i></button>
@@ -32,7 +34,7 @@
         </div>
         <div class="header-actions">
             <div class="language-selector" id="languageSelector">
-                <div class="lang-btn">
+                <div class="lang-btn" id="langBtn">
                     <img src="images/saudi-flag.webp" alt="SA" class="flag-icon">
                     <span id="currentLang">AR</span>
                     <i class="fas fa-chevron-down"></i>
@@ -258,20 +260,18 @@
         </div>
     </section>
 
-    <!-- ==================== NEW SECTION - منتجاتي الأساسية (الدفع عند الاستلام) ==================== -->
+    <!-- ==================== منتجات الدفع عند الاستلام ==================== -->
     <section class="my-products-section">
         <div class="container">
             <div class="section-header">
-                <h2>📦 منتجات الدفع عند الاستلام</h2>
-                <p>منتجات أصلية - جودة عالية - الدفع عند الاستلام</p>
+                <h2 id="codTitle">📦 منتجات الدفع عند الاستلام</h2>
+                <p id="codSubtitle">منتجات أصلية - جودة عالية - الدفع عند الاستلام</p>
             </div>
             <div class="my-products-grid" id="myProductsGrid">
                 <!-- المنتجات ستظهر هنا عبر JavaScript -->
             </div>
         </div>
     </section>
-
-    <!-- تم إزالة قسم المنتجات المميزة -->
 
     <footer class="footer">
         <div class="container">
@@ -284,6 +284,110 @@
     <script src="js/slider.js"></script>
     <script src="js/sections.js"></script>
     <script src="js/search.js"></script>
-    <!-- <script src="js/products.js"></script> -->
+
+    <style>
+        .logo-link {
+            text-decoration: none;
+            display: inline-block;
+        }
+        .logo-link:hover {
+            opacity: 0.9;
+        }
+        .language-selector {
+            position: relative;
+            cursor: pointer;
+        }
+        .lang-btn {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            background: transparent;
+            padding: 5px 10px;
+            border-radius: 4px;
+            transition: background 0.2s;
+            font-size: 12px;
+        }
+        .lang-btn:hover {
+            background: rgba(255,255,255,0.1);
+        }
+        .lang-dropdown {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background: white;
+            min-width: 170px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+            border-radius: 6px;
+            z-index: 1000;
+            overflow: hidden;
+        }
+        .lang-dropdown a {
+            display: block;
+            padding: 8px 12px;
+            color: #333;
+            text-decoration: none;
+            font-size: 12px;
+        }
+        .lang-dropdown a:hover {
+            background: #f0f0f0;
+        }
+        .lang-dropdown .lang-footer {
+            padding: 8px 12px;
+            border-top: 1px solid #eee;
+            font-size: 10px;
+            color: #666;
+            text-align: center;
+        }
+        .lang-dropdown.show {
+            display: block;
+        }
+    </style>
+
+    <script>
+        // ========================================
+        // تبديل اللغة في الصفحة الرئيسية
+        // ========================================
+        const langBtn = document.getElementById('langBtn');
+        const langDropdown = document.getElementById('langDropdown');
+        const currentLangSpan = document.getElementById('currentLang');
+
+        function changeMainPageLanguage(lang) {
+            if (lang === 'en') {
+                document.getElementById('searchInput').placeholder = 'Search in Amazon Saudi Arabia';
+                document.getElementById('codTitle').innerHTML = '📦 Cash on Delivery Products';
+                document.getElementById('codSubtitle').innerHTML = 'Original products - High quality - Cash on delivery';
+                document.getElementById('footer-text').innerHTML = '&copy; 2025 MyStore. All rights reserved.';
+            } else {
+                document.getElementById('searchInput').placeholder = 'ابحث في أمازون السعودية';
+                document.getElementById('codTitle').innerHTML = '📦 منتجات الدفع عند الاستلام';
+                document.getElementById('codSubtitle').innerHTML = 'منتجات أصلية - جودة عالية - الدفع عند الاستلام';
+                document.getElementById('footer-text').innerHTML = '&copy; 2025 متجرك. جميع الحقوق محفوظة';
+            }
+        }
+
+        if (langBtn) {
+            langBtn.addEventListener('click', (e) => {
+                e.stopPropagation();
+                langDropdown.classList.toggle('show');
+            });
+        }
+
+        document.querySelectorAll('[data-lang]').forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                e.preventDefault();
+                const lang = btn.getAttribute('data-lang');
+                currentLangSpan.innerText = lang.toUpperCase();
+                langDropdown.classList.remove('show');
+                changeMainPageLanguage(lang);
+            });
+        });
+
+        window.addEventListener('click', (e) => {
+            if (!langBtn?.contains(e.target)) {
+                langDropdown?.classList.remove('show');
+            }
+        });
+    </script>
 </body>
 </html>
