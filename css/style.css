@@ -834,13 +834,13 @@ body {
     background: #e68a00;
 }
 .logo-img {
-    width: 120px;  /* قلل هذا الرقم */
+    width: 70px;
     height: auto;
     display: block;
 }
 
 @media (max-width: 768px) {
     .logo-img {
-        width: 85px;  /* أصغر للهاتف */
+        width: 50px;
     }
 }
