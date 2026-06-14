@@ -373,34 +373,29 @@
         }
 
         // ========================================
-        // تهيئة أيقونة طلباتي
+        // تهيئة أيقونة طلباتي (بدون setTimeout)
         // ========================================
-        setTimeout(function() {
-            const ordersIcon = document.getElementById('ordersIcon');
-            const closeBtn = document.getElementById('closeOrdersPanel');
-            const overlay = document.getElementById('ordersOverlay');
-            
-            if (ordersIcon) {
-                const newIcon = ordersIcon.cloneNode(true);
-                ordersIcon.parentNode.replaceChild(newIcon, ordersIcon);
-                
-                newIcon.addEventListener('click', function(e) {
-                    e.preventDefault();
-                    e.stopPropagation();
-                    openOrdersPanel();
-                });
-            }
-            
-            if (closeBtn) {
-                closeBtn.addEventListener('click', closeOrdersPanel);
-            }
-            
-            if (overlay) {
-                overlay.addEventListener('click', closeOrdersPanel);
-            }
-            
-            updateOrdersBadge();
-        }, 100);
+        const ordersIconElem = document.getElementById('ordersIcon');
+        const closePanelBtn = document.getElementById('closeOrdersPanel');
+        const panelOverlay = document.getElementById('ordersOverlay');
+
+        if (ordersIconElem) {
+            ordersIconElem.addEventListener('click', function(e) {
+                e.preventDefault();
+                e.stopPropagation();
+                openOrdersPanel();
+            });
+        }
+
+        if (closePanelBtn) {
+            closePanelBtn.addEventListener('click', closeOrdersPanel);
+        }
+
+        if (panelOverlay) {
+            panelOverlay.addEventListener('click', closeOrdersPanel);
+        }
+
+        updateOrdersBadge();
 
         // ========================================
         // تبديل اللغة
