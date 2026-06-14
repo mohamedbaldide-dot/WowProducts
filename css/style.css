@@ -1129,3 +1129,46 @@ body {
     background: #f8d7da;
     color: #721c24;
 }
+/* ========================================
+   حاوية أيقونة طلباتي (لإصلاح موقع العداد)
+   ======================================== */
+
+/* حاوية أيقونة طلباتي */
+.orders-wrapper {
+    position: relative;
+    display: inline-block;
+    margin-right: 10px;
+}
+
+/* أيقونة طلباتي */
+.orders-icon {
+    position: relative;
+    cursor: pointer;
+    font-size: 22px;
+    transition: opacity 0.3s;
+    display: block;
+    color: white;
+}
+
+.orders-icon:hover {
+    opacity: 0.8;
+}
+
+/* العداد الدائري */
+.orders-badge {
+    position: absolute;
+    top: -8px;
+    right: -8px;
+    background: #ff9900;
+    color: white;
+    font-size: 10px;
+    font-weight: bold;
+    min-width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 4px;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.2);
+}
