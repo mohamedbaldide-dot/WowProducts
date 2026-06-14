@@ -74,23 +74,89 @@
         .trust-footer i { color: #28a745; margin-left: 5px; }
         .not-found { text-align: center; padding: 50px; }
         .not-found a { color: #ff9900; text-decoration: none; }
+
+        /* أنماط إضافية للشعار واللغة */
+        .logo-link {
+            text-decoration: none;
+            color: white;
+            display: inline-block;
+        }
+        .logo-link:hover {
+            opacity: 0.9;
+        }
+        .language-selector {
+            position: relative;
+            cursor: pointer;
+        }
+        .lang-btn {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            background: transparent;
+            padding: 5px 10px;
+            border-radius: 4px;
+            transition: background 0.2s;
+            font-size: 12px;
+        }
+        .lang-btn:hover {
+            background: rgba(255,255,255,0.1);
+        }
+        .lang-dropdown {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background: white;
+            min-width: 170px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+            border-radius: 6px;
+            z-index: 1000;
+            overflow: hidden;
+        }
+        .lang-dropdown a {
+            display: block;
+            padding: 8px 12px;
+            color: #333;
+            text-decoration: none;
+            font-size: 12px;
+        }
+        .lang-dropdown a:hover {
+            background: #f0f0f0;
+        }
+        .lang-dropdown .lang-footer {
+            padding: 8px 12px;
+            border-top: 1px solid #eee;
+            font-size: 10px;
+            color: #666;
+            text-align: center;
+        }
+        .lang-dropdown.show {
+            display: block;
+        }
     </style>
 </head>
 <body>
 
     <header class="header">
-        <div class="logo"><h1>متجرك</h1></div>
+        <a href="index.html" class="logo-link">
+            <div class="logo"><h1 id="logo-text">متجرك</h1></div>
+        </a>
         <div class="search-container">
             <div class="search-dropdown"><button class="dropdown-btn">الكل <i class="fas fa-chevron-down"></i></button></div>
-            <input type="text" class="search-input" placeholder="ابحث في متجرك...">
+            <input type="text" class="search-input" id="searchInput" placeholder="ابحث في متجرك...">
             <button class="search-btn"><i class="fas fa-search"></i></button>
         </div>
         <div class="header-actions">
-            <div class="language-selector">
-                <div class="lang-btn">
+            <div class="language-selector" id="languageSelector">
+                <div class="lang-btn" id="langBtn">
                     <img src="images/saudi-flag.webp" alt="SA" class="flag-icon">
-                    <span>AR</span>
+                    <span id="currentLang">AR</span>
                     <i class="fas fa-chevron-down"></i>
+                </div>
+                <div class="lang-dropdown" id="langDropdown">
+                    <a href="#" data-lang="ar">العربية - AR</a>
+                    <a href="#" data-lang="en">English - EN</a>
+                    <div class="lang-footer">أنت تتسوق على متجرك</div>
                 </div>
             </div>
             <i class="fas fa-shopping-cart"></i>
@@ -100,18 +166,18 @@
     <div id="mainContent"></div>
 
     <footer class="footer">
-        <div class="container"><p>&copy; 2025 متجرك. جميع الحقوق محفوظة</p></div>
+        <div class="container"><p id="footer-text">&copy; 2025 متجرك. جميع الحقوق محفوظة</p></div>
     </footer>
 
     <div class="order-modal" id="orderModal">
         <div class="order-modal-content">
             <span class="close-modal" id="closeModal">&times;</span>
-            <h3>أدخل معلوماتك</h3>
+            <h3 id="modalTitle">أدخل معلوماتك</h3>
             <form id="orderForm">
-                <div class="form-group"><label>الاسم الكامل</label><input type="text" id="fullName" required></div>
-                <div class="form-group"><label>رقم الهاتف</label><input type="tel" id="phone" required></div>
-                <div class="form-group"><label>العنوان</label><input type="text" id="address" required></div>
-                <button type="submit" class="submit-order-btn">تأكيد الطلب</button>
+                <div class="form-group"><label id="labelName">الاسم الكامل</label><input type="text" id="fullName" required></div>
+                <div class="form-group"><label id="labelPhone">رقم الهاتف</label><input type="tel" id="phone" required></div>
+                <div class="form-group"><label id="labelAddress">العنوان</label><input type="text" id="address" required></div>
+                <button type="submit" class="submit-order-btn" id="submitBtn">تأكيد الطلب</button>
             </form>
         </div>
     </div>
@@ -137,7 +203,6 @@
             return `SA-${year}-${random}`;
         }
 
-        // إرسال الطلب إلى Google Sheets
         function sendToGoogleSheets(orderData) {
             fetch(GOOGLE_SCRIPT_URL, {
                 method: 'POST',
@@ -147,7 +212,6 @@
             }).catch(error => console.error('Google Sheets error:', error));
         }
 
-        // إرسال الطلب إلى Telegram
         function sendToTelegram(orderData) {
             const message = `🛒 طلب جديد من متجرك
 ━━━━━━━━━━━━━━━━
@@ -270,6 +334,64 @@
             });
         }
 
+        // ========================================
+        // تبديل اللغة
+        // ========================================
+        const langBtn = document.getElementById('langBtn');
+        const langDropdown = document.getElementById('langDropdown');
+        const currentLangSpan = document.getElementById('currentLang');
+
+        function changePageLanguage(lang) {
+            if (lang === 'en') {
+                document.getElementById('logo-text').innerText = 'MyStore';
+                document.getElementById('searchInput').placeholder = 'Search in MyStore...';
+                document.getElementById('modalTitle').innerText = 'Enter your information';
+                document.getElementById('labelName').innerText = 'Full Name';
+                document.getElementById('labelPhone').innerText = 'Phone Number';
+                document.getElementById('labelAddress').innerText = 'Address';
+                document.getElementById('submitBtn').innerText = 'Confirm Order';
+                document.getElementById('footer-text').innerHTML = '&copy; 2025 MyStore. All rights reserved.';
+                document.querySelector('.order-btn').innerText = 'Order Now';
+            } else {
+                document.getElementById('logo-text').innerText = 'متجرك';
+                document.getElementById('searchInput').placeholder = 'ابحث في متجرك...';
+                document.getElementById('modalTitle').innerText = 'أدخل معلوماتك';
+                document.getElementById('labelName').innerText = 'الاسم الكامل';
+                document.getElementById('labelPhone').innerText = 'رقم الهاتف';
+                document.getElementById('labelAddress').innerText = 'العنوان';
+                document.getElementById('submitBtn').innerText = 'تأكيد الطلب';
+                document.getElementById('footer-text').innerHTML = '&copy; 2025 متجرك. جميع الحقوق محفوظة';
+                const orderBtn = document.querySelector('.order-btn');
+                if (orderBtn) orderBtn.innerText = 'اطلب الآن';
+            }
+        }
+
+        if (langBtn) {
+            langBtn.addEventListener('click', (e) => {
+                e.stopPropagation();
+                langDropdown.classList.toggle('show');
+            });
+        }
+
+        document.querySelectorAll('[data-lang]').forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                e.preventDefault();
+                const lang = btn.getAttribute('data-lang');
+                currentLangSpan.innerText = lang.toUpperCase();
+                langDropdown.classList.remove('show');
+                changePageLanguage(lang);
+            });
+        });
+
+        window.addEventListener('click', (e) => {
+            if (!langBtn?.contains(e.target)) {
+                langDropdown?.classList.remove('show');
+            }
+        });
+
+        // ========================================
+        // تهيئة الصفحة
+        // ========================================
         const urlParams = new URLSearchParams(window.location.search);
         const productId = parseInt(urlParams.get('id'));
         let product = null;
@@ -322,10 +444,7 @@
                     address: document.getElementById('address').value
                 };
                 
-                // إرسال إلى Google Sheets
                 sendToGoogleSheets(orderData);
-                
-                // إرسال إلى Telegram
                 sendToTelegram(orderData);
                 
                 modal.classList.remove('active');
