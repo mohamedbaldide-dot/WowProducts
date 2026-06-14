@@ -45,8 +45,10 @@
                     <div class="lang-footer">أنت تتسوق على متجرك</div>
                 </div>
             </div>
-            <i class="fas fa-box orders-icon" id="ordersIcon"></i>
-            <span class="orders-badge" id="ordersBadge" style="display: none;">0</span>
+            <div class="orders-wrapper">
+                <i class="fas fa-box orders-icon" id="ordersIcon"></i>
+                <span class="orders-badge" id="ordersBadge" style="display: none;">0</span>
+            </div>
         </div>
     </header>
 
@@ -407,7 +409,6 @@
             const panelOverlay = document.getElementById('ordersOverlay');
             
             if (ordersIcon) {
-                // إزالة أي أحداث سابقة
                 const newIcon = ordersIcon.cloneNode(true);
                 ordersIcon.parentNode.replaceChild(newIcon, ordersIcon);
                 
@@ -431,7 +432,6 @@
             const langDropdown = document.getElementById('langDropdown');
             
             if (langBtn) {
-                // إزالة أي أحداث سابقة
                 const newLangBtn = langBtn.cloneNode(true);
                 langBtn.parentNode.replaceChild(newLangBtn, langBtn);
                 
