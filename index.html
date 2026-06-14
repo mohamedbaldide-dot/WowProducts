@@ -373,86 +373,105 @@
         }
 
         // ========================================
-        // تهيئة أيقونة طلباتي (بدون setTimeout)
-        // ========================================
-        const ordersIconElem = document.getElementById('ordersIcon');
-        const closePanelBtn = document.getElementById('closeOrdersPanel');
-        const panelOverlay = document.getElementById('ordersOverlay');
-
-        if (ordersIconElem) {
-            ordersIconElem.addEventListener('click', function(e) {
-                e.preventDefault();
-                e.stopPropagation();
-                openOrdersPanel();
-            });
-        }
-
-        if (closePanelBtn) {
-            closePanelBtn.addEventListener('click', closeOrdersPanel);
-        }
-
-        if (panelOverlay) {
-            panelOverlay.addEventListener('click', closeOrdersPanel);
-        }
-
-        updateOrdersBadge();
-
-        // ========================================
         // تبديل اللغة
         // ========================================
-        const langBtn = document.getElementById('langBtn');
-        const langDropdown = document.getElementById('langDropdown');
-        const currentLangSpan = document.getElementById('currentLang');
-
         function changeMainPageLanguage(lang) {
+            const searchInput = document.getElementById('searchInput');
+            const codTitle = document.getElementById('codTitle');
+            const codSubtitle = document.getElementById('codSubtitle');
+            const footerText = document.getElementById('footer-text');
+            const currentLangSpan = document.getElementById('currentLang');
+            
             if (lang === 'en') {
-                const searchInput = document.getElementById('searchInput');
                 if (searchInput) searchInput.placeholder = 'Search in Amazon Saudi Arabia';
-                
-                const codTitle = document.getElementById('codTitle');
                 if (codTitle) codTitle.innerHTML = '📦 Cash on Delivery Products';
-                
-                const codSubtitle = document.getElementById('codSubtitle');
                 if (codSubtitle) codSubtitle.innerHTML = 'Original products - High quality - Cash on delivery';
-                
-                const footerText = document.getElementById('footer-text');
                 if (footerText) footerText.innerHTML = '&copy; 2025 MyStore. All rights reserved.';
+                if (currentLangSpan) currentLangSpan.innerText = 'EN';
             } else {
-                const searchInput = document.getElementById('searchInput');
                 if (searchInput) searchInput.placeholder = 'ابحث في أمازون السعودية';
-                
-                const codTitle = document.getElementById('codTitle');
                 if (codTitle) codTitle.innerHTML = '📦 منتجات الدفع عند الاستلام';
-                
-                const codSubtitle = document.getElementById('codSubtitle');
                 if (codSubtitle) codSubtitle.innerHTML = 'منتجات أصلية - جودة عالية - الدفع عند الاستلام';
-                
-                const footerText = document.getElementById('footer-text');
                 if (footerText) footerText.innerHTML = '&copy; 2025 متجرك. جميع الحقوق محفوظة';
+                if (currentLangSpan) currentLangSpan.innerText = 'AR';
             }
         }
 
-        if (langBtn) {
-            langBtn.addEventListener('click', (e) => {
-                e.stopPropagation();
-                langDropdown.classList.toggle('show');
-            });
-        }
-
-        document.querySelectorAll('.lang-option').forEach(btn => {
-            btn.addEventListener('click', (e) => {
-                e.preventDefault();
-                const lang = btn.getAttribute('data-lang');
-                currentLangSpan.innerText = lang.toUpperCase();
-                langDropdown.classList.remove('show');
-                changeMainPageLanguage(lang);
-            });
-        });
-
-        window.addEventListener('click', (e) => {
-            if (langBtn && !langBtn.contains(e.target)) {
-                langDropdown?.classList.remove('show');
+        // ========================================
+        // إعادة تهيئة جميع الأحداث بعد تحميل الصفحة
+        // ========================================
+        document.addEventListener('DOMContentLoaded', function() {
+            // ===== زر طلباتي =====
+            const ordersIcon = document.getElementById('ordersIcon');
+            const closePanelBtn = document.getElementById('closeOrdersPanel');
+            const panelOverlay = document.getElementById('ordersOverlay');
+            
+            if (ordersIcon) {
+                // إزالة أي أحداث سابقة
+                const newIcon = ordersIcon.cloneNode(true);
+                ordersIcon.parentNode.replaceChild(newIcon, ordersIcon);
+                
+                newIcon.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    openOrdersPanel();
+                });
             }
+            
+            if (closePanelBtn) {
+                closePanelBtn.addEventListener('click', closeOrdersPanel);
+            }
+            
+            if (panelOverlay) {
+                panelOverlay.addEventListener('click', closeOrdersPanel);
+            }
+            
+            // ===== زر اللغة =====
+            const langBtn = document.getElementById('langBtn');
+            const langDropdown = document.getElementById('langDropdown');
+            
+            if (langBtn) {
+                // إزالة أي أحداث سابقة
+                const newLangBtn = langBtn.cloneNode(true);
+                langBtn.parentNode.replaceChild(newLangBtn, langBtn);
+                
+                newLangBtn.addEventListener('click', function(e) {
+                    e.stopPropagation();
+                    if (langDropdown) {
+                        langDropdown.classList.toggle('show');
+                    }
+                });
+            }
+            
+            // خيارات اللغة
+            const langOptions = document.querySelectorAll('.lang-option');
+            langOptions.forEach(option => {
+                const newOption = option.cloneNode(true);
+                option.parentNode.replaceChild(newOption, option);
+                
+                newOption.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const lang = this.getAttribute('data-lang');
+                    changeMainPageLanguage(lang);
+                    if (langDropdown) {
+                        langDropdown.classList.remove('show');
+                    }
+                });
+            });
+            
+            // إغلاق قائمة اللغة عند النقر خارجها
+            window.addEventListener('click', function(e) {
+                const langBtnElem = document.getElementById('langBtn');
+                const langDropdownElem = document.getElementById('langDropdown');
+                if (langBtnElem && !langBtnElem.contains(e.target)) {
+                    if (langDropdownElem) {
+                        langDropdownElem.classList.remove('show');
+                    }
+                }
+            });
+            
+            // تحديث عداد الطلبات
+            updateOrdersBadge();
         });
     </script>
 </body>
