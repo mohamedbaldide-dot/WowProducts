@@ -833,3 +833,8 @@ body {
 .my-order-btn:hover {
     background: #e68a00;
 }
+.logo-img {
+    height: 40px;
+    width: auto;
+    display: block;
+}
