@@ -833,14 +833,24 @@ body {
 .my-order-btn:hover {
     background: #e68a00;
 }
+/* ===== الشعار - حجم مناسب ===== */
 .logo-img {
-    width: 120px;  /* قلل هذا الرقم */
+    width: 140px;
     height: auto;
     display: block;
+    object-fit: contain;
 }
 
+/* للهواتف - حجم أصغر قليلاً */
 @media (max-width: 768px) {
     .logo-img {
-        width: 85px;  /* أصغر للهاتف */
+        width: 100px;
+    }
+}
+
+/* للشاشات الكبيرة */
+@media (min-width: 1200px) {
+    .logo-img {
+        width: 160px;
     }
 }
