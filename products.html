@@ -102,8 +102,10 @@
                     <div class="lang-footer">أنت تتسوق على متجرك</div>
                 </div>
             </div>
-            <i class="fas fa-box orders-icon" id="ordersIcon"></i>
-            <span class="orders-badge" id="ordersBadge" style="display: none;">0</span>
+            <div class="orders-wrapper">
+                <i class="fas fa-box orders-icon" id="ordersIcon"></i>
+                <span class="orders-badge" id="ordersBadge" style="display: none;">0</span>
+            </div>
         </div>
     </header>
 
@@ -244,6 +246,9 @@
 
         // تهيئة أيقونة طلباتي
         const ordersIcon = document.getElementById('ordersIcon');
+        const closeBtn = document.getElementById('closeOrdersPanel');
+        const overlay = document.getElementById('ordersOverlay');
+
         if (ordersIcon) {
             ordersIcon.addEventListener('click', (e) => {
                 e.preventDefault();
@@ -252,12 +257,10 @@
             });
         }
 
-        const closeBtn = document.getElementById('closeOrdersPanel');
         if (closeBtn) {
             closeBtn.addEventListener('click', closeOrdersPanel);
         }
 
-        const overlay = document.getElementById('ordersOverlay');
         if (overlay) {
             overlay.addEventListener('click', closeOrdersPanel);
         }
@@ -409,26 +412,35 @@
         const currentLangSpan = document.getElementById('currentLang');
 
         function changePageLanguage(lang) {
+            const searchInput = document.getElementById('searchInput');
+            const modalTitle = document.getElementById('modalTitle');
+            const labelName = document.getElementById('labelName');
+            const labelPhone = document.getElementById('labelPhone');
+            const labelAddress = document.getElementById('labelAddress');
+            const submitBtn = document.getElementById('submitBtn');
+            const footerText = document.getElementById('footer-text');
+            const orderBtn = document.querySelector('.order-btn');
+            
             if (lang === 'en') {
-                document.getElementById('searchInput').placeholder = 'Search in MyStore...';
-                document.getElementById('modalTitle').innerText = 'Enter your information';
-                document.getElementById('labelName').innerText = 'Full Name';
-                document.getElementById('labelPhone').innerText = 'Phone Number';
-                document.getElementById('labelAddress').innerText = 'Address';
-                document.getElementById('submitBtn').innerText = 'Confirm Order';
-                document.getElementById('footer-text').innerHTML = '&copy; 2025 MyStore. All rights reserved.';
-                const orderBtn = document.querySelector('.order-btn');
+                if (searchInput) searchInput.placeholder = 'Search in MyStore...';
+                if (modalTitle) modalTitle.innerText = 'Enter your information';
+                if (labelName) labelName.innerText = 'Full Name';
+                if (labelPhone) labelPhone.innerText = 'Phone Number';
+                if (labelAddress) labelAddress.innerText = 'Address';
+                if (submitBtn) submitBtn.innerText = 'Confirm Order';
+                if (footerText) footerText.innerHTML = '&copy; 2025 MyStore. All rights reserved.';
                 if (orderBtn) orderBtn.innerText = 'Order Now';
+                if (currentLangSpan) currentLangSpan.innerText = 'EN';
             } else {
-                document.getElementById('searchInput').placeholder = 'ابحث في متجرك...';
-                document.getElementById('modalTitle').innerText = 'أدخل معلوماتك';
-                document.getElementById('labelName').innerText = 'الاسم الكامل';
-                document.getElementById('labelPhone').innerText = 'رقم الهاتف';
-                document.getElementById('labelAddress').innerText = 'العنوان';
-                document.getElementById('submitBtn').innerText = 'تأكيد الطلب';
-                document.getElementById('footer-text').innerHTML = '&copy; 2025 متجرك. جميع الحقوق محفوظة';
-                const orderBtn = document.querySelector('.order-btn');
+                if (searchInput) searchInput.placeholder = 'ابحث في متجرك...';
+                if (modalTitle) modalTitle.innerText = 'أدخل معلوماتك';
+                if (labelName) labelName.innerText = 'الاسم الكامل';
+                if (labelPhone) labelPhone.innerText = 'رقم الهاتف';
+                if (labelAddress) labelAddress.innerText = 'العنوان';
+                if (submitBtn) submitBtn.innerText = 'تأكيد الطلب';
+                if (footerText) footerText.innerHTML = '&copy; 2025 متجرك. جميع الحقوق محفوظة';
                 if (orderBtn) orderBtn.innerText = 'اطلب الآن';
+                if (currentLangSpan) currentLangSpan.innerText = 'AR';
             }
         }
 
@@ -443,15 +455,14 @@
             btn.addEventListener('click', (e) => {
                 e.preventDefault();
                 const lang = btn.getAttribute('data-lang');
-                currentLangSpan.innerText = lang.toUpperCase();
-                langDropdown.classList.remove('show');
                 changePageLanguage(lang);
+                if (langDropdown) langDropdown.classList.remove('show');
             });
         });
 
         window.addEventListener('click', (e) => {
-            if (!langBtn?.contains(e.target)) {
-                langDropdown?.classList.remove('show');
+            if (langBtn && !langBtn.contains(e.target)) {
+                if (langDropdown) langDropdown.classList.remove('show');
             }
         });
 
@@ -508,13 +519,8 @@
                     address: document.getElementById('address').value
                 };
                 
-                // حفظ الطلب محلياً
                 saveOrderToLocal(orderData);
-                
-                // إرسال إلى Google Sheets
                 sendToGoogleSheets(orderData);
-                
-                // إرسال إلى Telegram
                 sendToTelegram(orderData);
                 
                 modal.classList.remove('active');
