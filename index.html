@@ -303,7 +303,7 @@
 
     <script>
         // ========================================
-        // نظام طلباتي - حفظ وعرض الطلبات محلياً
+        // نظام طلباتي
         // ========================================
 
         const STORAGE_KEY = 'my_orders';
@@ -311,22 +311,6 @@
         function loadOrders() {
             const orders = localStorage.getItem(STORAGE_KEY);
             return orders ? JSON.parse(orders) : [];
-        }
-
-        function saveOrderToLocal(orderData) {
-            const orders = loadOrders();
-            const newOrder = {
-                id: orderData.orderNumber,
-                productName: orderData.productName,
-                date: orderData.date,
-                price: orderData.price,
-                status: 'received',
-                statusText: 'تم استلام الطلب'
-            };
-            orders.unshift(newOrder);
-            localStorage.setItem(STORAGE_KEY, JSON.stringify(orders));
-            updateOrdersBadge();
-            return newOrder;
         }
 
         function updateOrdersBadge() {
@@ -388,25 +372,35 @@
             if (overlay) overlay.classList.remove('show');
         }
 
+        // ========================================
         // تهيئة أيقونة طلباتي
-        const ordersIcon = document.getElementById('ordersIcon');
-        if (ordersIcon) {
-            ordersIcon.addEventListener('click', (e) => {
-                e.preventDefault();
-                e.stopPropagation();
-                openOrdersPanel();
-            });
-        }
-
-        const closeBtn = document.getElementById('closeOrdersPanel');
-        if (closeBtn) {
-            closeBtn.addEventListener('click', closeOrdersPanel);
-        }
-
-        const overlay = document.getElementById('ordersOverlay');
-        if (overlay) {
-            overlay.addEventListener('click', closeOrdersPanel);
-        }
+        // ========================================
+        setTimeout(function() {
+            const ordersIcon = document.getElementById('ordersIcon');
+            const closeBtn = document.getElementById('closeOrdersPanel');
+            const overlay = document.getElementById('ordersOverlay');
+            
+            if (ordersIcon) {
+                const newIcon = ordersIcon.cloneNode(true);
+                ordersIcon.parentNode.replaceChild(newIcon, ordersIcon);
+                
+                newIcon.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    openOrdersPanel();
+                });
+            }
+            
+            if (closeBtn) {
+                closeBtn.addEventListener('click', closeOrdersPanel);
+            }
+            
+            if (overlay) {
+                overlay.addEventListener('click', closeOrdersPanel);
+            }
+            
+            updateOrdersBadge();
+        }, 100);
 
         // ========================================
         // تبديل اللغة
@@ -465,8 +459,6 @@
                 langDropdown?.classList.remove('show');
             }
         });
-
-        updateOrdersBadge();
     </script>
 </body>
 </html>
