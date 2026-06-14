@@ -45,7 +45,8 @@
                     <div class="lang-footer">أنت تتسوق على متجرك</div>
                 </div>
             </div>
-            <i class="fas fa-shopping-cart"></i>
+            <i class="fas fa-box orders-icon" id="ordersIcon"></i>
+            <span class="orders-badge" id="ordersBadge" style="display: none;">0</span>
         </div>
     </header>
 
@@ -71,7 +72,7 @@
 
     <div class="fade-overlay"></div>
 
-    <!-- ==================== بطاقات التصنيفات (كما هي) ==================== -->
+    <!-- ==================== السطر الأول من البطاقات ==================== -->
     <section class="categories">
         <div class="categories-grid">
             <!-- Box 1 - السماعات -->
@@ -159,10 +160,10 @@
         </div>
     </section>
 
-    <!-- ==================== السطر الثاني ==================== -->
+    <!-- ==================== السطر الثاني من البطاقات ==================== -->
     <section class="categories second-row">
         <div class="categories-grid">
-            <!-- Box 5-8 (نفس الكود السابق) -->
+            <!-- Box 5 - ألعاب الفيديو -->
             <div class="category-box">
                 <h3>خصم حتى 30% - ألعاب الفيديو</h3>
                 <div class="category-grid">
@@ -186,6 +187,7 @@
                 <a href="https://www.amazon.sa/s?i=videogames&rh=n%3A12463675031" class="category-link" target="_blank">تسوق الآن</a>
             </div>
 
+            <!-- Box 6 - عطور -->
             <div class="category-box">
                 <h3>عطور | خصم يصل إلى 50%</h3>
                 <div class="category-grid">
@@ -209,6 +211,7 @@
                 <a href="https://www.amazon.sa/l/16630489031" class="category-link" target="_blank">شاهد جميع العروض</a>
             </div>
 
+            <!-- Box 7 - الكاميرات -->
             <div class="category-box">
                 <h3>خصم حتى 30% - الكاميرات</h3>
                 <div class="category-grid">
@@ -232,6 +235,7 @@
                 <a href="https://www.amazon.sa/s?i=electronics&rh=n%3A16966385031" class="category-link" target="_blank">تسوق الآن</a>
             </div>
 
+            <!-- Box 8 - الحقائب -->
             <div class="category-box">
                 <h3>20% - 60% خصم على الحقائب</h3>
                 <div class="category-grid">
@@ -274,6 +278,23 @@
         </div>
     </footer>
 
+    <!-- ==================== لوحة طلباتي الجانبية ==================== -->
+    <div class="orders-overlay" id="ordersOverlay"></div>
+    <div class="orders-panel" id="ordersPanel">
+        <div class="orders-header">
+            <h3><i class="fas fa-box"></i> طلباتي</h3>
+            <button class="close-panel" id="closeOrdersPanel">&times;</button>
+        </div>
+        <div class="orders-content" id="ordersContent">
+            <div class="empty-orders">
+                <i class="fas fa-box-open"></i>
+                <p>ليس لديك أي طلبات حتى الآن.</p>
+                <p style="font-size: 13px; color: #999;">ابدأ بتصفح المنتجات وإرسال أول طلب.</p>
+                <a href="index.html" class="browse-btn">🛒 تصفح المنتجات</a>
+            </div>
+        </div>
+    </div>
+
     <script src="js/my-products-data.js"></script>
     <script src="js/translations.js"></script>
     <script src="js/slider.js"></script>
@@ -282,84 +303,170 @@
 
     <script>
         // ========================================
-        // نظام تبديل اللغة في الصفحة الرئيسية
+        // نظام طلباتي - حفظ وعرض الطلبات محلياً
         // ========================================
-        (function() {
-            // التأكد من وجود العناصر
-            const langBtn = document.getElementById('langBtn');
-            const langDropdown = document.getElementById('langDropdown');
-            const currentLangSpan = document.getElementById('currentLang');
-            
-            if (!langBtn) {
-                console.log('langBtn not found');
-                return;
+
+        const STORAGE_KEY = 'my_orders';
+
+        function loadOrders() {
+            const orders = localStorage.getItem(STORAGE_KEY);
+            return orders ? JSON.parse(orders) : [];
+        }
+
+        function saveOrderToLocal(orderData) {
+            const orders = loadOrders();
+            const newOrder = {
+                id: orderData.orderNumber,
+                productName: orderData.productName,
+                date: orderData.date,
+                price: orderData.price,
+                status: 'received',
+                statusText: 'تم استلام الطلب'
+            };
+            orders.unshift(newOrder);
+            localStorage.setItem(STORAGE_KEY, JSON.stringify(orders));
+            updateOrdersBadge();
+            return newOrder;
+        }
+
+        function updateOrdersBadge() {
+            const orders = loadOrders();
+            const badge = document.getElementById('ordersBadge');
+            if (badge) {
+                const count = orders.length;
+                if (count > 0) {
+                    badge.style.display = 'flex';
+                    badge.innerText = count > 99 ? '99+' : count;
+                } else {
+                    badge.style.display = 'none';
+                }
             }
+        }
+
+        function renderOrdersPanel() {
+            const container = document.getElementById('ordersContent');
+            const orders = loadOrders();
             
-            // فتح/إغلاق القائمة
-            langBtn.addEventListener('click', function(e) {
+            if (!container) return;
+            
+            if (orders.length === 0) {
+                container.innerHTML = `
+                    <div class="empty-orders">
+                        <i class="fas fa-box-open"></i>
+                        <p>ليس لديك أي طلبات حتى الآن.</p>
+                        <p style="font-size: 13px; color: #999;">ابدأ بتصفح المنتجات وإرسال أول طلب.</p>
+                        <a href="index.html" class="browse-btn">🛒 تصفح المنتجات</a>
+                    </div>
+                `;
+            } else {
+                container.innerHTML = orders.map(order => `
+                    <div class="order-card">
+                        <h4>${order.productName}</h4>
+                        <div class="order-details">
+                            <span>رقم الطلب:</span> ${order.id}<br>
+                            <span>التاريخ:</span> ${order.date}<br>
+                            <span>السعر:</span> ${order.price} ر.س
+                        </div>
+                        <div class="order-status status-received">🟡 ${order.statusText}</div>
+                    </div>
+                `).join('');
+            }
+        }
+
+        function openOrdersPanel() {
+            const panel = document.getElementById('ordersPanel');
+            const overlay = document.getElementById('ordersOverlay');
+            if (panel) panel.classList.add('open');
+            if (overlay) overlay.classList.add('show');
+            renderOrdersPanel();
+        }
+
+        function closeOrdersPanel() {
+            const panel = document.getElementById('ordersPanel');
+            const overlay = document.getElementById('ordersOverlay');
+            if (panel) panel.classList.remove('open');
+            if (overlay) overlay.classList.remove('show');
+        }
+
+        // تهيئة أيقونة طلباتي
+        const ordersIcon = document.getElementById('ordersIcon');
+        if (ordersIcon) {
+            ordersIcon.addEventListener('click', (e) => {
+                e.preventDefault();
                 e.stopPropagation();
-                if (langDropdown) {
-                    langDropdown.classList.toggle('show');
-                }
+                openOrdersPanel();
             });
-            
-            // اختيار اللغة
-            const langOptions = document.querySelectorAll('.lang-option');
-            langOptions.forEach(function(option) {
-                option.addEventListener('click', function(e) {
-                    e.preventDefault();
-                    const lang = this.getAttribute('data-lang');
-                    
-                    // تغيير النص المعروض
-                    if (currentLangSpan) {
-                        currentLangSpan.innerText = lang.toUpperCase();
-                    }
-                    
-                    // ترجمة العناصر
-                    if (lang === 'en') {
-                        const searchInput = document.getElementById('searchInput');
-                        if (searchInput) searchInput.placeholder = 'Search in Amazon Saudi Arabia';
-                        
-                        const codTitle = document.getElementById('codTitle');
-                        if (codTitle) codTitle.innerHTML = '📦 Cash on Delivery Products';
-                        
-                        const codSubtitle = document.getElementById('codSubtitle');
-                        if (codSubtitle) codSubtitle.innerHTML = 'Original products - High quality - Cash on delivery';
-                        
-                        const footerText = document.getElementById('footer-text');
-                        if (footerText) footerText.innerHTML = '&copy; 2025 MyStore. All rights reserved.';
-                    } else {
-                        const searchInput = document.getElementById('searchInput');
-                        if (searchInput) searchInput.placeholder = 'ابحث في أمازون السعودية';
-                        
-                        const codTitle = document.getElementById('codTitle');
-                        if (codTitle) codTitle.innerHTML = '📦 منتجات الدفع عند الاستلام';
-                        
-                        const codSubtitle = document.getElementById('codSubtitle');
-                        if (codSubtitle) codSubtitle.innerHTML = 'منتجات أصلية - جودة عالية - الدفع عند الاستلام';
-                        
-                        const footerText = document.getElementById('footer-text');
-                        if (footerText) footerText.innerHTML = '&copy; 2025 متجرك. جميع الحقوق محفوظة';
-                    }
-                    
-                    // إغلاق القائمة
-                    if (langDropdown) {
-                        langDropdown.classList.remove('show');
-                    }
-                });
+        }
+
+        const closeBtn = document.getElementById('closeOrdersPanel');
+        if (closeBtn) {
+            closeBtn.addEventListener('click', closeOrdersPanel);
+        }
+
+        const overlay = document.getElementById('ordersOverlay');
+        if (overlay) {
+            overlay.addEventListener('click', closeOrdersPanel);
+        }
+
+        // ========================================
+        // تبديل اللغة
+        // ========================================
+        const langBtn = document.getElementById('langBtn');
+        const langDropdown = document.getElementById('langDropdown');
+        const currentLangSpan = document.getElementById('currentLang');
+
+        function changeMainPageLanguage(lang) {
+            if (lang === 'en') {
+                const searchInput = document.getElementById('searchInput');
+                if (searchInput) searchInput.placeholder = 'Search in Amazon Saudi Arabia';
+                
+                const codTitle = document.getElementById('codTitle');
+                if (codTitle) codTitle.innerHTML = '📦 Cash on Delivery Products';
+                
+                const codSubtitle = document.getElementById('codSubtitle');
+                if (codSubtitle) codSubtitle.innerHTML = 'Original products - High quality - Cash on delivery';
+                
+                const footerText = document.getElementById('footer-text');
+                if (footerText) footerText.innerHTML = '&copy; 2025 MyStore. All rights reserved.';
+            } else {
+                const searchInput = document.getElementById('searchInput');
+                if (searchInput) searchInput.placeholder = 'ابحث في أمازون السعودية';
+                
+                const codTitle = document.getElementById('codTitle');
+                if (codTitle) codTitle.innerHTML = '📦 منتجات الدفع عند الاستلام';
+                
+                const codSubtitle = document.getElementById('codSubtitle');
+                if (codSubtitle) codSubtitle.innerHTML = 'منتجات أصلية - جودة عالية - الدفع عند الاستلام';
+                
+                const footerText = document.getElementById('footer-text');
+                if (footerText) footerText.innerHTML = '&copy; 2025 متجرك. جميع الحقوق محفوظة';
+            }
+        }
+
+        if (langBtn) {
+            langBtn.addEventListener('click', (e) => {
+                e.stopPropagation();
+                langDropdown.classList.toggle('show');
             });
-            
-            // إغلاق القائمة عند النقر خارجها
-            window.addEventListener('click', function(e) {
-                if (langBtn && !langBtn.contains(e.target)) {
-                    if (langDropdown) {
-                        langDropdown.classList.remove('show');
-                    }
-                }
+        }
+
+        document.querySelectorAll('.lang-option').forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                e.preventDefault();
+                const lang = btn.getAttribute('data-lang');
+                currentLangSpan.innerText = lang.toUpperCase();
+                langDropdown.classList.remove('show');
+                changeMainPageLanguage(lang);
             });
-            
-            console.log('Language selector initialized');
-        })();
+        });
+
+        window.addEventListener('click', (e) => {
+            if (langBtn && !langBtn.contains(e.target)) {
+                langDropdown?.classList.remove('show');
+            }
+        });
+
+        updateOrdersBadge();
     </script>
 </body>
 </html>
