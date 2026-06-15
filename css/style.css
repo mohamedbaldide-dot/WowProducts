@@ -1429,3 +1429,140 @@ body {
     border-color: #ff9900;
     box-shadow: 0 0 0 2px rgba(255,153,0,0.3);
 }
+/* ========================================
+   تحسين البطاقة الرئيسية للمنتج - إصلاح كامل
+   ======================================== */
+
+/* إصلاح البطاقة الرئيسية */
+.product-detail-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+    background: white;
+    border-radius: 16px;
+    padding: 30px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+    overflow: hidden;
+}
+
+@media (max-width: 768px) {
+    .product-detail-grid {
+        grid-template-columns: 1fr;
+        padding: 20px;
+        gap: 20px;
+    }
+}
+
+/* تأكيد أن القسم الأيمن لا يتجاوز البطاقة */
+.product-info {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+/* إصلاح الصورة الرئيسية - تمنع الخروج من البطاقة */
+.product-gallery-wrapper {
+    display: flex;
+    gap: 15px;
+    direction: ltr;
+    height: 100%;
+    max-width: 100%;
+    overflow: hidden;
+}
+
+.main-image-large {
+    flex: 1;
+    background: #fafafa;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    aspect-ratio: 1 / 1;
+    overflow: hidden;
+}
+
+.main-image-large img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+/* تقليل المسافات بشكل أكبر */
+.product-badge {
+    margin-bottom: 5px;
+}
+
+.product-title {
+    margin-bottom: 8px;
+}
+
+.product-price-section {
+    margin-bottom: 10px;
+    padding: 12px;
+}
+
+.product-color-section {
+    margin: 5px 0 3px 0;
+}
+
+.product-quantity-section {
+    margin: 5px 0 8px 0;
+}
+
+.features-list {
+    margin: 5px 0 10px 0;
+}
+
+.features-list li {
+    padding: 4px 0;
+}
+
+.trust-badges {
+    margin: 8px 0 12px 0;
+    padding: 10px;
+}
+
+.order-btn {
+    margin-top: 0;
+    padding: 14px;
+}
+
+/* تحسينات إضافية للهاتف */
+@media (max-width: 768px) {
+    .product-info {
+        gap: 8px;
+    }
+    
+    .product-price-section {
+        padding: 10px;
+    }
+    
+    .current-price {
+        font-size: 22px;
+    }
+    
+    .color-swatch {
+        width: 28px;
+        height: 28px;
+    }
+    
+    .quantity-btn {
+        width: 28px;
+        height: 28px;
+        font-size: 16px;
+    }
+    
+    .quantity-selector input {
+        width: 45px;
+        height: 28px;
+    }
+    
+    .trust-item {
+        font-size: 10px;
+    }
+    
+    .order-btn {
+        padding: 12px;
+        font-size: 15px;
+    }
+}
