@@ -1566,3 +1566,10 @@ body {
         font-size: 15px;
     }
 }
+/* أعلام اللغة */
+.flag-icon {
+    width: 20px;
+    height: 20px;
+    border-radius: 2px;
+    object-fit: cover;
+}
