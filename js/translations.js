@@ -6,7 +6,7 @@ const translations = {
     ar: {
         // عام
         logo: "متجرك",
-        searchPlaceholder: "ابحث في أمازون السعودية",
+        searchPlaceholder: "ابحث في متجرك...",
         all: "الكل",
         allSections: "جميع الأقسام",
         cod: "الدفع عند الاستلام",
@@ -126,12 +126,23 @@ const translations = {
         statusProcessing: "قيد المراجعة",
         statusShipped: "تم الشحن",
         statusDelivered: "تم التسليم",
-        statusCancelled: "ملغي"
+        statusCancelled: "ملغي",
+        
+        // مميزات المنتج
+        features: {
+            speed: "6 سرعات تدليك مختلفة",
+            charging: "شحن Type-C سريع",
+            quiet: "هادئ جداً عند الاستخدام",
+            battery: "بطارية قوية تدوم طويلاً",
+            body: "مناسب للظهر والرقبة والكتفين",
+            heads: "رؤوس تدليك قابلة للتبديل",
+            weight: "وزن خفيف وسهل الحمل"
+        }
     },
     en: {
         // General
         logo: "MyStore",
-        searchPlaceholder: "Search in Amazon Saudi Arabia",
+        searchPlaceholder: "Search in MyStore...",
         all: "All",
         allSections: "All Departments",
         cod: "Cash on Delivery",
@@ -251,13 +262,167 @@ const translations = {
         statusProcessing: "Under Review",
         statusShipped: "Shipped",
         statusDelivered: "Delivered",
-        statusCancelled: "Cancelled"
+        statusCancelled: "Cancelled",
+        
+        // Product features
+        features: {
+            speed: "6 different massage speeds",
+            charging: "Fast Type-C charging",
+            quiet: "Very quiet during use",
+            battery: "Long-lasting powerful battery",
+            body: "Suitable for back, neck, and shoulders",
+            heads: "Interchangeable massage heads",
+            weight: "Lightweight and easy to carry"
+        }
     }
 };
 
 let currentLanguage = 'ar';
 
-// دالة تغيير اللغة
+// تحديث نصوص صفحة المنتج
+function updateProductPageTexts() {
+    const orderBtn = document.querySelector('.order-btn');
+    if (orderBtn) orderBtn.innerText = translations[currentLanguage].orderNow;
+    
+    const colorLabel = document.querySelector('.color-label');
+    if (colorLabel) colorLabel.innerText = translations[currentLanguage].color;
+    
+    const quantityLabel = document.querySelector('.quantity-label');
+    if (quantityLabel) quantityLabel.innerText = translations[currentLanguage].quantity;
+    
+    // تحديث المميزات
+    const featuresItems = document.querySelectorAll('.features-list li');
+    const featuresKeys = ['speed', 'charging', 'quiet', 'battery', 'body', 'heads', 'weight'];
+    featuresItems.forEach((item, index) => {
+        if (featuresKeys[index] && item) {
+            const icon = item.querySelector('i');
+            if (icon) {
+                item.innerHTML = `<i class="fas fa-check-circle"></i> ${translations[currentLanguage].features[featuresKeys[index]]}`;
+                if (icon) item.prepend(icon);
+            }
+        }
+    });
+    
+    // تحديث عناصر الثقة
+    const trustItems = document.querySelectorAll('.trust-item');
+    const trustKeys = ['cashOnDeliveryBadge', 'fastShipping', 'replacementGuarantee', 'customerSupport'];
+    trustItems.forEach((item, index) => {
+        if (trustKeys[index]) {
+            const icon = item.querySelector('i');
+            if (icon) {
+                item.innerHTML = `<i class="${icon.className}"></i> ${translations[currentLanguage][trustKeys[index]]}`;
+                if (icon) item.prepend(icon);
+            }
+        }
+    });
+}
+
+// تحديث نصوص الصفحة الرئيسية
+function updateHomePageTexts() {
+    // تحديث عناوين البطاقات
+    const categoryBoxes = document.querySelectorAll('.category-box h3');
+    const categoryTitles = [
+        'headphonesOffer', 'gamesOffer', 'furnitureOffer', 'sandalsOffer',
+        'videoGamesOffer', 'perfumesOffer', 'camerasOffer', 'bagsOffer'
+    ];
+    categoryBoxes.forEach((box, index) => {
+        if (categoryTitles[index]) {
+            box.innerText = translations[currentLanguage][categoryTitles[index]];
+        }
+    });
+    
+    // تحديث أسماء العناصر داخل البطاقات
+    const categorySpans = document.querySelectorAll('.category-item span');
+    const spanTexts = [
+        'headphones', 'earbuds', 'speakers', 'soundbar',
+        'scooters', 'outdoorGames', 'buildingToys', 'dolls',
+        'tables', 'sofas', 'gamingChairs', 'cabinets',
+        'gamingConsole', 'accessories', 'digitalGames', 'pcGames',
+        'menPerfumes', 'womenPerfumes', 'oudPerfumes', 'perfumeSets',
+        'securityCameras', 'actionCameras', 'movieCameras', 'digitalCameras',
+        'womenBags', 'travelBags', 'menWallets', 'backpacks'
+    ];
+    categorySpans.forEach((span, index) => {
+        if (spanTexts[index] && translations[currentLanguage][spanTexts[index]]) {
+            span.innerText = translations[currentLanguage][spanTexts[index]];
+        }
+    });
+    
+    // تحديث أزرار البطاقات
+    const categoryLinks = document.querySelectorAll('.category-link');
+    categoryLinks.forEach(link => {
+        const text = link.innerText;
+        if (text.includes('تسوق الآن') || text.includes('Shop Now')) {
+            link.innerText = translations[currentLanguage].shopNow + ' →';
+        } else if (text.includes('شاهد المزيد') || text.includes('View More')) {
+            link.innerText = translations[currentLanguage].viewMore + ' →';
+        } else if (text.includes('اكتشف المزيد') || text.includes('Discover More')) {
+            link.innerText = translations[currentLanguage].discoverMore + ' →';
+        } else if (text.includes('شاهد جميع العروض') || text.includes('View All Offers')) {
+            link.innerText = translations[currentLanguage].viewAllOffers + ' →';
+        }
+    });
+    
+    // تحديث قسم الدفع عند الاستلام
+    const codTitle = document.getElementById('codTitle');
+    const codSubtitle = document.getElementById('codSubtitle');
+    if (codTitle) codTitle.innerHTML = translations[currentLanguage].codTitle;
+    if (codSubtitle) codSubtitle.innerText = translations[currentLanguage].codSubtitle;
+    
+    // تحديث الفوتر
+    const footerText = document.getElementById('footer-text');
+    if (footerText) footerText.innerHTML = `&copy; 2025 ${translations[currentLanguage].logo}. ${translations[currentLanguage].footer}`;
+    
+    // تحديث شريط البحث
+    const searchInput = document.getElementById('searchInput');
+    if (searchInput) searchInput.placeholder = translations[currentLanguage].searchPlaceholder;
+    
+    // تحديث زر "الكل"
+    const dropdownBtn = document.getElementById('dropdownBtn');
+    if (dropdownBtn) dropdownBtn.innerHTML = `${translations[currentLanguage].all} <i class="fas fa-chevron-down"></i>`;
+    
+    // تحديث قائمة الأقسام المنسدلة
+    const dropdownItems = document.querySelectorAll('#dropdownContent a');
+    const dropdownTexts = ['allSections', 'cod', 'amazonDevices', 'electronics', 'home', 'fashion', 'sports'];
+    dropdownItems.forEach((item, index) => {
+        if (dropdownTexts[index]) {
+            item.innerText = translations[currentLanguage][dropdownTexts[index]];
+        }
+    });
+}
+
+// تحديث نصوص لوحة الطلبات
+function updateOrdersPanelTexts() {
+    const ordersHeader = document.querySelector('.orders-header h3');
+    if (ordersHeader) {
+        ordersHeader.innerHTML = `<i class="fas fa-box"></i> ${translations[currentLanguage].myOrders}`;
+    }
+    
+    const emptyOrders = document.querySelector('.empty-orders');
+    if (emptyOrders) {
+        const emptyP = emptyOrders.querySelector('p');
+        const emptyLink = emptyOrders.querySelector('.browse-btn');
+        if (emptyP) emptyP.innerText = translations[currentLanguage].noOrders;
+        if (emptyLink) emptyLink.innerText = translations[currentLanguage].browseProducts;
+    }
+}
+
+// تحديث نصوص نموذج الطلب
+function updateOrderModalTexts() {
+    const modalTitle = document.getElementById('modalTitle');
+    const labelName = document.getElementById('labelName');
+    const labelPhone = document.getElementById('labelPhone');
+    const labelAddress = document.getElementById('labelAddress');
+    const submitBtn = document.getElementById('submitBtn');
+    
+    if (modalTitle) modalTitle.innerText = translations[currentLanguage].enterInfo;
+    if (labelName) labelName.innerText = translations[currentLanguage].fullName;
+    if (labelPhone) labelPhone.innerText = translations[currentLanguage].phone;
+    if (labelAddress) labelAddress.innerText = translations[currentLanguage].address;
+    if (submitBtn) submitBtn.innerText = translations[currentLanguage].confirmOrder;
+}
+
+// دالة تغيير اللغة الرئيسية
 function changeLanguage(lang) {
     currentLanguage = lang;
     localStorage.setItem('site_language', lang);
@@ -272,93 +437,18 @@ function changeLanguage(lang) {
         htmlElement.setAttribute('lang', 'en');
     }
     
-    // تحديث النصوص العامة
-    updatePageTexts();
+    // تحديث الشعار
+    const logoText = document.getElementById('logo-text');
+    if (logoText) logoText.innerText = translations[currentLanguage].logo;
     
     // تحديث زر اللغة والعلم
-    updateLanguageButton();
-    
-    // إعادة تحميل المنتجات إذا كانت موجودة
-    if (typeof renderMyProducts === 'function') {
-        renderMyProducts();
-    }
-    
-    // تحديث لوحة الطلبات إذا كانت مفتوحة
-    if (typeof renderOrdersPanel === 'function') {
-        renderOrdersPanel();
-    }
-    
-    console.log(`Language changed to: ${lang}`);
-}
-
-// دالة تحديث النصوص في الصفحة
-function updatePageTexts() {
-    // تحديث العناصر التي لها id
-    const elementsWithId = {
-        'logo-text': 'logo',
-        'searchInput': 'searchPlaceholder',
-        'dropdownBtn': 'all',
-        'codTitle': 'codTitle',
-        'codSubtitle': 'codSubtitle',
-        'footer-text': 'footer',
-        'modalTitle': 'enterInfo',
-        'labelName': 'fullName',
-        'labelPhone': 'phone',
-        'labelAddress': 'address',
-        'submitBtn': 'confirmOrder'
-    };
-    
-    for (const [id, key] of Object.entries(elementsWithId)) {
-        const element = document.getElementById(id);
-        if (element) {
-            if (element.tagName === 'INPUT' || element.tagName === 'TEXTAREA') {
-                element.placeholder = translations[currentLanguage][key];
-            } else if (element.tagName === 'BUTTON') {
-                element.innerText = translations[currentLanguage][key];
-            } else {
-                element.innerText = translations[currentLanguage][key];
-            }
-        }
-    }
-    
-    // تحديث أزرار "تسوق الآن" في البطاقات
-    const shopNowButtons = document.querySelectorAll('.category-link');
-    shopNowButtons.forEach(btn => {
-        if (btn.innerText.includes('تسوق الآن') || btn.innerText.includes('Shop Now')) {
-            btn.innerText = translations[currentLanguage].shopNow + ' →';
-        } else if (btn.innerText.includes('شاهد المزيد') || btn.innerText.includes('View More')) {
-            btn.innerText = translations[currentLanguage].viewMore + ' →';
-        } else if (btn.innerText.includes('اكتشف المزيد') || btn.innerText.includes('Discover More')) {
-            btn.innerText = translations[currentLanguage].discoverMore + ' →';
-        } else if (btn.innerText.includes('شاهد جميع العروض') || btn.innerText.includes('View All Offers')) {
-            btn.innerText = translations[currentLanguage].viewAllOffers + ' →';
-        }
-    });
-    
-    // تحديث زر الطلب في صفحة المنتج إذا كان موجوداً
-    const orderBtn = document.querySelector('.order-btn');
-    if (orderBtn) {
-        orderBtn.innerText = translations[currentLanguage].orderNow;
-    }
-    
-    // تحديث عنوان "طلباتي" في اللوحة
-    const ordersHeader = document.querySelector('.orders-header h3');
-    if (ordersHeader) {
-        ordersHeader.innerHTML = `<i class="fas fa-box"></i> ${translations[currentLanguage].myOrders}`;
-    }
-}
-
-// دالة تحديث زر اللغة والعلم
-function updateLanguageButton() {
     const currentLangSpan = document.getElementById('currentLang');
     const flagIcon = document.querySelector('.lang-btn .flag-icon');
     
-    if (currentLangSpan) {
-        currentLangSpan.innerText = currentLanguage.toUpperCase();
-    }
+    if (currentLangSpan) currentLangSpan.innerText = lang.toUpperCase();
     
     if (flagIcon) {
-        if (currentLanguage === 'ar') {
+        if (lang === 'ar') {
             flagIcon.src = 'images/saudi-flag.webp';
             flagIcon.alt = 'SA';
         } else {
@@ -366,6 +456,23 @@ function updateLanguageButton() {
             flagIcon.alt = 'US';
         }
     }
+    
+    // تحديث نصوص الصفحة حسب الموقع الحالي
+    if (window.location.pathname.includes('products.html') || window.location.pathname.includes('product.html')) {
+        updateProductPageTexts();
+        updateOrderModalTexts();
+    } else {
+        updateHomePageTexts();
+        updateOrdersPanelTexts();
+        updateOrderModalTexts();
+        
+        // إعادة تحميل المنتجات
+        if (typeof renderMyProducts === 'function') {
+            renderMyProducts();
+        }
+    }
+    
+    console.log(`Language changed to: ${lang}`);
 }
 
 // تهيئة اللغة عند تحميل الصفحة
@@ -378,16 +485,20 @@ function initLanguage() {
     }
 }
 
-// تحميل اللغة عند بدء الصفحة
+// تشغيل التهيئة عند تحميل الصفحة
 document.addEventListener('DOMContentLoaded', function() {
     initLanguage();
     
-    // إعادة ربط أحداث اللغة (لأنها قد تُفقد بعد التحميل)
+    // إعادة ربط أحداث اللغة
     const langBtn = document.getElementById('langBtn');
     const langOptions = document.querySelectorAll('.lang-option');
     
     if (langBtn) {
-        langBtn.addEventListener('click', function(e) {
+        // إزالة أي أحداث سابقة
+        const newLangBtn = langBtn.cloneNode(true);
+        langBtn.parentNode.replaceChild(newLangBtn, langBtn);
+        
+        newLangBtn.addEventListener('click', function(e) {
             e.stopPropagation();
             const dropdown = document.getElementById('langDropdown');
             if (dropdown) dropdown.classList.toggle('show');
@@ -395,12 +506,24 @@ document.addEventListener('DOMContentLoaded', function() {
     }
     
     langOptions.forEach(option => {
-        option.addEventListener('click', function(e) {
+        const newOption = option.cloneNode(true);
+        option.parentNode.replaceChild(newOption, option);
+        
+        newOption.addEventListener('click', function(e) {
             e.preventDefault();
             const lang = this.getAttribute('data-lang');
             changeLanguage(lang);
             const dropdown = document.getElementById('langDropdown');
             if (dropdown) dropdown.classList.remove('show');
         });
+    });
+    
+    // إغلاق القائمة عند النقر خارجها
+    window.addEventListener('click', function(e) {
+        const langBtnElem = document.getElementById('langBtn');
+        const langDropdownElem = document.getElementById('langDropdown');
+        if (langBtnElem && !langBtnElem.contains(e.target)) {
+            if (langDropdownElem) langDropdownElem.classList.remove('show');
+        }
     });
 });
