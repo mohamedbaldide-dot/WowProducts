@@ -14,7 +14,7 @@ body {
 }
 
 /* ========================================
-   HEADER
+   HEADER - مع شريط بحث متكامل
    ======================================== */
 .header {
     background: #222f3e;
@@ -26,31 +26,43 @@ body {
     position: sticky;
     top: 0;
     z-index: 100;
-    gap: 15px;
+    gap: 10px;
 }
 
+/* ===== الشعار ===== */
 .logo {
     flex: 0 0 auto;
+    margin-right: 5px;
 }
 
-.logo h1 {
-    font-size: 22px;
-    font-weight: bold;
-    margin: 0;
-    white-space: nowrap;
+.logo-img {
+    width: 110px;
+    height: auto;
+    display: block;
 }
 
-/* ===== شريط البحث ===== */
+@media (max-width: 768px) {
+    .logo-img {
+        width: 80px;
+    }
+}
+
+/* ===== شريط البحث - قطعة واحدة متكاملة ===== */
 .search-container {
     flex: 1;
-    max-width: 550px;
+    max-width: 650px;
     display: flex;
-    margin: 0;
-    height: 34px;
+    margin: 0 5px;
+    height: 38px;
+    border-radius: 6px;
+    overflow: hidden;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
 }
 
+/* قائمة "الكل" - ملتصقة بالبحث */
 .search-dropdown {
     position: relative;
+    flex-shrink: 0;
 }
 
 .dropdown-btn {
@@ -58,15 +70,15 @@ body {
     color: #333;
     border: none;
     padding: 0 12px;
-    height: 34px;
-    border-radius: 4px 0 0 4px;
+    height: 38px;
     cursor: pointer;
     font-size: 12px;
     display: flex;
     align-items: center;
-    gap: 6px;
+    gap: 5px;
     white-space: nowrap;
     font-weight: 500;
+    border-right: 1px solid #ccc;
 }
 
 .dropdown-btn i {
@@ -74,40 +86,122 @@ body {
     color: #666;
 }
 
-.search-input {
-    flex: 1;
-    padding: 0 10px;
-    border: none;
-    font-size: 13px;
-    height: 34px;
-    outline: none;
-    background: white;
+.dropdown-btn:hover {
+    background: #d9d9d9;
 }
 
+/* حقل البحث - ممتد */
+.search-input {
+    flex: 1;
+    padding: 0 12px;
+    border: none;
+    font-size: 13px;
+    height: 38px;
+    outline: none;
+    background: white;
+    min-width: 120px;
+}
+
+.search-input::placeholder {
+    color: #888;
+}
+
+/* زر البحث - برتقالي مثل أمازون */
 .search-btn {
     background: #febd69;
     border: none;
-    padding: 0 16px;
-    height: 34px;
-    border-radius: 0 4px 4px 0;
+    padding: 0 18px;
+    height: 38px;
     cursor: pointer;
     color: #333;
-    font-size: 14px;
+    font-size: 16px;
     display: flex;
     align-items: center;
     justify-content: center;
+    flex-shrink: 0;
+    border-left: 1px solid #e6a84c;
 }
 
 .search-btn:hover {
     background: #f3a847;
 }
 
-/* ===== قسم اللغة ===== */
+/* ===== قسم اللغة والسلة ===== */
 .header-actions {
     display: flex;
     align-items: center;
-    gap: 12px;
+    gap: 8px;
     flex: 0 0 auto;
+}
+
+/* ===== استجابة للشاشات الصغيرة ===== */
+@media (max-width: 768px) {
+    .header {
+        flex-wrap: wrap;
+        gap: 8px;
+        padding: 8px 12px;
+    }
+    
+    .search-container {
+        max-width: 100%;
+        order: 3;
+        flex-basis: 100%;
+        height: 36px;
+    }
+    
+    .dropdown-btn {
+        height: 36px;
+        font-size: 11px;
+        padding: 0 10px;
+    }
+    
+    .search-input {
+        height: 36px;
+        font-size: 12px;
+    }
+    
+    .search-btn {
+        height: 36px;
+        padding: 0 14px;
+        font-size: 14px;
+    }
+    
+    .logo-img {
+        width: 70px;
+    }
+}
+
+@media (max-width: 480px) {
+    .header {
+        padding: 6px 8px;
+        gap: 6px;
+    }
+    
+    .search-container {
+        height: 32px;
+    }
+    
+    .dropdown-btn {
+        height: 32px;
+        font-size: 10px;
+        padding: 0 8px;
+    }
+    
+    .search-input {
+        height: 32px;
+        font-size: 11px;
+        padding: 0 8px;
+    }
+    
+    .search-btn {
+        height: 32px;
+        padding: 0 10px;
+        font-size: 12px;
+    }
+    
+    .logo-img {
+        width: 60px;
+    }
 }
 
 .language-selector {
@@ -130,10 +224,12 @@ body {
     background: rgba(255,255,255,0.08);
 }
 
+/* أعلام اللغة */
 .flag-icon {
-    width: 16px;
-    height: 16px;
+    width: 20px;
+    height: 20px;
     border-radius: 2px;
+    object-fit: cover;
 }
 
 .lang-dropdown {
